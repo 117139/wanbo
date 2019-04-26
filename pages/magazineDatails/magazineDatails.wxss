@@ -1,0 +1,181 @@
+@import '../../vendor/wxParse/wxParse.wxss';
+
+.topBox{
+	width: 100%;
+	margin: 22rpx 0;
+	padding: 0 30rpx;
+	box-sizing: border-box;
+	background-color: #fff;
+}
+.topTit{
+	width: 100%;
+	height: 194rpx;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	border-bottom: 1px solid #cccccc;
+}
+.p1{
+	font-size: 42rpx;
+	color: #333;
+	margin-bottom: 15rpx;
+}
+.p2{
+	font-size: 30rpx;
+	color: #333;
+	margin-top: 15rpx;
+}
+.wxfwb{
+	width: 100%;
+	padding: 40rpx 0 80rpx;
+	font-size: 32rpx;
+}
+.buyBox{
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	font-size: 32rpx;
+	color: #fff;
+}
+.btn1{
+	width: 270rpx;
+	height: 60rpx;
+	border-radius: 30rpx;
+	background-color: #fe6c5f;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.btn2{
+	width: 270rpx;
+	height: 60rpx;
+	border-radius: 30rpx;
+	background-color: #00a0e9;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.shareBox{
+	padding: 30rpx 0;
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	font-size: 26rpx;
+	color: #333;
+}
+.shareFx{
+	display: flex;
+	align-items: center;
+}
+.fxicon{
+	width: 60rpx;
+	height: 60rpx;
+	margin-right: 5rpx;
+}
+/*相关推荐*/
+.dszl{
+	width: 100%;
+	background-color: #fff;
+	padding: 0 30rpx;
+	box-sizing: border-box;
+}
+.dstitle{
+	font-size: 42rpx;
+	color: #333333;
+	height: 100rpx;
+	display: flex;
+	align-items: center;
+}
+
+.newslist{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.newsinr{
+  font-size: 32rpx;
+  color: #333;
+}
+.newsnum{
+  font-size: 26rpx;
+  color: #999;
+}
+.newsOne{
+	height: 105rpx;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+.xxIcon{
+	width: 55rpx;
+	height: 55rpx;
+	margin-right: 12px;
+}
+.inner{
+	flex: 1;
+}
+.newsinr{
+	width: 600rpx;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+
+}
+.newsnum{
+	display: flex;
+	justify-content: space-between;
+}
+.zfMax{
+	margin-right: 166rpx;
+	color: #00a0e9;
+	font-size: 24rpx;
+}
+/**/
+.bookRecommend{
+	margin: 22rpx 0;
+}
+.bookBox{
+	width: 100%;
+	height: 530rpx;
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	
+}
+.bookOne{
+	width: 310rpx;
+	height: 310rpx;
+	border: 1rpx solid #CCCCCC;
+	margin-bottom: 35rpx;
+}
+.bookname{
+	width: 310rpx;
+	font-size: 38rpx;
+	color: #333;
+	margin-bottom: 30rpx;
+	overflow:hidden;
+	white-space:nowrap;
+	text-overflow:ellipsis;
+}
+.bookmsg{
+	width: 310rpx;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	font-size: 42rpx;
+	color: #fe6c5f;
+	padding-bottom: 40rpx;
+}
+.bookbtn{
+	width: 130rpx;
+	height: 50rpx;
+	border-radius: 25rpx;
+	background-color: #fe6c5f;
+	color: #fff;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: 32rpx;
+}

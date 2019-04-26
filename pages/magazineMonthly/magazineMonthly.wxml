@@ -1,0 +1,67 @@
+<!--logs.wxml-->
+<view class="container log-list">
+  
+	<view class="monthBox">
+		<view class="month {{item==month?'cur':''}}" 
+					wx:for="{{arr1}}"
+					wx:for-index="idx"
+					wx:for-item="item"
+					wx:key="idx"
+					bindtap="tabbar"
+					data-month="{{item}}"
+					>
+			第{{item}}期
+		</view>
+	</view>
+	<view class="dszl">
+		<view class="dstitle">
+			大势纵论
+		</view>
+		<view class='newslist'>
+		  <view class="newsOne" bindtap="jump" 
+						data-id="1"
+						wx:for="{{arr2}}" 
+						wx:for-index="idx" 
+						wx:for-item="item"
+						wx:key="idx">
+		    <view class="xxIcon" >
+					<image src="/static/images/btn2_1.jpg"></image>
+				</view>
+		    <view class="inner">
+		      <view class='newsinr'>大势纵论大势纵论大势纵论大势纵论大势纵论大势纵论</view>
+		      <view class='newsnum'>
+						<view>2019年第{{month}}期 20:30</view>
+						<view class="zfMax"></view>
+					</view>
+		    </view>
+		  </view>
+		</view>
+	</view>
+	<view class="dszl">
+		<view class="dstitle">
+			观察思考
+		</view>
+		<view class='newslist'>
+		  <view class="newsOne"  
+            wx:for="{{arr2}}" 
+            wx:for-index="idx" 
+            wx:for-item="item" 
+            wx:key="idx" 
+            bindtap="jump" 
+						data-id="1">
+		    <view class="xxIcon" >
+					<image src="/static/images/btn2_1.jpg"></image>
+				</view>
+		    <view class="inner">
+		      <view class='newsinr'>大势纵论大势纵论大势纵论大势纵论大势纵论大势纵论</view>
+		      <view class='newsnum'>
+						<view>2019年第{{month}}期 20:30</view>
+						<view class="zfMax"></view>
+					</view>
+		    </view>
+		  </view>
+		</view>
+	</view>
+	
+	
+</view>

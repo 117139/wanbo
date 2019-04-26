@@ -1,0 +1,101 @@
+<!--index.wxml-->
+<!--index.wxml-->
+<view class="container">
+<form  bindsubmit="formSubmit">
+  <view class='sousuo'>
+		
+		<view class='ss_btn'>
+			<button  form-type="submit"></button>
+			<image src="/static/images/sousuo.png"></image>
+		</view>
+		<view class="ipt">
+			<input name="sr"></input>
+		</view>
+	</view>
+  
+</form >
+<view class='banner'>
+
+  <image src='/static/images/bg.jpg'></image>
+</view>
+<view class='btn_g'>
+  <navigator class='btnOne' url="/pages/magazine/magazine?type=0">
+    <view class='btnIcon'>
+      <image src='/static/images/btn1_1.jpg'></image>
+    </view>
+    <text>微杂志</text>
+  </navigator>
+  <navigator class='btnOne' url="/pages/magazine/magazine?type=1">
+    <view class='btnIcon'>
+      <image src='/static/images/btn1_2.jpg'></image>
+    </view>
+    <text>微原创</text>
+  </navigator>
+  <navigator class='btnOne' url="/pages/magazine/magazine?type=2">
+    <view class='btnIcon'>
+      <image src='/static/images/btn1_3.jpg'></image>
+    </view>
+    <text>微音频</text>
+  </navigator>
+  <navigator class='btnOne' url="/pages/magazine/magazine?type=3">
+    <view class='btnIcon'>
+      <image src='/static/images/btn1_4.jpg'></image>
+    </view>
+    <text>微视频</text>
+  </navigator>
+</view>
+<view class='news'>
+  <view class='newsTit'>
+    <view class='title'>今日更新</view>
+    <view class='newChange'>
+      <view class='changeIcon'>
+        <image src='/static/images/change.png'></image>
+      </view>
+      换一换
+    </view>
+  </view>
+  <view class='newslist'>
+          <view class="newsOne"  wx:for="{{arr}}" 
+          wx:for-index="idx"          
+          wx:for-item="item" 
+          wx:key="idx"
+          bindtap="jump" 
+					data-id="1">
+      <view class="xxIcon" >
+				<image src="{{item}}"></image>
+			</view>
+      <view class="inner">
+        <view class='newsinr'>局长访谈一以“两强两优”推进医保经办服务局长访谈一以“两强两优”推进医保经办服务</view>
+        <view class='newsnum'>字数   3500</view>
+      </view>
+    </view>
+  </view>
+</view>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <!-- <view class="userinfo">
+    <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
+    <block wx:else>
+      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
+      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+    </block>
+  </view>
+  <view class="usermotto">
+    <text class="user-motto">{{motto}}</text>
+  </view> -->
+</view>
+

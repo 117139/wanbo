@@ -1,0 +1,73 @@
+<!--my.wxml-->
+<view class="container log-list">
+  <!-- <block wx:for="{{logs}}" wx:for-item="log">
+    <text class="log-item">{{index + 1}}. {{log}}</text>
+  </block> -->
+	
+	<view class="mymsg">
+		<view class="myInfo">
+			<view class="HeadImg">
+				<image src="/static/images/btn1_1.jpg"></image>
+			</view>
+			<text>昵称</text>
+		</view>
+		<view class="readerMsg">
+			<view class="jifen">
+				<text class="jfnum">0积分</text>
+				<text class="mk_tit">我的积分</text>
+			</view>
+			<view class="jifen">
+				<text class="time">200分钟</text>
+				<text class="mk_tit">本周阅读时长</text>
+			</view>
+		</view>
+	</view>
+	<view class="myOperation">
+		<view class="exchange">
+			<view class="op_l">
+				<view class="myBtnIcon">
+					<image src="/static/images/my/my_03.png"></image>
+				</view>
+				<text>时长兑积分</text>
+			</view>
+			<view class="op_r">
+				本周阅读时长200分钟
+			</view>
+		</view>
+		<view class="exchange">
+			<view class="op_l">
+				<view class="myBtnIcon">
+					<image src="/static/images/my/my_06.png"></image>
+				</view>
+				<text>购买阅读卡</text>
+			</view>
+			<view class="op_r">
+			</view>
+		</view>
+		<view class="exchange">
+			<view class="op_l">
+				<view class="myBtnIcon">
+					<image src="/static/images/my/my_09.png"></image>
+				</view>
+				<text>积分记录</text>
+			</view>
+			<view class="op_r">
+				剩余0积分
+			</view>
+		</view>
+		<view class="exchange">
+			<view class="op_l">
+				<view class="myBtnIcon">
+					<image src="/static/images/my/my_11.png"></image>
+				</view>
+				<text>无限卡</text>
+			</view>
+			<view class="op_r">
+				剩余2天,节省5元
+			</view>
+		</view>
+	</view>
+	<view class="share">
+		<image src="/static/images/my/share.png"></image>
+	</view>
+</view>

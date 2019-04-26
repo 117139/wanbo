@@ -1,0 +1,94 @@
+<!--logs.wxml-->
+<import src="../../vendor/wxParse/wxParse.wxml" />
+
+<view class="container">
+  <view class="topBox">
+		<view class="topTit">
+			<view class="p1">大标题</view>
+			<view class="p2">作者：王兵      2018年12月第2期</view>
+		</view>
+		<view class="wxfwb">
+			<template is="wxParse" data="{{wxParseData:article.nodes}}" />
+		</view>
+		<view class="buyBox">
+			<view class="btn1">购买本章 2积分</view>
+			<view class="btn2">购买阅读卡</view>
+		</view>
+		<view class="shareBox">
+			<view class="shareFx" bindtap="share" data-type="1">
+				<view class="fxicon">
+					<image src="/static/images/share_03.png"></image>
+				</view>
+				<text>分享挣取积分</text>
+			</view>
+			<view class="shareFx" bindtap="share" data-type="2">
+				<view class="fxicon">
+					<image src="/static/images/share_05.png"></image>
+				</view>
+				<text>邀请好友</text>
+			</view>
+			<view class="shareFx" bindtap="share" data-type="3">
+				<view class="fxicon">
+					<image src="/static/images/share_07.png"></image>
+				</view>
+				<text>点赞</text>
+			</view>
+		</view>
+	</view>
+	<view class="dszl">
+		<view class="dstitle">
+			相关推荐
+		</view>
+		<view class='newslist'>
+		  <view class="newsOne" bindtap="jump" 
+						data-id="1"
+						wx:for="{{arr2}}" 
+						wx:for-index="idx" 
+						wx:for-item="item"
+						wx:key="idx"
+            bindtap="jumpdt" 
+            data-id="2">
+		    <view class="xxIcon" >
+					<image src="/static/images/btn2_1.jpg"></image>
+				</view>
+		    <view class="inner">
+		      <view class='newsinr'>相关推荐相关推荐相关推荐相关推荐相关推荐相关推荐</view>
+		      <view class='newsnum'>
+		      	<view>音频   20:30</view>
+		      	<view class="zfMax"></view>
+		      </view>
+		    </view>
+		  </view>
+		</view>
+	</view>
+	<view class="dszl bookRecommend">
+		<view class="dstitle">
+			图书推荐
+		</view>
+		<view class="bookBox">
+			<view>
+				<view class="bookOne">
+					<image src="../../static/images/bg.jpg"></image>
+				</view>
+				<view class="bookname">《向航空业学管理》</view>
+				<view class="bookmsg">
+					<view>￥111</view>
+					<view class="bookbtn" bindtap="rob" data-id="0">马上抢</view>
+				</view>
+			</view>
+			<view>
+				<view class="bookOne">
+					<image src="../../static/images/bg.jpg"></image>
+				</view>
+				<view class="bookname">《向航空业学管理向航空业学管理》</view>
+				<view class="bookmsg">
+					<view>￥111</view>
+					<view class="bookbtn" bindtap="rob" data-id="1">马上抢</view>
+				</view>
+			</view>
+		</view>
+	</view>
+	
+	
+	
+</view>

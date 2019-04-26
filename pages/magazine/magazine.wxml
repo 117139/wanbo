@@ -1,0 +1,124 @@
+<!--logs.wxml-->
+<view class="container log-list">
+  <view class="banner">
+		<image src="../../static/images/bg.jpg"></image>
+	</view>
+	<form  bindsubmit="formSubmit">
+	  <view class='sousuo'>
+			
+			<view class='ss_btn'>
+				<button  form-type="submit"></button>
+				<image src="/static/images/sousuo.png"></image>
+			</view>
+			<view class="ipt">
+				<input name="sr"></input>
+			</view>
+		</view>
+	  
+	</form >
+	
+	<view class="selectTime">
+		<view class="tabselect">
+			<view class="{{num==0?'cur':''}}" bindtap="tab" data-index="0">微杂志</view>
+			<view class="{{num==1?'cur':''}}" bindtap="tab" data-index="1">微原创</view>
+			<view class="{{num==2?'cur':''}}" bindtap="tab" data-index="2">微音频</view>
+			<view class="{{num==3?'cur':''}}" bindtap="tab" data-index="3">微视频</view>
+		</view>
+	</view>
+ <swiper class="tabSwiper"
+  indicator-dots="{{indicatorDots}}"
+  autoplay="{{autoplay}}"
+  interval="{{interval}}"
+  duration="{{duration}}"
+	 current="{{num}}"
+	 bindchange="aa"
+>
+  <swiper-item>
+  	<scroll-view scroll-y class="inrBox">
+  		<view class="yearsBox" wx:for="{{arr1}}" wx:for-index="idx0" wx:for-item="item0" wx:key="idx0">
+  			<view class="year">2019年</view>
+  			<view class="fenqiBox">
+  				<view class="fenqi"
+						wx:for="{{arr1}}"
+						wx:for-index="idx1"
+						wx:for-item="item1"
+						wx:key="idx1"
+						bindtap="jump"
+						data-year="2019"
+						data-month="{{item1}}"
+						>
+  					第{{item1}}期
+  				</view>
+  			</view>
+  		</view>
+  	</scroll-view>
+  </swiper-item>
+	<swiper-item>
+		<scroll-view scroll-y class="inrBox">
+			<view class='newslist'>
+			  <view class="newsOne"  wx:for="{{arr1}}" 
+            wx:for-index="idx" 
+            wx:for-item="item" 
+            wx:key="idx"
+            bindtap="jumpdt" 
+            data-id="1">
+			    <view class="xxIcon" >
+						<image src="/static/images/btn2_3.jpg"></image>
+					</view>
+			    <view class="inner">
+			      <view class='newsinr'>局长访谈一以“两强两优”推进医保经办服务局长访谈一以“两强两优”推进医保经办服务</view>
+			      <view class='newsnum'>
+							<view>字数   3500</view>
+							<view class="zfMax"></view>
+              <!-- 转发最多 -->
+						</view>
+			    </view>
+			  </view>
+			</view>
+		</scroll-view>
+	</swiper-item>
+	<swiper-item>
+		<scroll-view scroll-y class="inrBox">
+			<view class='newslist'>
+			  <view class="newsOne"  
+            wx:for="{{arr1}}" 
+            wx:for-index="idx" 
+            wx:for-item="item" wx:key="idx"
+            bindtap="jumpdt" 
+            data-id="1">
+			    <view class="xxIcon" >
+						<image src="/static/images/btn2_2.jpg"></image>
+					</view>
+			    <view class="inner">
+			      <view class='newsinr'>微音频微音频微音频微音频微音频微音频微音频微音频微音频微音频微音频微音频</view>
+			      <view class='newsnum'>
+							<view>音频   20:30</view>
+							<view class="zfMax"></view>
+						</view>
+			    </view>
+			  </view>
+			</view>
+		</scroll-view>
+	</swiper-item>
+	<swiper-item>
+		<scroll-view scroll-y class="inrBox">
+			<view class='newslist'>
+			  <view class="newsOne"  wx:for="{{arr1}}" wx:for-index="idx" wx:for-item="item" wx:key="idx"
+            bindtap="jumpdt" 
+            data-id="1">
+			    <view class="xxIcon" >
+						<image src="/static/images/btn2_4.jpg"></image>
+					</view>
+			    <view class="inner">
+			      <view class='newsinr'>微视频微视频微视频微视频微视频微视频微视频微视频微视频</view>
+			      <view class='newsnum'>
+							<view>视频   20:30</view>
+							<view class="zfMax"></view>
+						</view>
+			    </view>
+			  </view>
+			</view>
+		</scroll-view>
+	</swiper-item>
+</swiper>
+</view>
