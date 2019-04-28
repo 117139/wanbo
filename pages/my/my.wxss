@@ -87,4 +87,18 @@ height: 100%;
 	padding: 12rpx 92rpx;
 	background-color: #fff;
 	box-sizing: border-box;
+	position: relative;
+}
+.shareBtn{
+	opacity:0;
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 9;
+}
+.share image{
+	position: relative;
+	z-index: 1;
 }

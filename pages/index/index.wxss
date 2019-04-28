@@ -1,5 +1,9 @@
 /**index.wxss**/
-
+.huoqumsg{
+  width: 0;
+  height: 0;
+  opacity: 0;
+}
 .sousuo{
   width: 500rpx;
   height: 60rpx;

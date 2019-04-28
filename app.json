@@ -1,12 +1,13 @@
 {
   "pages": [
     "pages/index/index",
-		"pages/magazineDatails/magazineDatails",
-    
-		"pages/magazineMonthly/magazineMonthly",
+    "pages/login/login",
+    "pages/magazineDatails/magazineDatails",
+    "pages/magazineMonthly/magazineMonthly",
     "pages/magazine/magazine",
     "pages/my/my",
-    "pages/logs/logs"
+    "pages/logs/logs",
+    "pages/audio/audio"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -16,18 +17,20 @@
   },
   "sitemapLocation": "sitemap.json",
   "tabBar": {
+    "color": "#333333",
+    "selectedColor": "#00a0e9",
     "list": [
       {
         "pagePath": "pages/index/index",
         "text": "首页",
         "iconPath": "/static/images/home.png",
-        "selectedIconPath": "/static/images/home.png"
+        "selectedIconPath": "/static/images/home1.png"
       },
       {
         "pagePath": "pages/my/my",
         "text": "我的",
         "iconPath": "/static/images/me.png",
-        "selectedIconPath": "/static/images/me.png"
+        "selectedIconPath": "/static/images/me1.png"
       }
     ]
   }

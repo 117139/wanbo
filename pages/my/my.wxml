@@ -7,7 +7,7 @@
 	<view class="mymsg">
 		<view class="myInfo">
 			<view class="HeadImg">
-				<image src="/static/images/btn1_1.jpg"></image>
+				<image src="/static/images/my/defaultImg.png"></image>
 			</view>
 			<text>昵称</text>
 		</view>
@@ -68,6 +68,7 @@
 		</view>
 	</view>
 	<view class="share">
+		<button class="shareBtn" open-type='share' data-supid="1"></button>
 		<image src="/static/images/my/share.png"></image>
 	</view>
 </view>

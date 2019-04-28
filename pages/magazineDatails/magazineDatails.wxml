@@ -15,13 +15,15 @@
 			<view class="btn2">购买阅读卡</view>
 		</view>
 		<view class="shareBox">
-			<view class="shareFx" bindtap="share" data-type="1">
+			<view class="shareFx" bindtap="share" >
+      <button class="shareBtn" open-type='share' data-supid="1" data-type="1"></button>
 				<view class="fxicon">
 					<image src="/static/images/share_03.png"></image>
 				</view>
 				<text>分享挣取积分</text>
 			</view>
-			<view class="shareFx" bindtap="share" data-type="2">
+			<view class="shareFx" bindtap="share">
+      <button class="shareBtn" open-type='share' data-supid="1" data-type="2"></button>
 				<view class="fxicon">
 					<image src="/static/images/share_05.png"></image>
 				</view>

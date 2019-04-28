@@ -1,7 +1,22 @@
 <!--logs.wxml-->
 <view class="container log-list">
-  <view class="banner">
+	<view class="banner" wx:if="{{num==0}}">
+		<image src="../../static/images/index/wzzbanner.png"></image>
+	</view>
+	<view class="banner" wx:elif="{{num == 1}}">
 		<image src="../../static/images/bg.jpg"></image>
+	</view>
+	<view class="banner" wx:elif="{{num == 2}}">
+		<image src="../../static/images/index/wypbanner.png"></image>
+	</view>
+	<view class="banner" wx:else="{{num == 3}}">
+		<image src="../../static/images/index/wspbanner.png"></image>
+		<view class="palyVideo">
+			<view class="play">
+				<image src="../../static/images/index/play.png"></image>
+			</view>
+			<view>20:30</view>
+		</view>
 	</view>
 	<form  bindsubmit="formSubmit">
 	  <view class='sousuo'>
@@ -61,7 +76,8 @@
             wx:for-item="item" 
             wx:key="idx"
             bindtap="jumpdt" 
-            data-id="1">
+            data-id="1"
+            data-type="1">
 			    <view class="xxIcon" >
 						<image src="/static/images/btn2_3.jpg"></image>
 					</view>
@@ -85,7 +101,8 @@
             wx:for-index="idx" 
             wx:for-item="item" wx:key="idx"
             bindtap="jumpdt" 
-            data-id="1">
+            data-id="1"
+            data-type="2">
 			    <view class="xxIcon" >
 						<image src="/static/images/btn2_2.jpg"></image>
 					</view>
@@ -105,7 +122,8 @@
 			<view class='newslist'>
 			  <view class="newsOne"  wx:for="{{arr1}}" wx:for-index="idx" wx:for-item="item" wx:key="idx"
             bindtap="jumpdt" 
-            data-id="1">
+            data-id="1"
+            data-type="3">
 			    <view class="xxIcon" >
 						<image src="/static/images/btn2_4.jpg"></image>
 					</view>

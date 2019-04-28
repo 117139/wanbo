@@ -83,8 +83,18 @@ Page({
   },
   jumpdt(e) {
     let id = e.currentTarget.dataset.id
+    let type = e.currentTarget.dataset.type
+    console.log(type)
+    let url1
+    if(type==1){
+      url1= '/pages/magazineDatails/magazineDatails?id=' + id
+    } else if (type == 2) {
+      url1 = '/pages/audio/audio?id=' + id
+    } else if (type == 3) {
+      url1 = '/pages/magazineDatails/magazineDatails?id=' + id
+    }
     wx.navigateTo({
-      url: '/pages/magazineDatails/magazineDatails?id=' + id
+      url: url1
     })
   }
 })
