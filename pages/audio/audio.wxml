@@ -1,30 +1,50 @@
 <!--pages/audio.wxml-->
-<!--logs.wxml-->
-<import src="../../vendor/wxParse/wxParse.wxml" />
-
+<import src="/utils/pageState/index.wxml" />
+<template is="pageState" data="{{...pageState}}" />
 <view class="container">
-  <view class="topBox">
-		<view class="topTit">
-			<view class="p1">大标题</view>
-			<view class="p2">作者：王兵      2018年12月第2期</view>
+  <view class="playbox">
+		<view class="palyimg">
+			<image src="/static/images/index/pimg.png"></image>
 		</view>
-		<view class="wxfwb">
-			<template is="wxParse" data="{{wxParseData:article.nodes}}" />
+		<view class="palytit">{{details.title}}</view>
+		<view class="palyaud">作者:{{details.zuozhe}}</view>
+		<view class="palyslider">
+			<text class="playtime">{{starttime}}</text>
+			<view class='slider'>
+				<slider bindchange="sliderChange" 
+					block-size="12px" step="2"
+					value="{{offset}}" max="{{max}}"
+					selected-color="#4c9dee" />
+			</view>
+			<text class="playtime">{{duration}}</text>
 		</view>
-		<view class="buyBox">
-			<view class="btn1">购买本章 2积分</view>
+		<view class="palybtn">
+			<view class="prebtn">
+				<image src='/static/images/index/playbtn_09.png'></image>
+			</view>
+			<view class='playAudio' catchtap='playAudio'>
+				<!-- 按钮 -->
+				<image bindtap="listenerButtonPlay" wx:if="{{!isOpen}}" src='/static/images/index/playbtn_03.png' />
+				<image bindtap="listenerButtonPause" wx:if="{{isOpen}}" src='/static/images/index/playbtn_04.png' />
+			</view>
+			<view class="nextbtn">
+				<image src='/static/images/index/playbtn_06.png'></image>
+			</view>
+		</view>
+		<view class="buyBox" wx:if="details.readpoint">
+			<view class="btn1">购买本章{{details.readpoint}}积分</view>
 			<view class="btn2">购买阅读卡</view>
 		</view>
 		<view class="shareBox">
 			<view class="shareFx" bindtap="share" >
-      <button class="shareBtn" open-type='share' data-supid="1" data-type="1"></button>
+		  <button class="shareBtn" open-type='share' data-supid="1" data-type="1"></button>
 				<view class="fxicon">
 					<image src="/static/images/share_03.png"></image>
 				</view>
 				<text>分享挣取积分</text>
 			</view>
 			<view class="shareFx" bindtap="share">
-      <button class="shareBtn" open-type='share' data-supid="1" data-type="2"></button>
+		  <button class="shareBtn" open-type='share' data-supid="1" data-type="2"></button>
 				<view class="fxicon">
 					<image src="/static/images/share_05.png"></image>
 				</view>
@@ -38,61 +58,21 @@
 			</view>
 		</view>
 	</view>
-	<view class="dszl">
-		<view class="dstitle">
-			相关推荐
-		</view>
-		<view class='newslist'>
-		  <view class="newsOne" bindtap="jump" 
-						data-id="1"
-						wx:for="{{arr2}}" 
-						wx:for-index="idx" 
-						wx:for-item="item"
-						wx:key="idx"
-            bindtap="jumpdt" 
-            data-id="2">
-		    <view class="xxIcon" >
-					<image src="/static/images/btn2_1.jpg"></image>
-				</view>
-		    <view class="inner">
-		      <view class='newsinr'>相关推荐相关推荐相关推荐相关推荐相关推荐相关推荐</view>
-		      <view class='newsnum'>
-		      	<view>音频   20:30</view>
-		      	<view class="zfMax"></view>
-		      </view>
-		    </view>
-		  </view>
-		</view>
-	</view>
-	<view class="dszl bookRecommend">
-		<view class="dstitle">
-			图书推荐
-		</view>
-		<view class="bookBox">
-			<view>
-				<view class="bookOne">
-					<image src="../../static/images/bg.jpg"></image>
-				</view>
-				<view class="bookname">《向航空业学管理》</view>
-				<view class="bookmsg">
-					<view>￥111</view>
-					<view class="bookbtn" bindtap="rob" data-id="0">马上抢</view>
-				</view>
-			</view>
-			<view>
-				<view class="bookOne">
-					<image src="../../static/images/bg.jpg"></image>
-				</view>
-				<view class="bookname">《向航空业学管理向航空业学管理》</view>
-				<view class="bookmsg">
-					<view>￥111</view>
-					<view class="bookbtn" bindtap="rob" data-id="1">马上抢</view>
+	<view class="playtext">
+		<view class="texttit" >文稿</view>
+		<view class="{{tmore==true? 'textinr tinr1':'textinr'}}">
+			在医疗医药板块集体重挫两天后，12月7日下午5点50分左右，“4+7”城市药品集中采购拟中选结果公示表在上海阳光采购网上姗姗来迟，然而，原定采购的31个药品品种却变为25个。一位医药投资者告诉时代财经，“昨天不少(微信)群里就已经在流传，仅有25个预中选结果公示出来，是
+			在医疗医药板块集体重挫两天后，12月7日下午5点50分左右，“4+7”城市药品集中采购拟中选结果公示表在上海阳光采购网上姗姗来迟，然而，原定采购的31个药品品种却变为25个。一位医药投资者告诉时代财经，“昨天不少(微信)群里就已经在流传，仅有25个预中选结果公示出来，是
+			在医疗医药板块集体重挫两天后，12月7日下午5点50分左右，“4+7”城市药品集中采购拟中选结果公示表在上海阳光采购网上姗姗来迟，然而，原定采购的31个药品品种却变为25个。一位医药投资者告诉时代财经，“昨天不少(微信)群里就已经在流传，仅有25个预中选结果公示出来，是
+			<view wx:if="{{tmore}}" class="morec" bindtap="more">
+				<view class="textmore"></view>
+				<view class="morebottom">
+					<view class="moreicon">
+						<image src="/static/images/index/tmore.png"></image>
+					</view>
 				</view>
 			</view>
 		</view>
 	</view>
-	
-	
-	
 </view>
 

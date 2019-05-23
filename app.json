@@ -1,13 +1,14 @@
 {
   "pages": [
+    "pages/audio/audio",
     "pages/index/index",
     "pages/login/login",
+    "pages/sousuo/sousuo",
     "pages/magazineDatails/magazineDatails",
     "pages/magazineMonthly/magazineMonthly",
     "pages/magazine/magazine",
     "pages/my/my",
-    "pages/logs/logs",
-    "pages/audio/audio"
+    "pages/logs/logs"
   ],
   "window": {
     "backgroundTextStyle": "light",

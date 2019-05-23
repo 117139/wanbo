@@ -1,0 +1,189 @@
+.banner{
+  width: 100%;
+	margin-top: 20rpx;
+  padding: 20rpx 30rpx;
+  box-sizing: border-box;
+  height:300rpx;
+	background-color: #fff;
+	position:relative;
+}
+.banner image{
+  width: 100%;
+  height:100%;
+  border-radius: 16rpx;
+  position: relative;
+  z-index: 1;
+}
+.sousuo{
+  width: 500rpx;
+  height: 60rpx;
+  margin: 22rpx 0;
+  padding: 0 25rpx;
+  display: flex;
+	flex-direction: row;
+	align-items: center;
+  border-radius: 52rpx;
+  background-color: #dddddd;
+}
+
+.ss_btn{
+  width: 40rpx;
+  height: 40rpx;
+	margin-right: 10rpx;
+	position: relative;
+}
+.ss_btn button{
+	width: 100%;
+	height: 100%;
+	opacity: 0;
+	position: absolute;
+	top: 0;
+}
+.sousuo .ipt{
+	flex: 1;
+	padding-right: 10px;
+}
+/*selectTime*/
+.selectTime{
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	background-color: #fff;
+}
+.tabselect{
+	width: 100%;
+	height: 95rpx;
+	padding: 0 30rpx;
+	box-sizing: border-box;
+	border-bottom: 1rpx solid #e0e0e0;
+	display: flex;
+	justify-content: space-around;
+	align-items: stretch;
+}
+.tabselect>view{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border-bottom: 4rpx solid transparent;
+}
+.tabselect>view.cur{
+	border-bottom: 4rpx solid #00a0e9;
+}
+.tabSwiper{
+	width: 100%;
+	height: 990rpx;
+}
+.inrBox{
+	width: 100%;
+	padding: 30rpx;
+	height: 990rpx;
+	box-sizing: border-box;
+	background-color: #fff;
+}
+.inrBox::-webkit-scrollbar {/*滚动条整体样式*/
+        width: 10px;     /*高宽分别对应横竖滚动条的尺寸*/
+        height: 1px;
+    }
+.inrBox::-webkit-scrollbar-thumb {/*滚动条里面小方块*/
+        border-radius: 10px;
+         -webkit-box-shadow: inset 0 0 5px rgba(0,0,0,0.2);
+        background: #535353;
+    }
+.inrBox::-webkit-scrollbar-track {/*滚动条里面轨道*/
+        -webkit-box-shadow: inset 0 0 5px rgba(0,0,0,0.2);
+        border-radius: 10px;
+        background: #EDEDED;
+    }
+/*微杂志*/
+.yearsBox{
+	display: flex;
+	width: 100%;
+	margin: 20rpx 0;
+	align-items: stretch;
+}
+.year{
+	width: 160rpx;
+	font-size: 38rpx;
+	color: #999;
+}
+.fenqiBox{
+	flex: 1;
+	display: flex;
+	flex-wrap: wrap;
+}
+.fenqi{
+	width: 90rpx;
+	font-size: 24rpx;
+	color: #333;
+	margin-right: 18rpx;
+	margin-bottom: 20rpx;
+}
+.fenqi:nth-child(5n){
+	margin-right: 0;
+}
+
+
+/*微原创*/
+.newslist{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.newsinr{
+  font-size: 32rpx;
+  color: #333;
+}
+.newsnum{
+  font-size: 26rpx;
+  color: #999;
+}
+.newsOne{
+	height: 105rpx;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+.xxIcon{
+	width: 55rpx;
+	height: 55rpx;
+	margin-right: 12px;
+}
+.inner{
+	flex: 1;
+}
+.newsinr{
+	width: 600rpx;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+
+}
+.newsnum{
+	display: flex;
+	justify-content: space-between;
+}
+.zfMax{
+	margin-right: 166rpx;
+	color: #00a0e9;
+	font-size: 24rpx;
+}
+.palyVideo{
+	width: 146rpx;
+	height: 56rpx;
+	border-radius: 28rpx;
+	background-color: rgba(27, 27, 27,.5);
+	position: absolute;
+	right: 50rpx;
+	bottom: 50rpx;
+	z-index: 9;
+	display: flex;
+	display: -webkit-flex;
+	justify-content: center;
+	align-items: center;
+	color: #FFFFFF;
+	font-size: 24rpx;
+}
+.play{
+	width: 30rpx;
+	height: 30rpx;
+}

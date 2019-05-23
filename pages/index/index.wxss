@@ -137,6 +137,10 @@
 
 }
 
+/*swiper*/
+.swiper{	
+	width: 100%;
+}
 
 
 

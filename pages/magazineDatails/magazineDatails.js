@@ -1,9 +1,11 @@
 //magazineDatails.js
+var pageState = require('../../utils/pageState/index.js')
 var WxParse = require('../../vendor/wxParse/wxParse.js')
 const app = getApp()
 
 Page({
   data: {
+		details:'',
     arr2:[
     	1,
     	2,
@@ -12,29 +14,48 @@ Page({
     	5,
     ],
   },
-  onLoad: function () {
+  onLoad: function (option) {
 		 var that=this;
-		 console.log(app.IPurl1)
-    /*wx.request({
-      url: app.IPurl1 + ,
-      dataType: 'json',
-      success: function (res) {
-        if (res.data.code == 200) {
-         
-        } else {
-          wx.hideLoading();
-          wx.showToast({
-            title: res.data.errdes,
-          })
-        }
-      }
-    })*/
-		 
+		 console.log(option)
+		 if(option.id){
+			 this.getdetails(option.catid,option.id)
+		 }
+			 
   },
 	onReady: function () {
-		var that=this;
-		var article = '<div><span>撒大声地所大所多</span><p>的发生大事<i>的发生大事</i></p></div>'
-		WxParse.wxParse('article', 'html', article, that, 5);
+		// var that=this;
+		// var article = '<div><span>撒大声地所大所多</span><p>的发生大事<i>的发生大事</i></p></div>'
+		// WxParse.wxParse('article', 'html', article, that, 5);
+	},
+	getdetails(catid,id){
+		let that =this
+				const pageState1 = pageState.default(this)
+				pageState1.loading()    // 切换为loading状态
+				//m=content&c=index&a=show&catid=9&id=3
+				wx.request({
+					url:  app.IPurl2+'/index.php?m=content&c=index&a=show&catid='+catid+'&id='+id,
+					data:{
+					
+					},
+					header: {
+						'content-type': 'application/x-www-form-urlencoded' 
+					},
+					dataType:'json',
+					method:'POST',
+					success(res) {
+						console.log(res.data)
+					let ruls=res.data
+						that.setData({
+							details:ruls[0]
+						})
+						var article = ruls[0].content
+						WxParse.wxParse('article', 'html', article, that, 5);
+						pageState1.finish()    // 切换为finish状态
+					},
+					fail() {
+						 pageState1.error()    // 切换为error状态
+					}
+				})
 	},
 	share(e){
 		console.log(e.currentTarget.dataset.type)

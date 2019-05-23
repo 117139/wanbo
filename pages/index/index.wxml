@@ -48,7 +48,7 @@
 <view class='news'>
   <view class='newsTit'>
     <view class='title'>今日更新</view>
-    <view class='newChange'>
+    <view class='newChange' bindtap='resetinr'>
       <view class='changeIcon'>
         <image src='/static/images/change.png'></image>
       </view>

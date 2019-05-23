@@ -1,25 +1,5 @@
 <!--logs.wxml-->
-<import src="/utils/pageState/index.wxml" />
-<template is="pageState" data="{{...pageState}}" />
 <view class="container log-list">
-	<view class="banner" wx:if="{{num==0}}">
-		<image src="../../static/images/index/wzzbanner.png"></image>
-	</view>
-	<view class="banner" wx:elif="{{num == 1}}">
-		<image src="../../static/images/bg.jpg"></image>
-	</view>
-	<view class="banner" wx:elif="{{num == 2}}">
-		<image src="../../static/images/index/wypbanner.png"></image>
-	</view>
-	<view class="banner" wx:else="{{num == 3}}">
-		<image src="../../static/images/index/wspbanner.png"></image>
-		<view class="palyVideo">
-			<view class="play">
-				<image src="../../static/images/index/play.png"></image>
-			</view>
-			<view>20:30</view>
-		</view>
-	</view>
 	<form  bindsubmit="formSubmit">
 	  <view class='sousuo'>
 			
@@ -53,18 +33,15 @@
   <swiper-item>
   	<scroll-view scroll-y class="inrBox">
   		<view class="yearsBox" wx:for="{{arr1}}" wx:for-index="idx0" wx:for-item="item0" wx:key="idx0">
-  			<view class="year">2019年</view>
-  			<view class="fenqiBox">
-  				<view class="fenqi"
-						wx:for="{{arr1}}"
-						wx:for-index="idx1"
-						wx:for-item="item1"
-						wx:key="idx1"
-						bindtap="jump"
-						data-year="2019"
-						data-month="{{item1}}"
-						>
-  					第{{item1}}期
+  			<view class="xxIcon" >
+  				<image src="/static/images/btn2_1.jpg"></image>
+  			</view>
+  			<view class="inner">
+  			  <view class='newsinr'>局长访谈一以“两强两优”推进医保经办服务局长访谈一以“两强两优”推进医保经办服务</view>
+  			  <view class='newsnum'>
+  					<view>2019年第1期 20:30</view>
+  					<view class="zfMax"></view>
+  			    <!-- 转发最多 -->
   				</view>
   			</view>
   		</view>
@@ -73,23 +50,23 @@
 	<swiper-item>
 		<scroll-view scroll-y class="inrBox">
 			<view class='newslist'>
-			  <view class="newsOne"  wx:for="{{list1}}" 
+			  <view class="newsOne"  wx:for="{{arr1}}" 
             wx:for-index="idx" 
             wx:for-item="item" 
             wx:key="idx"
             bindtap="jumpdt" 
-            data-id="{{item.id}}"
-            data-catid="{{item.catid}}"
+            data-id="1"
             data-type="1">
 			    <view class="xxIcon" >
 						<image src="/static/images/btn2_3.jpg"></image>
 					</view>
 			    <view class="inner">
-			      <view class='newsinr'>{{item.title}}</view>
-			      <!-- <view class='newsnum'>
+			      <view class='newsinr'>局长访谈一以“两强两优”推进医保经办服务局长访谈一以“两强两优”推进医保经办服务</view>
+			      <view class='newsnum'>
 							<view>字数   3500</view>
 							<view class="zfMax"></view>
-						</view> -->
+              <!-- 转发最多 -->
+						</view>
 			    </view>
 			  </view>
 			</view>
@@ -99,20 +76,19 @@
 		<scroll-view scroll-y class="inrBox">
 			<view class='newslist'>
 			  <view class="newsOne"  
-            wx:for="{{list2}}" 
+            wx:for="{{arr1}}" 
             wx:for-index="idx" 
             wx:for-item="item" wx:key="idx"
             bindtap="jumpdt" 
-            data-id="{{item.id}}"
-            data-catid="{{item.catid}}"
+            data-id="1"
             data-type="2">
 			    <view class="xxIcon" >
 						<image src="/static/images/btn2_2.jpg"></image>
 					</view>
 			    <view class="inner">
-			      <view class='newsinr'>{{item.title}}</view>
+			      <view class='newsinr'>微音频微音频微音频微音频微音频微音频微音频微音频微音频微音频微音频微音频</view>
 			      <view class='newsnum'>
-							<view>音频</view>
+							<view>音频   20:30</view>
 							<view class="zfMax"></view>
 						</view>
 			    </view>
@@ -123,7 +99,7 @@
 	<swiper-item>
 		<scroll-view scroll-y class="inrBox">
 			<view class='newslist'>
-			  <view class="newsOne"  wx:for="{{list3}}" wx:for-index="idx" wx:for-item="item" wx:key="idx"
+			  <view class="newsOne"  wx:for="{{arr1}}" wx:for-index="idx" wx:for-item="item" wx:key="idx"
             bindtap="jumpdt" 
             data-id="1"
             data-type="3">
@@ -131,9 +107,9 @@
 						<image src="/static/images/btn2_4.jpg"></image>
 					</view>
 			    <view class="inner">
-			      <view class='newsinr'>{{item.title}}</view>
+			      <view class='newsinr'>微视频微视频微视频微视频微视频微视频微视频微视频微视频</view>
 			      <view class='newsnum'>
-							<view>视频</view>
+							<view>视频   20:30</view>
 							<view class="zfMax"></view>
 						</view>
 			    </view>

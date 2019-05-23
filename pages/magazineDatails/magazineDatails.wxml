@@ -1,17 +1,19 @@
 <!--logs.wxml-->
 <import src="../../vendor/wxParse/wxParse.wxml" />
 
+<import src="/utils/pageState/index.wxml" />
+<template is="pageState" data="{{...pageState}}" />
 <view class="container">
   <view class="topBox">
 		<view class="topTit">
-			<view class="p1">大标题</view>
-			<view class="p2">作者：王兵      2018年12月第2期</view>
+			<view class="p1">{{details.title}}</view>
+			<view class="p2">作者：{{details.zuozhe}}      2018年12月第2期</view>
 		</view>
 		<view class="wxfwb">
 			<template is="wxParse" data="{{wxParseData:article.nodes}}" />
 		</view>
-		<view class="buyBox">
-			<view class="btn1">购买本章 2积分</view>
+		<view class="buyBox" wx:if="{{details.readpoint}}">
+			<view class="btn1">购买本章 {{details.readpoint}}积分</view>
 			<view class="btn2">购买阅读卡</view>
 		</view>
 		<view class="shareBox">
