@@ -23,6 +23,9 @@ Page({
 			tmore:false
 		})
 	},
+	danzan(){
+		console.log('danzan')
+	},
 	getaudio(catid,id){
 		console.log('get')
 		const pageState1 = pageState.default(this)

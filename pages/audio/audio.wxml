@@ -50,7 +50,7 @@
 				</view>
 				<text>邀请好友</text>
 			</view>
-			<view class="shareFx" bindtap="share" data-type="3">
+			<view class="shareFx" bindtap="share" data-id="" data-type="3" bindtap="danzan">
 				<view class="fxicon">
 					<image src="/static/images/share_07.png"></image>
 				</view>
