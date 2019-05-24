@@ -4,14 +4,14 @@
 <!-- <button class='huoqumsg' wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button> -->
 <form  bindsubmit="formSubmit">
   <view class='sousuo'>
-		
+		<view class="ipt">
+			<input name="sr"></input>
+		</view>
 		<view class='ss_btn'>
 			<button  form-type="submit"></button>
 			<image src="/static/images/sousuo.png"></image>
 		</view>
-		<view class="ipt">
-			<input name="sr"></input>
-		</view>
+		
 	</view>
   
 </form >
@@ -38,7 +38,8 @@
     </view>
     <text>微音频</text>
   </navigator>
-  <navigator class='btnOne' url="/pages/magazine/magazine?type=3">
+  <!-- <navigator class='btnOne' url="/pages/magazine/magazine?type=3"> -->
+  <navigator class='btnOne' bindtap="kfz">
     <view class='btnIcon'>
       <image src='/static/images/btn1_4.jpg'></image>
     </view>

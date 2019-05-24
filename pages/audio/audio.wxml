@@ -19,7 +19,7 @@
 			<text class="playtime">{{duration}}</text>
 		</view>
 		<view class="palybtn">
-			<view class="prebtn">
+			<view class="prebtn" bindtap="preAud">
 				<image src='/static/images/index/playbtn_09.png'></image>
 			</view>
 			<view class='playAudio' catchtap='playAudio'>
@@ -27,7 +27,7 @@
 				<image bindtap="listenerButtonPlay" wx:if="{{!isOpen}}" src='/static/images/index/playbtn_03.png' />
 				<image bindtap="listenerButtonPause" wx:if="{{isOpen}}" src='/static/images/index/playbtn_04.png' />
 			</view>
-			<view class="nextbtn">
+			<view class="nextbtn" bindtap="nextAud">
 				<image src='/static/images/index/playbtn_06.png'></image>
 			</view>
 		</view>

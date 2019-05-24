@@ -1,34 +1,19 @@
 <!--logs.wxml-->
 <import src="/utils/pageState/index.wxml" />
+<import src="/component/listHeader/listHeader.wxml" />
 <template is="pageState" data="{{...pageState}}" />
 <view class="container log-list">
-	<view class="banner" wx:if="{{num==0}}">
-		<image src="../../static/images/index/wzzbanner.png"></image>
-	</view>
-	<view class="banner" wx:elif="{{num == 1}}">
-		<image src="../../static/images/bg.jpg"></image>
-	</view>
-	<view class="banner" wx:elif="{{num == 2}}">
-		<image src="../../static/images/index/wypbanner.png"></image>
-	</view>
-	<view class="banner" wx:else="{{num == 3}}">
-		<image src="../../static/images/index/wspbanner.png"></image>
-		<view class="palyVideo">
-			<view class="play">
-				<image src="../../static/images/index/play.png"></image>
-			</view>
-			<view>20:30</view>
-		</view>
-	</view>
+	<template is="listHeader" data="{{num}}" />
 	<form  bindsubmit="formSubmit">
 	  <view class='sousuo'>
 			
+			
+			<view class="ipt">
+				<input name="sr"></input>
+			</view>
 			<view class='ss_btn'>
 				<button  form-type="submit"></button>
 				<image src="/static/images/sousuo.png"></image>
-			</view>
-			<view class="ipt">
-				<input name="sr"></input>
 			</view>
 		</view>
 	  
@@ -42,7 +27,7 @@
 			<view class="{{num==3?'cur':''}}" bindtap="tab" data-index="3">微视频</view>
 		</view>
 	</view>
- <swiper class="tabSwiper"
+ <view class="tabSwiper"
   indicator-dots="{{indicatorDots}}"
   autoplay="{{autoplay}}"
   interval="{{interval}}"
@@ -50,7 +35,7 @@
 	 current="{{num}}"
 	 bindchange="aa"
 >
-  <swiper-item>
+  <view wx:if="{{num==0}}">
   	<scroll-view scroll-y class="inrBox">
   		<view class="yearsBox" wx:for="{{arr1}}" wx:for-index="idx0" wx:for-item="item0" wx:key="idx0">
   			<view class="year">2019年</view>
@@ -69,10 +54,11 @@
   			</view>
   		</view>
   	</scroll-view>
-  </swiper-item>
-	<swiper-item>
+  </view>
+	<view wx:elif="{{num == 1}}">
 		<scroll-view scroll-y class="inrBox">
 			<view class='newslist'>
+				<view class="zanwu" wx:if="{{list1.length==0}}">暂无内容</view>
 			  <view class="newsOne"  wx:for="{{list1}}" 
             wx:for-index="idx" 
             wx:for-item="item" 
@@ -94,10 +80,11 @@
 			  </view>
 			</view>
 		</scroll-view>
-	</swiper-item>
-	<swiper-item>
+	</view>
+	<view wx:elif="{{num == 2}}">
 		<scroll-view scroll-y class="inrBox">
 			<view class='newslist'>
+				<view class="zanwu" wx:if="{{list2.length==0}}">暂无内容</view>
 			  <view class="newsOne"  
             wx:for="{{list2}}" 
             wx:for-index="idx" 
@@ -119,10 +106,11 @@
 			  </view>
 			</view>
 		</scroll-view>
-	</swiper-item>
-	<swiper-item>
+	</view>
+	<view wx:elif="{{num == 3}}">
 		<scroll-view scroll-y class="inrBox">
 			<view class='newslist'>
+				<view class="zanwu" wx:if="{{list3.length==0}}">暂无内容</view>
 			  <view class="newsOne"  wx:for="{{list3}}" wx:for-index="idx" wx:for-item="item" wx:key="idx"
             bindtap="jumpdt" 
             data-id="1"
@@ -140,6 +128,6 @@
 			  </view>
 			</view>
 		</scroll-view>
-	</swiper-item>
-</swiper>
+	</view>
+</view>
 </view>

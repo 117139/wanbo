@@ -5,6 +5,8 @@ const app = getApp()
 
 Page({
   data: {
+		setInter:'',//计时器
+		num:0,//阅读时间
 		details:'',
     arr2:[
     	1,
@@ -20,6 +22,7 @@ Page({
 		 if(option.id){
 			 this.getdetails(option.catid,option.id)
 		 }
+		 this.startSetInter()
 			 
   },
 	onReady: function () {
@@ -103,5 +106,30 @@ Page({
     wx.navigateTo({
       url: '/pages/magazineDatails/magazineDatails?id=' + id
     })
-  }
+  },
+	startSetInter: function(){
+	    var that = this;
+	    //将计时器赋值给setInter
+	    that.data.setInter = setInterval(
+	        function () {
+	            var numVal = that.data.num + 1;
+	            that.setData({ num: numVal });
+	            console.log('setInterval==' + that.data.num);
+	        }
+	  , 2000);   
+	},
+	endSetInter: function(){
+	    var that = this;
+			console.log(that.data.num)
+			if(that.data.num>1800){
+				console.log('无效')
+			}
+	    //清除计时器  即清除setInter
+	    clearInterval(that.data.setInter)
+	},
+	onUnload() {
+	  var that = this
+		that.endSetInter()
+	  console.log("离开")
+	},
 })

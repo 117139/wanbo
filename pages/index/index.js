@@ -51,5 +51,11 @@ Page({
   },
 	resetinr(){
 		console.log(1)
+	},
+	kfz(){
+		wx.showToast({
+			icon:'none',
+			title:'正在开发中'
+		})
 	}
 })

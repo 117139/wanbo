@@ -2,14 +2,14 @@
 <view class="container log-list">
 	<form  bindsubmit="formSubmit">
 	  <view class='sousuo'>
-			
+			<view class="ipt">
+				<input name="sr"></input>
+			</view>
 			<view class='ss_btn'>
 				<button  form-type="submit"></button>
 				<image src="/static/images/sousuo.png"></image>
 			</view>
-			<view class="ipt">
-				<input name="sr"></input>
-			</view>
+			
 		</view>
 	  
 	</form >

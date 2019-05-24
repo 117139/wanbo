@@ -41,7 +41,7 @@
 }
 .sousuo .ipt{
 	flex: 1;
-	padding-right: 10px;
+	padding:0 10px;
 }
 /*selectTime*/
 .selectTime{

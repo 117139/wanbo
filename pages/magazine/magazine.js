@@ -35,10 +35,7 @@ Page({
     duration: 500,
     title:['微杂志','微原创','微音频','微视频'],
     catidz:[8,10,9,'微视频'],
-		page0:1,
-		page1:1,
-		page2:1,
-		page3:1,
+		page:[1,1,1,1]
   },
   onLoad: function (option) {
     console.log(option.type)
@@ -70,16 +67,35 @@ Page({
 			success(res) {
 				
 				console.log(res.data)
+				if(!res.data[0].id){
+					pageState1.finish()    // 切换为finish状态
+					return
+				}
+				that.data.page[type]=that.data.page[type]-1+2
+				that.setData({
+					page:that.data.page
+				})
 				if(type==0){
 					if(that.data.list0.length==0){
 						that.setData({
 							list0:res.data
 						})
+					}else{
+						that.data.list0=that.data.list0.concat(res.data)
+						that.setData({
+							list0:that.data.list0
+						})
 					}
+					
 				}else if(type==1){
 					if(that.data.list1.length==0){
 						that.setData({
 							list1:res.data
+						})
+					}else{
+						that.data.list1=that.data.list1.concat(res.data)
+						that.setData({
+							list1:that.data.list1
 						})
 					}
 				}else if(type==2){
@@ -87,23 +103,20 @@ Page({
 						that.setData({
 							list2:res.data
 						})
-					}
-				}else if(type==3){
-					if(that.data.list3.length==0){
+					}else{
+						that.data.list2=that.data.list2.concat(res.data)
 						that.setData({
-							list3:res.data
+							list2:that.data.list2
 						})
 					}
+				}else if(type==3){
+					// if(that.data.list3.length==0){
+					// 	that.setData({
+					// 		list3:res.data
+					// 	})
+					// }
 				}
-				// console.log(test)
-				// console.log(JSON.parse(test))
-				// that.setData({
-				// 	list2:test
-				// })
 				pageState1.finish()    // 切换为finish状态
-				// setTimeout(function(){
-				// 	pageState1.finish()    // 切换为finish状态
-				// },1000)
 			},
 			fail() {
 				 pageState1.error()    // 切换为error状态
@@ -115,6 +128,9 @@ Page({
 		let that =this
 		console.log(e.currentTarget.dataset.index)
 		let type=e.currentTarget.dataset.index
+		if(type==that.data.num){
+			return
+		}
 		that.setData({
 			num:type
 		})
@@ -122,18 +138,22 @@ Page({
       title: that.data.title[that.data.num],
     })
 		console.log(type)
-		that.getlist(that.data.catidz[type],that.data.page+'type',type)
+		
+		that.getlist(that.data.catidz[type],that.data.page[type],type)
 	},
 	//滑屏切换
-	aa(e){
+	/*aa(e){
+		let that =this
 		console.log(e.detail.current)
-		this.setData({
+		let type=e.detail.current
+		that.setData({
 			num:e.detail.current
 		})
     wx.setNavigationBarTitle({
-      title: this.data.title[this.data.num],
+      title: that.data.title[that.data.num],
     })
-	},
+		that.getlist(that.data.catidz[type],that.data.page+type,type)
+	},*/
 	jump(e){
 		let year =e.currentTarget.dataset.year
 		let month =e.currentTarget.dataset.month
