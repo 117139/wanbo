@@ -1,7 +1,7 @@
 <!--index.wxml-->
-<!--index.wxml-->
+<!-- <import src="/utils/pageState/index.wxml" /> -->
+<!-- <template is="pageState" data="{{...pageState}}" /> -->
 <view class="container">
-<!-- <button class='huoqumsg' wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button> -->
 <form  bindsubmit="formSubmit">
   <view class='sousuo'>
 		<view class="ipt">
@@ -16,8 +16,14 @@
   
 </form >
 <view class='banner'>
-
-  <image src='/static/images/bg.jpg'></image>
+	<swiper	autoplay="autoplay" indicator-dots='true' circular='true'>
+		<block wx:for="{{imgUrls}}" wx:for-index="idx" wx:for-item="item" wx:key="idx">
+			<swiper-item>
+				<image src="{{'http://sf.zgylbx.com'+item.banner}}" class="slide-image" width="355" height="150"/>
+			</swiper-item>
+		</block>
+	</swiper>
+  <!-- <image src='/static/images/bg.jpg'></image> -->
 </view>
 <view class='btn_g'>
   <navigator class='btnOne' url="/pages/magazine/magazine?type=0">
@@ -57,18 +63,20 @@
     </view>
   </view>
   <view class='newslist'>
-          <view class="newsOne"  wx:for="{{arr}}" 
+          <view class="newsOne"  wx:for="{{dataz}}" 
           wx:for-index="idx"          
           wx:for-item="item" 
           wx:key="idx"
           bindtap="jump" 
 					data-id="1">
       <view class="xxIcon" >
-				<image src="{{item}}"></image>
+				<image wx:if="{{item.catid==8}}" src="{{arr[0]}}"></image>
+				<image wx:if="{{item.catid==10}}" src="{{arr[1]}}"></image>
+				<image wx:if="{{item.catid==9}}" src="{{arr[2]}}"></image>
 			</view>
       <view class="inner">
-        <view class='newsinr'>局长访谈一以“两强两优”推进医保经办服务局长访谈一以“两强两优”推进医保经办服务</view>
-        <view class='newsnum'>字数   3500</view>
+        <view class='newsinr'>{{item.title}}</view>
+        <!-- <view class='newsnum'>字数   3500</view> -->
       </view>
     </view>
   </view>

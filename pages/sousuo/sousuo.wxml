@@ -22,19 +22,15 @@
 			<view class="{{num==3?'cur':''}}" bindtap="tab" data-index="3">微视频</view>
 		</view>
 	</view>
- <swiper class="tabSwiper"
-  indicator-dots="{{indicatorDots}}"
-  autoplay="{{autoplay}}"
-  interval="{{interval}}"
-  duration="{{duration}}"
-	 current="{{num}}"
-	 bindchange="aa"
->
-  <swiper-item>
-  	<scroll-view scroll-y class="inrBox">
-  		<view class="yearsBox" wx:for="{{arr1}}" wx:for-index="idx0" wx:for-item="item0" wx:key="idx0">
+ <view class="tabSwiper">
+  	<scroll-view hidden="{{num!= 0}}" scroll-y class="inrBox"  bindscrolltolower="jiazai">
+			<view wx:if="{{list0.length==0}}" class="zanwu">暂无数据</view>
+  		<view class="yearsBox" wx:for="{{list0}}" wx:for-index="idx0" wx:for-item="item0" wx:key="idx0">
   			<view class="xxIcon" >
-  				<image src="/static/images/btn2_1.jpg"></image>
+  				<image hidden="{{num!= 0}}" src="/static/images/btn2_1.jpg"></image>
+  				<image hidden="{{num!= 1}}" src="/static/images/btn2_3.jpg"></image>
+  				<image hidden="{{num!= 2}}" src="/static/images/btn2_2.jpg"></image>
+  				<image hidden="{{num!= 3}}" src="/static/images/btn2_4.jpg"></image>
   			</view>
   			<view class="inner">
   			  <view class='newsinr'>局长访谈一以“两强两优”推进医保经办服务局长访谈一以“两强两优”推进医保经办服务</view>
@@ -46,76 +42,37 @@
   			</view>
   		</view>
   	</scroll-view>
-  </swiper-item>
-	<swiper-item>
-		<scroll-view scroll-y class="inrBox">
-			<view class='newslist'>
-			  <view class="newsOne"  wx:for="{{arr1}}" 
-            wx:for-index="idx" 
-            wx:for-item="item" 
-            wx:key="idx"
-            bindtap="jumpdt" 
-            data-id="1"
-            data-type="1">
-			    <view class="xxIcon" >
-						<image src="/static/images/btn2_3.jpg"></image>
+		<scroll-view hidden="{{num!= 1}}" scroll-y class="inrBox"  bindscrolltolower="jiazai">
+			<view wx:if="{{list1.length==0}}" class="zanwu">暂无数据</view>
+			<view class="yearsBox" wx:for="{{list1}}" wx:for-index="idx0" wx:for-item="item0" wx:key="idx0">
+				<view class="xxIcon" >
+					<image hidden="{{num!= 1}}" src="/static/images/btn2_3.jpg"></image>
+				</view>
+				<view class="inner">
+				  <view class='newsinr'>局长访谈一以“两强两优”推进医保经办服务局长访谈一以“两强两优”推进医保经办服务</view>
+				  <view class='newsnum'>
+						<view>2019年第1期 20:30</view>
+						<view class="zfMax"></view>
+				    <!-- 转发最多 -->
 					</view>
-			    <view class="inner">
-			      <view class='newsinr'>局长访谈一以“两强两优”推进医保经办服务局长访谈一以“两强两优”推进医保经办服务</view>
-			      <view class='newsnum'>
-							<view>字数   3500</view>
-							<view class="zfMax"></view>
-              <!-- 转发最多 -->
-						</view>
-			    </view>
-			  </view>
+				</view>
 			</view>
 		</scroll-view>
-	</swiper-item>
-	<swiper-item>
-		<scroll-view scroll-y class="inrBox">
-			<view class='newslist'>
-			  <view class="newsOne"  
-            wx:for="{{arr1}}" 
-            wx:for-index="idx" 
-            wx:for-item="item" wx:key="idx"
-            bindtap="jumpdt" 
-            data-id="1"
-            data-type="2">
-			    <view class="xxIcon" >
-						<image src="/static/images/btn2_2.jpg"></image>
+		<scroll-view hidden="{{num!= 2}}" scroll-y class="inrBox"  bindscrolltolower="jiazai">
+			<view wx:if="{{list2.length==0}}" class="zanwu">暂无数据</view>
+			<view class="yearsBox" wx:for="{{list2}}" wx:for-index="idx0" wx:for-item="item0" wx:key="idx0">
+				<view class="xxIcon" >
+					<image hidden="{{num!= 2}}" src="/static/images/btn2_2.jpg"></image>
+				</view>
+				<view class="inner">
+				  <view class='newsinr'>局长访谈一以“两强两优”推进医保经办服务局长访谈一以“两强两优”推进医保经办服务</view>
+				  <view class='newsnum'>
+						<view>2019年第1期 20:30</view>
+						<view class="zfMax"></view>
+				    <!-- 转发最多 -->
 					</view>
-			    <view class="inner">
-			      <view class='newsinr'>微音频微音频微音频微音频微音频微音频微音频微音频微音频微音频微音频微音频</view>
-			      <view class='newsnum'>
-							<view>音频   20:30</view>
-							<view class="zfMax"></view>
-						</view>
-			    </view>
-			  </view>
+				</view>
 			</view>
 		</scroll-view>
-	</swiper-item>
-	<swiper-item>
-		<scroll-view scroll-y class="inrBox">
-			<view class='newslist'>
-			  <view class="newsOne"  wx:for="{{arr1}}" wx:for-index="idx" wx:for-item="item" wx:key="idx"
-            bindtap="jumpdt" 
-            data-id="1"
-            data-type="3">
-			    <view class="xxIcon" >
-						<image src="/static/images/btn2_4.jpg"></image>
-					</view>
-			    <view class="inner">
-			      <view class='newsinr'>微视频微视频微视频微视频微视频微视频微视频微视频微视频</view>
-			      <view class='newsnum'>
-							<view>视频   20:30</view>
-							<view class="zfMax"></view>
-						</view>
-			    </view>
-			  </view>
-			</view>
-		</scroll-view>
-	</swiper-item>
-</swiper>
+</view>
 </view>

@@ -35,28 +35,30 @@
 	 current="{{num}}"
 	 bindchange="aa"
 >
-  <view wx:if="{{num==0}}">
+  <view hidden="{{num!=0}}">
   	<scroll-view scroll-y class="inrBox">
-  		<view class="yearsBox" wx:for="{{arr1}}" wx:for-index="idx0" wx:for-item="item0" wx:key="idx0">
-  			<view class="year">2019年</view>
+  		<view class="yearsBox" wx:for="{{list0}}" wx:for-index="idx0" wx:for-item="item0" wx:key="idx0">
+  			<view class="year">{{item0.year}}年</view>
   			<view class="fenqiBox">
   				<view class="fenqi"
-						wx:for="{{arr1}}"
+						wx:for="{{item0.mouth}}"
 						wx:for-index="idx1"
 						wx:for-item="item1"
 						wx:key="idx1"
 						bindtap="jump"
-						data-year="2019"
-						data-month="{{item1}}"
+						data-year="{{item0.year}}"
+						data-id="{{item1.id}}"
+						data-name="{{item1.name}}"
+						data-data1="{{item0.mouth}}"
 						>
-  					第{{item1}}期
+  					{{item1.name}}
   				</view>
   			</view>
   		</view>
   	</scroll-view>
   </view>
-	<view wx:elif="{{num == 1}}">
-		<scroll-view scroll-y class="inrBox">
+	<view hidden="{{num!= 1}}">
+		<scroll-view scroll-y class="inrBox" bindscrolltolower="jiazai">
 			<view class='newslist'>
 				<view class="zanwu" wx:if="{{list1.length==0}}">暂无内容</view>
 			  <view class="newsOne"  wx:for="{{list1}}" 
@@ -66,6 +68,7 @@
             bindtap="jumpdt" 
             data-id="{{item.id}}"
             data-catid="{{item.catid}}"
+						data-readpoint="{{item.readpoint}}"
             data-type="1">
 			    <view class="xxIcon" >
 						<image src="/static/images/btn2_3.jpg"></image>
@@ -81,8 +84,8 @@
 			</view>
 		</scroll-view>
 	</view>
-	<view wx:elif="{{num == 2}}">
-		<scroll-view scroll-y class="inrBox">
+	<view hidden="{{num!= 2}}">
+		<scroll-view scroll-y class="inrBox"  bindscrolltolower="jiazai">
 			<view class='newslist'>
 				<view class="zanwu" wx:if="{{list2.length==0}}">暂无内容</view>
 			  <view class="newsOne"  
@@ -92,6 +95,7 @@
             bindtap="jumpdt" 
             data-id="{{item.id}}"
             data-catid="{{item.catid}}"
+						data-readpoint="{{item.readpoint}}"
             data-type="2">
 			    <view class="xxIcon" >
 						<image src="/static/images/btn2_2.jpg"></image>
@@ -107,7 +111,7 @@
 			</view>
 		</scroll-view>
 	</view>
-	<view wx:elif="{{num == 3}}">
+	<view hidden="{{num!= 3}}">
 		<scroll-view scroll-y class="inrBox">
 			<view class='newslist'>
 				<view class="zanwu" wx:if="{{list3.length==0}}">暂无内容</view>

@@ -46,11 +46,12 @@ Page({
 					dataType:'json',
 					method:'POST',
 					success(res) {
-						console.log(res.data)
+						console.log(typeof(res.data))
 					let ruls=res.data
 						that.setData({
 							details:ruls[0]
 						})
+						console.log(res.data[0])
 						var article = ruls[0].content
 						WxParse.wxParse('article', 'html', article, that, 5);
 						pageState1.finish()    // 切换为finish状态
@@ -114,7 +115,7 @@ Page({
 	        function () {
 	            var numVal = that.data.num + 1;
 	            that.setData({ num: numVal });
-	            console.log('setInterval==' + that.data.num);
+	            // console.log('setInterval==' + that.data.num);
 	        }
 	  , 2000);   
 	},

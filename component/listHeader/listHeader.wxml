@@ -1,15 +1,15 @@
 <!-- lsitHeader.wxml -->
 <template name="listHeader">
-	<view class="banner" wx:if="{{num==0}}">
+	<view class="banner" hidden="{{num!=0}}">
 		<image src="../../static/images/index/wzzbanner.png"></image>
 	</view>
-	<view class="banner" wx:elif="{{num == 1}}">
+	<view class="banner" hidden="{{num != 1}}">
 		<image src="../../static/images/bg.jpg"></image>
 	</view>
-	<view class="banner" wx:elif="{{num == 2}}">
+	<view class="banner" hidden="{{num != 2}}">
 		<image src="../../static/images/index/wypbanner.png"></image>
 	</view>
-	<view class="banner" wx:else="{{num == 3}}">
+	<view class="banner" hidden="{{num != 3}}">
 		<image src="../../static/images/index/wspbanner.png"></image>
 		<view class="palyVideo">
 			<view class="play">

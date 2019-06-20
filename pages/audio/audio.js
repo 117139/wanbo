@@ -6,6 +6,7 @@ Page({
   data: {
 		setInter:'',//计时器
 		num:0,//阅读时间
+		readpoint:0,
 		details:'',
 		fri:true,
 		tmore:true,
@@ -16,6 +17,7 @@ Page({
   },
 	onLoad(option){
 		this.getaudio(option.catid,option.id)
+		// console.log(option.readpoint)
 	},
 	onReady(){
 		console.log('ready')
@@ -37,9 +39,7 @@ Page({
 		//m=content&c=index&a=show&catid=9&id=3
 		wx.request({
 			url:  app.IPurl1+'?m=content&c=index&a=show&catid='+catid+'&id='+id,
-			data:{
-			
-			},
+			data:{},
 			header: {
 				'content-type': 'application/x-www-form-urlencoded' 
 			},

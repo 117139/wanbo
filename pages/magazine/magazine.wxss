@@ -6,6 +6,7 @@
   height:300rpx;
 	background-color: #fff;
 	position:relative;
+	transition: .5s;
 }
 .banner image{
   width: 100%;
@@ -126,6 +127,7 @@
 /*微原创*/
 .newslist{
   width: 100%;
+	min-height: 990rpx;
   display: flex;
   flex-direction: column;
 }

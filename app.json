@@ -1,12 +1,12 @@
 {
   "pages": [
-    "pages/audio/audio",
     "pages/index/index",
+    "pages/magazine/magazine",
+    "pages/audio/audio",
     "pages/login/login",
     "pages/sousuo/sousuo",
     "pages/magazineDatails/magazineDatails",
     "pages/magazineMonthly/magazineMonthly",
-    "pages/magazine/magazine",
     "pages/my/my",
     "pages/logs/logs"
   ],

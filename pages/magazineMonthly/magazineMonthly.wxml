@@ -1,43 +1,50 @@
 <!--logs.wxml-->
+<import src="/utils/pageState/index.wxml" />
+<template is="pageState" data="{{...pageState}}" />
 <view class="container log-list">
   
 	<view class="monthBox">
-		<view class="month {{item==month?'cur':''}}" 
+		<view class="month {{item.id==month?'cur':''}}" 
 					wx:for="{{arr1}}"
 					wx:for-index="idx"
 					wx:for-item="item"
 					wx:key="idx"
 					bindtap="tabbar"
-					data-month="{{item}}"
+					data-month="{{item.id}}"
+					data-name="{{item.name}}"
 					>
-			第{{item}}期
+			{{item.name}}
 		</view>
 	</view>
-	<view class="dszl">
+	<view class="dszl" wx:for="{{dataz}}"
+		wx:for-index="idx"
+		wx:for-item="item"
+		wx:key="idx">
 		<view class="dstitle">
-			大势纵论
+			{{item.bankuan}}
 		</view>
+		<view class="zanwu" wx:if="{{item.lists.length==0}}">暂无数据</view>
 		<view class='newslist'>
-		  <view class="newsOne" bindtap="jump" 
-						data-id="1"
-						wx:for="{{arr2}}" 
-						wx:for-index="idx" 
-						wx:for-item="item"
-						wx:key="idx">
+		  <view wx:if="{{item.lists.length>0}}" class="newsOne" bindtap="jump" 
+						data-id="{{item0.id}}"
+						wx:for="{{item.lists}}" 
+						wx:for-index="idx1" 
+						wx:for-item="item0"
+						wx:key="idx1">
 		    <view class="xxIcon" >
 					<image src="/static/images/btn2_1.jpg"></image>
 				</view>
 		    <view class="inner">
-		      <view class='newsinr'>大势纵论大势纵论大势纵论大势纵论大势纵论大势纵论</view>
+		      <view class='newsinr'>{{item0.title}}</view>
 		      <view class='newsnum'>
-						<view>2019年第{{month}}期 20:30</view>
+						<view>{{year}}年{{name}}</view>
 						<view class="zfMax"></view>
 					</view>
 		    </view>
 		  </view>
 		</view>
 	</view>
-	<view class="dszl">
+	<!-- <view class="dszl">
 		<view class="dstitle">
 			观察思考
 		</view>
@@ -61,7 +68,7 @@
 		    </view>
 		  </view>
 		</view>
-	</view>
+	</view> -->
 	
 	
 </view>
