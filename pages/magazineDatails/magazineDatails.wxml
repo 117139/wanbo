@@ -7,7 +7,8 @@
   <view class="topBox">
 		<view class="topTit">
 			<view class="p1">{{details.title}}</view>
-			<view class="p2">作者：{{details.zuozhe}}      2018年12月第2期</view>
+			<view class="p2">{{details.ftitle}}</view>
+			<view class="p2">作者：{{details.zuozhe}}      {{details.nian}}年{{details.yue}}月</view>
 		</view>
 		<view class="wxfwb">
 			<template is="wxParse" data="{{wxParseData:article.nodes}}" />
@@ -44,19 +45,22 @@
 			相关推荐
 		</view>
 		<view class='newslist'>
-		  <view class="newsOne" bindtap="jump" 
-						data-id="1"
-						wx:for="{{arr2}}" 
+		  <view wx:if="{{idx<5}}" class="newsOne" bindtap="jump" 
+						data-id="{{item.id}}"
+						wx:for="{{xiangguan}}" 
 						wx:for-index="idx" 
 						wx:for-item="item"
 						wx:key="idx"
             bindtap="jumpdt" 
             data-id="2">
 		    <view class="xxIcon" >
-					<image src="/static/images/btn2_1.jpg"></image>
+					<image hidden="{{item.catid!= 8}}" src="/static/images/btn2_1.jpg"></image>
+					<image hidden="{{item.catid!= 10}}" src="/static/images/btn2_3.jpg"></image>
+					<image hidden="{{item.catid!= 9}}"  src="/static/images/btn2_2.jpg"></image>
+					<!-- <image hidden="{{num!= 3}}" src="/static/images/btn2_4.jpg"></image> -->
 				</view>
 		    <view class="inner">
-		      <view class='newsinr'>相关推荐相关推荐相关推荐相关推荐相关推荐相关推荐</view>
+		      <view class='newsinr'>{{item.title}}</view>
 		      <view class='newsnum'>
 		      	<view>音频   20:30</view>
 		      	<view class="zfMax"></view>
@@ -70,17 +74,21 @@
 			图书推荐
 		</view>
 		<view class="bookBox">
-			<view>
+			<view  data-id="{{item.id}}"
+						wx:for="{{books}}" 
+						wx:for-index="idx" 
+						wx:for-item="item"
+						wx:key="idx">
 				<view class="bookOne">
-					<image src="../../static/images/bg.jpg"></image>
+					<image src="{{'http://sf.zgylbx.com'+item.thumb}}"></image>
 				</view>
-				<view class="bookname">《向航空业学管理》</view>
-				<view class="bookmsg">
+				<view class="bookname">{{item.title}}</view>
+				<!-- <view class="bookmsg">
 					<view>￥111</view>
 					<view class="bookbtn" bindtap="rob" data-id="0">马上抢</view>
-				</view>
+				</view> -->
 			</view>
-			<view>
+			<!-- <view>
 				<view class="bookOne">
 					<image src="../../static/images/bg.jpg"></image>
 				</view>
@@ -89,7 +97,7 @@
 					<view>￥111</view>
 					<view class="bookbtn" bindtap="rob" data-id="1">马上抢</view>
 				</view>
-			</view>
+			</view> -->
 		</view>
 	</view>
 	

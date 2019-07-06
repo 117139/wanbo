@@ -48,13 +48,25 @@ Page({
 			})
 		}
 		this.setData({
-			inr:option.sr,
+			inr:option.sr
 		})
 		this.getsousuo()
   },
 	onShow(){
 		// wx.showTabBar();
-	},	
+	},
+	formSubmit(e){
+		var that=this
+		console.log('form发生了submit事件，携带数据为：', e.detail.value)
+		if(e.detail.value.sr==''){
+			return
+		}
+		that.setData({
+			inr:e.detail.value.sr,
+			page:[1,1,1,1]
+		})
+		that.getsousuo()
+	},
 	tab(e){
 		var type=e.currentTarget.dataset.index
 		if(type==this.data.num){
@@ -106,7 +118,7 @@ Page({
 				console.log(res.data)
 				if(res.data.length==0){
 					wx.showToast({
-						title:'暂无相关数据',
+						title:'暂无更多相关数据',
 						duration:1000,
 						icon:'none'
 					})
@@ -152,10 +164,6 @@ Page({
 					// 	})
 					// }
 				}
-				// that.setData({
-				// 	imgUrls:res.data
-				// })
-				
 				// pageState1.finish()    // 切换为finish状态
 			},
 			fail() {
@@ -165,13 +173,24 @@ Page({
 		})
 	},
 	jiazai(){
+		console.log(this.data.num)
 		this.getsousuo()
 	},
 	jump(e){
-		let year =e.currentTarget.dataset.year
-		let month =e.currentTarget.dataset.month
+		let id = e.currentTarget.dataset.id
+		let catid = e.currentTarget.dataset.catid
+		let type = e.currentTarget.dataset.type
+		console.log(type)
+		let url1  
+		if(type==1){
+		  url1= '/pages/magazineDatails/magazineDatails?id=' + id+'&catid='+catid
+		} else if (type == 2) {
+		  url1 = '/pages/audio/audio?id=' + id+'&catid='+catid
+		} else if (type == 3) {
+		  url1 = '/pages/magazineDatails/magazineDatails?id=' + id
+		}
 		wx.navigateTo({
-			url:'/pages/magazineMonthly/magazineMonthly?year='+year+'&month='+month
+		  url: url1
 		})
   },
   jumpdt(e) {

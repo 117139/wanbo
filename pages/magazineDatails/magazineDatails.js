@@ -8,6 +8,8 @@ Page({
 		setInter:'',//计时器
 		num:0,//阅读时间
 		details:'',
+		xiangguan:[], //相关推荐
+		books:[], //图书
     arr2:[
     	1,
     	2,
@@ -23,6 +25,8 @@ Page({
 			 this.getdetails(option.catid,option.id)
 		 }
 		 this.startSetInter()
+		 this.getXg()
+		 this.getbooks()
 			 
   },
 	onReady: function () {
@@ -58,6 +62,70 @@ Page({
 					},
 					fail() {
 						 pageState1.error()    // 切换为error状态
+					}
+				})
+	},
+	getXg(){
+		let that =this
+				// const pageState1 = pageState.default(this)
+				// pageState1.loading()    // 切换为loading状态
+				//http://sf.zgylbx.com/index.php?m=content&c=index&a=xiangguantuijian
+				wx.request({
+					url:  app.IPurl2+'/index.php?m=content&c=index&a=xiangguantuijian',
+					data:{
+					
+					},
+					header: {
+						'content-type': 'application/x-www-form-urlencoded' 
+					},
+					dataType:'json',
+					method:'POST',
+					success(res) {
+						// console.log(res.data)
+						that.setData({
+							xiangguan:res.data
+						})
+						// pageState1.finish()    // 切换为finish状态
+					},
+					fail() {
+						 // pageState1.error()    // 切换为error状态
+						 wx.showToast({
+						 	title:'网络异常',
+						 	duration:1000,
+						 	icon:'none'
+						 })
+					}
+				})
+	},
+	getbooks(){
+		let that =this
+				// const pageState1 = pageState.default(this)
+				// pageState1.loading()    // 切换为loading状态
+				//http://sf.zgylbx.com/index.php?m=content&c=index&a=tushutuijian
+				wx.request({
+					url:  app.IPurl2+'/index.php?m=content&c=index&a=tushutuijian',
+					data:{
+					
+					},
+					header: {
+						'content-type': 'application/x-www-form-urlencoded' 
+					},
+					dataType:'json',
+					method:'POST',
+					success(res) {
+						console.log(res.data)
+						that.setData({
+							books:res.data
+						})
+						// pageState1.finish()    // 切换为finish状态
+					},
+					fail() {
+						 // pageState1.error()    // 切换为error状态
+						 wx.showToast({
+						 	title:'网络异常',
+						 	duration:1000,
+						 	icon:'none'
+						 })
 					}
 				})
 	},
@@ -117,7 +185,7 @@ Page({
 	            that.setData({ num: numVal });
 	            // console.log('setInterval==' + that.data.num);
 	        }
-	  , 2000);   
+	  , 1000);   
 	},
 	endSetInter: function(){
 	    var that = this;

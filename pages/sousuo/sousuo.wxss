@@ -71,7 +71,7 @@
 }
 .tabSwiper{
 	width: 100%;
-	height: calc(100% - 200rpx);
+	height: calc(100vh - 200rpx);
 }
 .inrBox{
 	width: 100%;
@@ -94,6 +94,9 @@
         border-radius: 10px;
         background: #EDEDED;
     }
+.ssjgbox{
+	min-height: 100%;
+}
 /*微杂志*/
 .yearsBox{
 	display: flex;

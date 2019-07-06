@@ -7,17 +7,17 @@
 	<view class="mymsg">
 		<view class="myInfo">
 			<view class="HeadImg">
-				<image src="/static/images/my/defaultImg.png"></image>
+				<image src="{{userwxmsg.avatarUrl}}"></image>
 			</view>
-			<text>昵称</text>
+			<text>{{userwxmsg.nickName}}</text>
 		</view>
 		<view class="readerMsg">
 			<view class="jifen">
-				<text class="jfnum">0积分</text>
+				<text class="jfnum">{{usermsg.point}}积分</text>
 				<text class="mk_tit">我的积分</text>
 			</view>
 			<view class="jifen">
-				<text class="time">200分钟</text>
+				<text class="time">{{usermsg.shijian}}分钟</text>
 				<text class="mk_tit">本周阅读时长</text>
 			</view>
 		</view>
@@ -31,10 +31,10 @@
 				<text>时长兑积分</text>
 			</view>
 			<view class="op_r">
-				本周阅读时长200分钟
+				本周阅读时长{{usermsg.point}}分钟
 			</view>
 		</view>
-		<view class="exchange">
+		<!-- <view class="exchange">
 			<view class="op_l">
 				<view class="myBtnIcon">
 					<image src="/static/images/my/my_06.png"></image>
@@ -43,8 +43,8 @@
 			</view>
 			<view class="op_r">
 			</view>
-		</view>
-		<view class="exchange">
+		</view> -->
+		<navigator class="exchange" url='/pages/jfjl/jfjl'>
 			<view class="op_l">
 				<view class="myBtnIcon">
 					<image src="/static/images/my/my_09.png"></image>
@@ -52,9 +52,9 @@
 				<text>积分记录</text>
 			</view>
 			<view class="op_r">
-				剩余0积分
+				剩余{{usermsg.point}}积分
 			</view>
-		</view>
+		</navigator>
 		<view class="exchange">
 			<view class="op_l">
 				<view class="myBtnIcon">

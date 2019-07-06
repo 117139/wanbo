@@ -26,3 +26,27 @@ image{
 	font-size: 28rpx;
 	color: #999;
 }
+.p0_14{
+  padding: 0 14px;
+}
+.disflex{
+  display: flex;
+}
+.aic{
+  align-items: center;
+}
+.flex_1{
+  flex: 1;
+}
+.mr5{
+  margin-right: 5px;
+}
+.tac{
+  text-align: center;
+}
+.c9{
+  color: #999;
+}
+.fz12{
+  font-size: 34rpx;
+}

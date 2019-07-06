@@ -3,7 +3,7 @@
 	<form  bindsubmit="formSubmit">
 	  <view class='sousuo'>
 			<view class="ipt">
-				<input name="sr"></input>
+				<input name="sr" value="{{inr}}"></input>
 			</view>
 			<view class='ss_btn'>
 				<button  form-type="submit"></button>
@@ -25,7 +25,14 @@
  <view class="tabSwiper">
   	<scroll-view hidden="{{num!= 0}}" scroll-y class="inrBox"  bindscrolltolower="jiazai">
 			<view wx:if="{{list0.length==0}}" class="zanwu">暂无数据</view>
-  		<view class="yearsBox" wx:for="{{list0}}" wx:for-index="idx0" wx:for-item="item0" wx:key="idx0">
+  		<view class="yearsBox" wx:for="{{list0}}" 
+			wx:for-index="idx0" 
+			wx:for-item="item0" 
+			wx:key="idx0"
+			bindtap="jump" 
+			data-id="{{item0.id}}"
+			data-type="1"
+			data-catid="{{item0.catid}}">
   			<view class="xxIcon" >
   				<image hidden="{{num!= 0}}" src="/static/images/btn2_1.jpg"></image>
   				<image hidden="{{num!= 1}}" src="/static/images/btn2_3.jpg"></image>
@@ -33,7 +40,7 @@
   				<image hidden="{{num!= 3}}" src="/static/images/btn2_4.jpg"></image>
   			</view>
   			<view class="inner">
-  			  <view class='newsinr'>局长访谈一以“两强两优”推进医保经办服务局长访谈一以“两强两优”推进医保经办服务</view>
+  			  <view class='newsinr'>{{item0.title}}</view>
   			  <view class='newsnum'>
   					<view>2019年第1期 20:30</view>
   					<view class="zfMax"></view>
@@ -43,29 +50,46 @@
   		</view>
   	</scroll-view>
 		<scroll-view hidden="{{num!= 1}}" scroll-y class="inrBox"  bindscrolltolower="jiazai">
-			<view wx:if="{{list1.length==0}}" class="zanwu">暂无数据</view>
-			<view class="yearsBox" wx:for="{{list1}}" wx:for-index="idx0" wx:for-item="item0" wx:key="idx0">
-				<view class="xxIcon" >
-					<image hidden="{{num!= 1}}" src="/static/images/btn2_3.jpg"></image>
-				</view>
-				<view class="inner">
-				  <view class='newsinr'>局长访谈一以“两强两优”推进医保经办服务局长访谈一以“两强两优”推进医保经办服务</view>
-				  <view class='newsnum'>
-						<view>2019年第1期 20:30</view>
-						<view class="zfMax"></view>
-				    <!-- 转发最多 -->
+			<view class="ssjgbox">
+				<view wx:if="{{list1.length==0}}" class="zanwu">暂无数据</view>
+				<view class="yearsBox" wx:for="{{list1}}" 
+				wx:for-index="idx0" 
+				wx:for-item="item0"
+				wx:key="idx0"
+				bindtap="jump" 
+				data-id="{{item0.id}}"
+				data-type="1"
+				data-catid="{{item0.catid}}">
+					<view class="xxIcon" >
+						<image hidden="{{num!= 1}}" src="/static/images/btn2_3.jpg"></image>
+					</view>
+					<view class="inner">
+					  <view class='newsinr'>{{item0.title}}</view>
+					  <view class='newsnum'>
+							<view>2019年第1期 20:30</view>
+							<view class="zfMax"></view>
+					    <!-- 转发最多 -->
+						</view>
 					</view>
 				</view>
 			</view>
+			
 		</scroll-view>
 		<scroll-view hidden="{{num!= 2}}" scroll-y class="inrBox"  bindscrolltolower="jiazai">
 			<view wx:if="{{list2.length==0}}" class="zanwu">暂无数据</view>
-			<view class="yearsBox" wx:for="{{list2}}" wx:for-index="idx0" wx:for-item="item0" wx:key="idx0">
+			<view class="yearsBox" wx:for="{{list2}}"
+			wx:for-index="idx0"
+			wx:for-item="item0"
+			wx:key="idx0"
+			bindtap="jump" 
+			data-id="{{item0.id}}"
+			data-type="2"
+			data-catid="{{item0.catid}}">
 				<view class="xxIcon" >
 					<image hidden="{{num!= 2}}" src="/static/images/btn2_2.jpg"></image>
 				</view>
 				<view class="inner">
-				  <view class='newsinr'>局长访谈一以“两强两优”推进医保经办服务局长访谈一以“两强两优”推进医保经办服务</view>
+				  <view class='newsinr'>{{item0.title}}</view>
 				  <view class='newsnum'>
 						<view>2019年第1期 20:30</view>
 						<view class="zfMax"></view>

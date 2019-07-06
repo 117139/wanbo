@@ -85,8 +85,9 @@ Page({
 	},
 	jump(e){
 		let id =e.currentTarget.dataset.id
+		let catid =e.currentTarget.dataset.catid
 		wx.navigateTo({
-			url:'/pages/magazineDatails/magazineDatails?id='+id
+			url:'/pages/magazineDatails/magazineDatails?id='+id+'&catid='+catid
 		})
 	}
 })

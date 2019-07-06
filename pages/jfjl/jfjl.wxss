@@ -1,0 +1,12 @@
+/* pages/jfjl/jfjl.wxss */
+page{
+  background: #f5f5f5;
+}
+.jflist{
+  padding-top: 15px;
+}
+.jfone{
+  padding: 14px;
+  margin-bottom: 15px;
+    background: #fff;
+}

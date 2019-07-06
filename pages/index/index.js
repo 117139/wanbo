@@ -40,8 +40,10 @@ Page({
   },
   jump(e) {
     let id = e.currentTarget.dataset.id
+    let catid = e.currentTarget.dataset.catid
+		console.log(e.currentTarget.dataset)
     wx.navigateTo({
-      url: '/pages/magazineDatails/magazineDatails?id=' + id
+      url: '/pages/magazineDatails/magazineDatails?id=' + id+'&catid=' + catid
     })
   },
 	getbanner(){

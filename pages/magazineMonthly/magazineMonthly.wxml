@@ -27,6 +27,7 @@
 		<view class='newslist'>
 		  <view wx:if="{{item.lists.length>0}}" class="newsOne" bindtap="jump" 
 						data-id="{{item0.id}}"
+						data-catid="{{item0.catid}}"
 						wx:for="{{item.lists}}" 
 						wx:for-index="idx1" 
 						wx:for-item="item0"

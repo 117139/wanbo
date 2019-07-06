@@ -1,0 +1,18 @@
+<!--pages/jfjl/jfjl.wxml-->
+<!-- <text>pages/jfjl/jfjl.wxml</text> -->
+
+<wxs src="../../utils/filter.wxs" module="filter" />
+<view class='jflist'>
+<view class='tac' wx:if="{{datalist.length==0}}">暂无数据</view>
+  <view wx:if="{{datalist.length>0}}" class='disflex p0_14 jfone aic'
+    wx:for="{{datalist}}" 
+    wx:for-index="idx"          
+    wx:for-item="item" 
+    wx:key="idx">
+    <view class='flex_1 c9 fz12'>
+      <view>{{filter.dateFormat(item.creat_at)}}</view>
+      <view>{{item.msg}}</view>
+    </view>
+      <view>{{item.value}}积分</view>
+  </view>
+</view>

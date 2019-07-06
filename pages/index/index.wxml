@@ -68,7 +68,8 @@
           wx:for-item="item" 
           wx:key="idx"
           bindtap="jump" 
-					data-id="1">
+					data-id="{{item.id}}"
+					data-catid="{{item.catid}}">
       <view class="xxIcon" >
 				<image wx:if="{{item.catid==8}}" src="{{arr[0]}}"></image>
 				<image wx:if="{{item.catid==10}}" src="{{arr[1]}}"></image>
