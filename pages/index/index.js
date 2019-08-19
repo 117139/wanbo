@@ -6,12 +6,13 @@ Page({
   data: {
     motto: 'Hello World',
     title:['微杂志','微原创','微音频','微视频'],
-    catidz:[8,10,9,'微视频'],
+    catidz:[8,10,9,16],
 		imgUrls:[],
+    dataz:[],
 		arr:[
 		'/static/images/btn2_1.jpg',
-		'/static/images/btn2_2.jpg',
 		'/static/images/btn2_3.jpg',
+		'/static/images/btn2_2.jpg',
 		'/static/images/btn2_4.jpg',
 		'/static/images/btn2_5.jpg',
 		'/static/images/btn2_6.png',
@@ -42,9 +43,20 @@ Page({
     let id = e.currentTarget.dataset.id
     let catid = e.currentTarget.dataset.catid
 		console.log(e.currentTarget.dataset)
-    wx.navigateTo({
-      url: '/pages/magazineDatails/magazineDatails?id=' + id+'&catid=' + catid
-    })
+    if(catid==9){
+      wx.navigateTo({
+        url: '/pages/audio/audio?id=' + id + '&catid=' + catid
+      })
+    }else if(catid==16){
+      wx.navigateTo({
+        url: '/pages/spplay/spplay?id=' + id + '&catid=' + catid
+      })
+    }else{
+      wx.navigateTo({
+        url: '/pages/magazineDatails/magazineDatails?id=' + id + '&catid=' + catid
+      })
+    }
+    
   },
 	getbanner(){
 		let that =this
@@ -61,7 +73,7 @@ Page({
 				success(res) {
 					
 					
-					console.log(res.data)
+					// console.log(res.data)
 					
 					that.setData({
 						imgUrls:res.data
@@ -76,14 +88,13 @@ Page({
 			})
 		
 	},
+  //今日更新
 	resetinr(){
 		let that =this
-		// const pageState1 = pageState.default(this)
-		// pageState1.loading()    // 切换为loading状态
 		wx.showLoading({
 			title:'加载中'
 		})
-		var geturl=app.IPurl1+'?page='+that.data.page
+    var geturl = app.IPurl1 +'/index.php?m=search&c=index&a=init&typeid=0&q=&siteid=1&time=all&page='+that.data.page
 		wx.request({
 			//http://sf.zgylbx.com/index.php?m=content&c=index&a=nianfen
 			url: geturl,
@@ -96,7 +107,7 @@ Page({
 			success(res) {
 				
 				
-				console.log(res.data)
+				// console.log(res.data)
 				wx.hideLoading()
 				if(res.data.length==0){
 					wx.showToast({

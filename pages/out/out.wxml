@@ -1,0 +1,4 @@
+<!--pages/out/out.wxml-->
+<!-- <web-view src="{{outurl}}"></web-view> -->
+<view>https://shop2746925.youzan.com/v2/showcase/homepage?kdt_id=2554757</view>
+<web-view src="https://h5.youzan.com"></web-view>

@@ -5,7 +5,7 @@
 <form  bindsubmit="formSubmit">
   <view class='sousuo'>
 		<view class="ipt">
-			<input name="sr"></input>
+			<input name="sr" placeholder='作者、关键字'></input>
 		</view>
 		<view class='ss_btn'>
 			<button  form-type="submit"></button>
@@ -19,7 +19,9 @@
 	<swiper	autoplay="autoplay" indicator-dots='true' circular='true'>
 		<block wx:for="{{imgUrls}}" wx:for-index="idx" wx:for-item="item" wx:key="idx">
 			<swiper-item>
-				<image src="{{'http://sf.zgylbx.com'+item.banner}}" class="slide-image" width="355" height="150"/>
+				<image bindtap="jump" 
+					data-id="{{item.id}}"
+					data-catid="{{item.catid}}" src="{{'http://sf.zgylbx.com'+item.banner}}" class="slide-image" width="355" height="150" />
 			</swiper-item>
 		</block>
 	</swiper>
@@ -44,8 +46,8 @@
     </view>
     <text>微音频</text>
   </navigator>
-  <!-- <navigator class='btnOne' url="/pages/magazine/magazine?type=3"> -->
-  <navigator class='btnOne' bindtap="kfz">
+  <!-- <navigator class='btnOne' url="/pages/magazine/magazine?type=3"> bindtap="kfz" -->
+  <navigator class='btnOne'url="/pages/magazine/magazine?type=3">
     <view class='btnIcon'>
       <image src='/static/images/btn1_4.jpg'></image>
     </view>
@@ -63,7 +65,7 @@
     </view>
   </view>
   <view class='newslist'>
-          <view class="newsOne"  wx:for="{{dataz}}" 
+    <view class="newsOne"  wx:for="{{dataz}}" 
           wx:for-index="idx"          
           wx:for-item="item" 
           wx:key="idx"
@@ -72,8 +74,10 @@
 					data-catid="{{item.catid}}">
       <view class="xxIcon" >
 				<image wx:if="{{item.catid==8}}" src="{{arr[0]}}"></image>
-				<image wx:if="{{item.catid==10}}" src="{{arr[1]}}"></image>
+				<image wx:if="{{item.catid==21}}" src="{{arr[1]}}"></image>
 				<image wx:if="{{item.catid==9}}" src="{{arr[2]}}"></image>
+				<image wx:if="{{item.catid==16}}" src="{{arr[3]}}"></image>
+				<image wx:if="{{item.catid==17}}" src="{{arr[3]}}"></image>
 			</view>
       <view class="inner">
         <view class='newsinr'>{{item.title}}</view>

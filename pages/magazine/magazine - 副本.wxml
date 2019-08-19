@@ -1,0 +1,147 @@
+<!--logs.wxml-->
+<import src="/utils/pageState/index.wxml" />
+<import src="/component/listHeader/listHeader.wxml" />
+<template is="pageState" data="{{...pageState}}" />
+<view class="container log-list">
+	<template is="listHeader" data="{{num}}" />
+	<form  bindsubmit="formSubmit">
+	  <view class='sousuo'>
+			
+			
+			<view class="ipt">
+				<input name="sr"></input>
+			</view>
+			<view class='ss_btn'>
+				<button  form-type="submit"></button>
+				<image src="/static/images/sousuo.png"></image>
+			</view>
+		</view>
+	  
+	</form >
+	
+	<view class="selectTime">
+		<view class="tabselect">
+			<view class="{{num==0?'cur':''}}" bindtap="tab" data-index="0">微杂志</view>
+			<view class="{{num==1?'cur':''}}" bindtap="tab" data-index="1">微原创</view>
+			<view class="{{num==2?'cur':''}}" bindtap="tab" data-index="2">微音频</view>
+			<view class="{{num==3?'cur':''}}" bindtap="tab" data-index="3">微视频</view>
+		</view>
+	</view>
+ <view class="tabSwiper"
+  indicator-dots="{{indicatorDots}}"
+  autoplay="{{autoplay}}"
+  interval="{{interval}}"
+  duration="{{duration}}"
+	 current="{{num}}"
+	 bindchange="aa"
+>
+  <view hidden="{{num!=0}}">
+  	<scroll-view scroll-y class="inrBox">
+  		<view class="yearsBox" wx:for="{{list0}}" wx:for-index="idx0" wx:for-item="item0" wx:key="idx0">
+  			<view class="year">{{item0.year}}年</view>
+  			<view class="fenqiBox">
+  				<view class="fenqi"
+						wx:for="{{item0.mouth}}"
+						wx:for-index="idx1"
+						wx:for-item="item1"
+						wx:key="idx1"
+						bindtap="jump"
+						data-year="{{item0.year}}"
+						data-id="{{item1.id}}"
+						data-name="{{item1.name}}"
+						data-data1="{{item0.mouth}}"
+						>
+  					{{item1.name}}
+  				</view>
+  			</view>
+  		</view>
+  	</scroll-view>
+  </view>
+	<view hidden="{{num!= 1}}">
+		<scroll-view scroll-y class="inrBox" bindscrolltolower="jiazai">
+			<view class='newslist'>
+				<view class="zanwu" wx:if="{{list1.length==0}}">暂无内容</view>
+			  <view class="newsOne"  wx:for="{{list1}}" 
+            wx:for-index="idx" 
+            wx:for-item="item" 
+            wx:key="idx"
+            bindtap="jumpdt" 
+            data-id="{{item.id}}"
+            data-catid="{{item.catid}}"
+						data-readpoint="{{item.readpoint}}"
+            data-type="1">
+			    <view class="xxIcon" >
+						<image src="/static/images/btn2_3.jpg"></image>
+					</view>
+			    <view class="inner">
+			      <view class='newsinr'>{{item.title}}</view>
+			    </view>
+			  </view>
+			</view>
+		</scroll-view>
+	</view>
+	<view hidden="{{num!= 2}}">
+		<scroll-view scroll-y class="inrBox"  bindscrolltolower="jiazai">
+			<view class='newslist'>
+				<view class="zanwu" wx:if="{{list2.length==0}}">暂无内容</view>
+			  <view class="newsOne"  
+            wx:for="{{list2}}" 
+            wx:for-index="idx" 
+            wx:for-item="item" wx:key="idx"
+            bindtap="jumpdt" 
+            data-id="{{item.id}}"
+            data-catid="{{item.catid}}"
+						data-readpoint="{{item.readpoint}}"
+            data-type="2">
+			    <view class="xxIcon" >
+						<image src="/static/images/btn2_2.jpg"></image>
+					</view>
+			    <view class="inner">
+			      <view class='newsinr'>{{item.title}}</view>
+			      <view class='newsnum'>
+							<view>音频</view>
+							<view class="zfMax"></view>
+						</view>
+			    </view>
+			  </view>
+			</view>
+		</scroll-view>
+	</view>
+	<view hidden="{{num!= 3}}">
+		<scroll-view scroll-y class="inrBox">
+			<view class='newslist'>
+				<view class="w100"> 
+          <view class='dis_flex ju_b aic w100'>
+            <text class='title'>微视频</text>
+            <text class='newChange' data-type='1' bindtap='jumpmore'>更多</text>
+          </view>
+          <view class='spbox'>
+            <view class='spone' data-id='{{item.id}}' data-catid='{{item.catid}}' bindtap='govideo' wx:for="{{wsp}}" 
+            wx:for-index="idx" 
+            wx:for-item="item" wx:key="idx" wx:if="{{idx<4}}">
+              <image class='spimg' lazy-load='true' src='{{item.img}}'></image>
+              <text class='oh2 fz26'>{{item.title}}</text>
+            </view>
+           
+          </view>
+        </view>
+				<view class="w100"> 
+          <view class='dis_flex ju_b aic w100'>
+            <text class='title'>医保大讲堂</text>
+            <text class='newChange' data-type='2' bindtap='jumpmore'>更多</text>
+          </view>
+          <view class='spbox'>
+            <view class='spone' data-id='{{item.id}}' data-catid='{{item.catid}}' bindtap='govideo' wx:for="{{ybjt}}" 
+            wx:for-index="idx" 
+            wx:for-item="item" wx:key="idx"  wx:if="{{idx<4}}">
+              <image class='spimg' lazy-load='true' src='{{item.img}}'></image>
+              <text class='oh2 fz26'>{{item.title}}</text>
+            </view>
+          </view>
+        </view>
+			  
+			</view>
+		</scroll-view>
+	</view>
+</view>
+</view>

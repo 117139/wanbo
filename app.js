@@ -8,15 +8,17 @@ App({
     
   },
   onShow: function(){
+    var that =this
     wx.checkSession({
       success() {
         // session_key 未过期，并且在本生命周期一直有效
         console.log("session_key 未过期，并且在本生命周期一直有效")
+        that.dlogin()
       },
       fail() {
         // session_key 已经失效，需要重新执行登录流程
         console.log("session_key 已经失效")
-				this.dlogin() // 重新登录
+        that.dlogin() // 重新登录
         // wx.reLaunch({// 重新获取授权
         //   url: '/pages/login/login',
         //   fail: (err) => {
@@ -36,16 +38,16 @@ App({
 		var uinfo
 		wx.getSetting({
 		  success: res => {
-		    console.log(res)
+		    // console.log(res)
 		    if (res.authSetting['scope.userInfo']==true) {
 		      // 已经授权，可以直接调用 getUserInfo 获取头像昵称，不会弹框
-		      console.log(1)
-		      wx.reLaunch({
-		        url: '/pages/index/index',
-						fail(err) {
-							console.log("失败: " + JSON.stringify(err));
-						}
-		      })
+		      // console.log(1)
+		      // wx.reLaunch({
+		      //   url: '/pages/index/index',
+					// 	fail(err) {
+					// 		console.log("失败: " + JSON.stringify(err));
+					// 	}
+		      // })
 		      wx.getUserInfo({
 		        success: res => {
 		          that.globalData.userInfo = res.userInfo
@@ -87,16 +89,16 @@ App({
             method: 'GET', 
             success: function (res) {
               var obj = {};
-							console.log(res)
+							// console.log(res)
               obj.openid = res.data.openid;
-              console.log("取得的openid==" + res.data.openid);
+              // console.log("取得的openid==" + res.data.openid);
 							wx.setStorageSync('openid', res.data.openid)
 							wx.getUserInfo({
 							  success: rest => {
 							    that.globalData.userInfo = rest.userInfo
 									uinfo=rest.userInfo
 									wx.setStorageSync('userInfo', rest.userInfo)
-									that.getbanner(res.data.openid, uinfo.nickName)
+                  that.getuser(res.data.openid, uinfo.nickName)
 							  }
 							})
 							
@@ -109,7 +111,7 @@ App({
       }
     })
 	},
-	getbanner(openid,nickname){
+	getuser(openid,nickname){
 		let that =this
 		var geturl1=that.IPurl1+'?m=content&c=index&a=wechat&openid='+openid+'&nickname='+nickname
 			wx.request({
@@ -123,16 +125,19 @@ App({
 				method:'POST',
 				success(res) {
 					
-					
-					console.log(res.data)
+          // console.log('openid126' + JSON.stringify(res))
+					// console.log(res.data)
 					wx.setStorageSync('usermsg', res.data)
+          console.log(131 + JSON.stringify(wx.getStorageSync('usermsg')))
 					// that.setData({
 					// 	imgUrls:res.data
 					// })
 					
 					// pageState1.finish()    // 切换为finish状态
 				},
-				fail() {
+				fail(err) {
+          console.log(err)
+          console.log(JSON.stringify(err))
 					 // pageState1.error()    // 切换为error状态
 					 // wx.hideLoading()
 				}

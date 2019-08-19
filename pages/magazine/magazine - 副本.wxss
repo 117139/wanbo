@@ -127,7 +127,7 @@
 /*微原创*/
 .newslist{
   width: 100%;
-	/* min-height: 990rpx; */
+	min-height: 990rpx;
   display: flex;
   flex-direction: column;
 }
@@ -217,66 +217,4 @@
 .spimg{
   width: 100%;
   height: 200rpx;
-}
-
-
-
-
-/*修改 目录*/
-.dszl{
-	width: 100%;
-	background-color: #fff;
-	padding: 0 30rpx;
-	box-sizing: border-box;
-}
-.dstitle{
-	font-size: 42rpx;
-	color: #333333;
-	height: 100rpx;
-	display: flex;
-	align-items: center;
-}
-
-.newslist{
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-}
-.newsinr{
-  font-size: 32rpx;
-  color: #333;
-}
-.newsnum{
-  font-size: 26rpx;
-  color: #999;
-}
-.newsOne{
-	height: 105rpx;
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-}
-.xxIcon{
-	width: 55rpx;
-	height: 55rpx;
-	margin-right: 12px;
-}
-.inner{
-	flex: 1;
-}
-.newsinr{
-	width: 600rpx;
-	overflow: hidden;
-	white-space: nowrap;
-	text-overflow: ellipsis;
-
-}
-.newsnum{
-	display: flex;
-	justify-content: space-between;
-}
-.zfMax{
-	margin-right: 166rpx;
-	color: #00a0e9;
-	font-size: 24rpx;
 }

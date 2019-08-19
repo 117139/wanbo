@@ -9,12 +9,14 @@
 }
 .topTit{
 	width: 100%;
-	height: 194rpx;
+	min-height: 194rpx;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
 	border-bottom: 1px solid #cccccc;
+  padding-top: 20rpx;
+  padding-bottom: 20rpx
 }
 .p1{
 	font-size: 42rpx;
@@ -149,7 +151,7 @@
 }
 .bookBox{
 	width: 100%;
-	height: 530rpx;
+	/* height: 530rpx; */
 	display: flex;
 	justify-content: space-around;
 	align-items: center;
@@ -157,9 +159,9 @@
 }
 .bookOne{
 	width: 310rpx;
-	height: 310rpx;
+	height: 390rpx;
 	border: 1rpx solid #CCCCCC;
-	margin-bottom: 35rpx;
+	margin-bottom: 15rpx;
 }
 .bookname{
 	width: 310rpx;
@@ -173,6 +175,7 @@
 .bookmsg{
 	width: 310rpx;
 	display: flex;
+  flex-direction: column;
 	justify-content: space-between;
 	align-items: center;
 	font-size: 42rpx;
@@ -180,13 +183,14 @@
 	padding-bottom: 40rpx;
 }
 .bookbtn{
-	width: 130rpx;
-	height: 50rpx;
-	border-radius: 25rpx;
+	width: 200rpx;
+	height: 70rpx;
+	border-radius: 70rpx;
 	background-color: #fe6c5f;
 	color: #fff;
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	font-size: 32rpx;
+  margin-top: 20rpx;
 }

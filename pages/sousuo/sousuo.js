@@ -5,7 +5,7 @@ Page({
   data: {
     num:0,
 		inr:'',
-		catidz:[8,10,9,'微视频'],
+		catidz:[8,21,9,16],
 		list0:[],
 		list1:[],
 		list2:[],
@@ -72,14 +72,14 @@ Page({
 		if(type==this.data.num){
 			return
 		}
-		if(type==3){
-			wx.showToast({
-				title:'正在开发中',
-				duration:1000,
-				icon:'none'
-			})
-			return
-		}
+		// if(type==3){
+		// 	wx.showToast({
+		// 		title:'正在开发中',
+		// 		duration:1000,
+		// 		icon:'none'
+		// 	})
+		// 	return
+		// }
 		console.log(e.currentTarget.dataset.index)
 		this.setData({
 			num:type
@@ -122,8 +122,11 @@ Page({
 						duration:1000,
 						icon:'none'
 					})
+          return
 				}
-				that.data.page[that.data.num]++
+          
+        that.data.page[that.data.num]++
+
 				if(type==0){
 					
 						
@@ -163,6 +166,10 @@ Page({
 					// 		list3:res.data
 					// 	})
 					// }
+          that.data.list3 = that.data.list3.concat(res.data)
+          that.setData({
+            list3: that.data.list3
+          })
 				}
 				// pageState1.finish()    // 切换为finish状态
 			},
@@ -187,7 +194,7 @@ Page({
 		} else if (type == 2) {
 		  url1 = '/pages/audio/audio?id=' + id+'&catid='+catid
 		} else if (type == 3) {
-		  url1 = '/pages/magazineDatails/magazineDatails?id=' + id
+      url1 = '/pages/spplay/spplay?id=' + id + '&catid=' + catid
 		}
 		wx.navigateTo({
 		  url: url1

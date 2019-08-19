@@ -9,7 +9,7 @@
 			
 			
 			<view class="ipt">
-				<input name="sr"></input>
+				<input name="sr" placeholder='作者、关键字'></input>
 			</view>
 			<view class='ss_btn'>
 				<button  form-type="submit"></button>
@@ -58,80 +58,101 @@
   	</scroll-view>
   </view>
 	<view hidden="{{num!= 1}}">
-		<scroll-view scroll-y class="inrBox" bindscrolltolower="jiazai">
-			<view class='newslist'>
-				<view class="zanwu" wx:if="{{list1.length==0}}">暂无内容</view>
-			  <view class="newsOne"  wx:for="{{list1}}" 
-            wx:for-index="idx" 
-            wx:for-item="item" 
-            wx:key="idx"
-            bindtap="jumpdt" 
-            data-id="{{item.id}}"
-            data-catid="{{item.catid}}"
-						data-readpoint="{{item.readpoint}}"
-            data-type="1">
-			    <view class="xxIcon" >
-						<image src="/static/images/btn2_3.jpg"></image>
-					</view>
-			    <view class="inner">
-			      <view class='newsinr'>{{item.title}}</view>
-			      <!-- <view class='newsnum'>
-							<view>字数   3500</view>
-							<view class="zfMax"></view>
-						</view> -->
-			    </view>
-			  </view>
-			</view>
-		</scroll-view>
+    <view class="dszl" wx:for="{{wyc}}"
+      wx:for-index="idx"
+      wx:for-item="item"
+      wx:key="idx"  wx:if="{{item.lists.length!=0}}">
+      <view class="dstitle dis_flex ju_b aic w100">
+        <text class='title'>{{item.bankuan}}</text>
+        <text class='newChange' data-catid='{{item.lists[0].catid}}' data-mk='{{item.bankuan}}' bindtap='jumpmore'>更多</text>
+      </view>
+      <view class="zanwu" wx:if="{{item.lists.length==0}}">暂无数据</view>
+      <view class='newslist'>
+        <view wx:if="{{item.lists.length>0}}" class="newsOne" bindtap="jumpdt" 
+              data-id="{{item0.id}}"
+              data-type="1"
+              data-catid="{{item0.catid}}"
+              wx:for="{{item.lists}}" 
+              wx:for-index="idx1" 
+              wx:for-item="item0"
+              wx:key="idx1">
+          <view class="xxIcon" >
+            <image src="/static/images/btn2_3.jpg"></image>
+          </view>
+          <view class="inner">
+            <view class='newsinr'>{{item0.title}}</view>
+            <view class='newsnum'>
+              <view>日期{{item0.inputtime}}</view>
+              <view class="zfMax"></view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
 	</view>
 	<view hidden="{{num!= 2}}">
-		<scroll-view scroll-y class="inrBox"  bindscrolltolower="jiazai">
-			<view class='newslist'>
-				<view class="zanwu" wx:if="{{list2.length==0}}">暂无内容</view>
-			  <view class="newsOne"  
-            wx:for="{{list2}}" 
-            wx:for-index="idx" 
-            wx:for-item="item" wx:key="idx"
-            bindtap="jumpdt" 
-            data-id="{{item.id}}"
-            data-catid="{{item.catid}}"
-						data-readpoint="{{item.readpoint}}"
-            data-type="2">
-			    <view class="xxIcon" >
-						<image src="/static/images/btn2_2.jpg"></image>
-					</view>
-			    <view class="inner">
-			      <view class='newsinr'>{{item.title}}</view>
-			      <view class='newsnum'>
-							<view>音频</view>
-							<view class="zfMax"></view>
-						</view>
-			    </view>
-			  </view>
-			</view>
-		</scroll-view>
+		<view class="dszl" wx:for="{{wyp}}"
+      wx:for-index="idx"
+      wx:for-item="item"
+      wx:key="idx"  wx:if="{{item.lists.length!=0}}">
+      <view class="dstitle dis_flex ju_b aic w100">
+        <text class='title'>{{item.bankuan}}</text>
+        <text class='newChange' data-catid='{{item.lists[0].catid}}' data-mk='{{item.bankuan}}' bindtap='jumpmore'>更多</text>
+      </view>
+      <view class="zanwu" wx:if="{{item.lists.length==0}}">暂无数据</view>
+      <view class='newslist'>
+        <view wx:if="{{item.lists.length>0}}" class="newsOne" bindtap="jumpdt" 
+              data-type="2"
+              data-id="{{item0.id}}"
+              data-catid="{{item0.catid}}"
+              wx:for="{{item.lists}}" 
+              wx:for-index="idx1" 
+              wx:for-item="item0"
+              wx:key="idx1">
+          <view class="xxIcon" >
+            <image src="/static/images/btn2_2.jpg"></image>
+          </view>
+          <view class="inner">
+            <view class='newsinr'>{{item0.title}}</view>
+            <view class='newsnum'>
+              <view>音频 {{item0.shijian}}</view>
+              <view class="zfMax"></view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
 	</view>
 	<view hidden="{{num!= 3}}">
-		<scroll-view scroll-y class="inrBox">
+		<view class="inrBox">
 			<view class='newslist'>
-				<view class="zanwu" wx:if="{{list3.length==0}}">暂无内容</view>
-			  <view class="newsOne"  wx:for="{{list3}}" wx:for-index="idx" wx:for-item="item" wx:key="idx"
-            bindtap="jumpdt" 
-            data-id="1"
-            data-type="3">
-			    <view class="xxIcon" >
-						<image src="/static/images/btn2_4.jpg"></image>
-					</view>
-			    <view class="inner">
-			      <view class='newsinr'>{{item.title}}</view>
-			      <view class='newsnum'>
-							<view>视频</view>
-							<view class="zfMax"></view>
-						</view>
-			    </view>
-			  </view>
+      <view wx:if="{{wsp.length==0}}">暂无数据</view>
+				<view class="w100"
+          wx:if="{{wsp.length>0}}"
+          wx:for="{{wsp}}" 
+          wx:for-index="idx" 
+          wx:for-item="item" wx:key="idx"> 
+          <view class='dis_flex ju_b aic w100'>
+            <text class='title'>{{item.bankuan}}</text>
+            <text class='newChange' data-catid='{{item.lists[0].catid}}' data-mk='{{item.bankuan}}' bindtap='jumpmore'>更多</text>
+          </view>
+          <view class='spbox'>
+            <view class='spone'
+              bindtap='govideo'
+              wx:for="{{item.lists}}" 
+              wx:for-index="idx1" 
+              wx:for-item="item1" 
+              wx:key="idx1"
+              data-id='{{item1.id}}' 
+              data-catid='{{item1.catid}}' wx:if="{{idx1<4}}">
+              <image class='spimg' lazy-load='true' src='{{item1.img}}'></image>
+              <text class='oh2 fz26'>{{item1.title}}</text>
+            </view>
+           
+          </view>
+        </view>
 			</view>
-		</scroll-view>
+		</view>
 	</view>
 </view>
 </view>

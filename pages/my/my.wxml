@@ -18,12 +18,12 @@
 			</view>
 			<view class="jifen">
 				<text class="time">{{usermsg.shijian}}分钟</text>
-				<text class="mk_tit">本周阅读时长</text>
+				<text class="mk_tit">阅读时长</text>
 			</view>
 		</view>
 	</view>
 	<view class="myOperation">
-		<view class="exchange">
+		<view class="exchange" data-sj="{{usermsg.shijian}}" bindtap='duihuan'>
 			<view class="op_l">
 				<view class="myBtnIcon">
 					<image src="/static/images/my/my_03.png"></image>
@@ -31,7 +31,7 @@
 				<text>时长兑积分</text>
 			</view>
 			<view class="op_r">
-				本周阅读时长{{usermsg.point}}分钟
+				阅读时长{{usermsg.shijian}}分钟
 			</view>
 		</view>
 		<!-- <view class="exchange">
@@ -55,7 +55,7 @@
 				剩余{{usermsg.point}}积分
 			</view>
 		</navigator>
-		<view class="exchange">
+		<view class="exchange"  data-url="/pages/buy/buy" bindtap='jumpout'>
 			<view class="op_l">
 				<view class="myBtnIcon">
 					<image src="/static/images/my/my_11.png"></image>
@@ -63,7 +63,7 @@
 				<text>无限卡</text>
 			</view>
 			<view class="op_r">
-				剩余2天,节省5元
+				剩余{{wuxian}}天,节省5元
 			</view>
 		</view>
 	</view>

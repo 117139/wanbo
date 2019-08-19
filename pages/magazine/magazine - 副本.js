@@ -6,9 +6,8 @@ const app = getApp()
 Page({
   data: {
     num: 0,
-    wsp: [], //微视频
-    wyp:[], //微音频
-    wyc: [], //微原创
+    wsp: [],
+    ybjt:[],
     arr1: [
       1,
       2,
@@ -38,7 +37,7 @@ Page({
     interval: 5000,
     duration: 500,
     title: ['微杂志', '微原创', '微音频', '微视频'],
-    catidz: [8, 21, 9, 16],
+    catidz: [8, 21, 9, '微视频'],
     page: [1, 1, 1, 1]
   },
   onLoad: function(option) {
@@ -55,12 +54,7 @@ Page({
     // }).exec()  
     if (option.type == 3) {
       this.getvideo()
-      return
-    } else if (option.type == 2) {
-      this.getyinpin()
-      return
-    } else if (option.type == 1) {
-      this.getyuanchuang()
+      this.getvideo1()
       return
     }
     this.getlist(this.data.catidz[option.type], 1, option.type)
@@ -76,8 +70,10 @@ Page({
     // pageState1.loading()    // 切换为loading状态
     //http://sf.zgylbx.com/index.php?m=content&c=index&a=tushutuijian
     wx.request({
-      url: app.IPurl2 + '/index.php?m=content&c=index&a=shipinchaxun',
-      data: {},
+      url: app.IPurl2 + '/index.php?m=content&c=index&a=lists&catid=16&page=1',
+      data: {
+
+      },
       header: {
         'content-type': 'application/x-www-form-urlencoded'
       },
@@ -103,65 +99,35 @@ Page({
       }
     })
   },
-
-  getyinpin() {
-    const pageState1 = pageState.default(this)
-    pageState1.loading() // 切换为loading状态
+  getvideo1() {
+    
     let that = this
-
+    // const pageState1 = pageState.default(this)
+    // pageState1.loading()    // 切换为loading状态
+    //http://sf.zgylbx.com/index.php?m=content&c=index&a=tushutuijian
     wx.request({
-      url: app.IPurl2 + '/index.php?m=content&c=index&a=yinpinchaxun',
-      data: {},
+      url: app.IPurl2 + '/index.php?m=content&c=index&a=lists&catid=17&page=1',
+      data: {
+
+      },
       header: {
         'content-type': 'application/x-www-form-urlencoded'
       },
       dataType: 'json',
       method: 'POST',
       success(res) {
-        pageState1.finish() // 切换为finish状态
+       
         console.log(res.data)
         if (res.data != 0) {
           that.setData({
-            wyp: res.data
+            ybjt: res.data
           })
         }
+        
         // pageState1.finish()    // 切换为finish状态
       },
       fail() {
-        pageState1.error()    // 切换为error状态
-        wx.showToast({
-          title: '网络异常',
-          duration: 1000,
-          icon: 'none'
-        })
-      }
-    })
-  },
-  getyuanchuang() {
-    const pageState1 = pageState.default(this)
-    pageState1.loading() // 切换为loading状态
-    let that = this
-
-    wx.request({
-      url: app.IPurl2 + '/index.php?m=content&c=index&a=yuanchuangchaxun',
-      data: {},
-      header: {
-        'content-type': 'application/x-www-form-urlencoded'
-      },
-      dataType: 'json',
-      method: 'POST',
-      success(res) {
-        pageState1.finish() // 切换为finish状态
-        console.log(res.data)
-        if (res.data != 0) {
-          that.setData({
-            wyc: res.data
-          })
-        }
-        // pageState1.finish()    // 切换为finish状态
-      },
-      fail() {
-        pageState1.error()    // 切换为error状态
+       
         wx.showToast({
           title: '网络异常',
           duration: 1000,
@@ -176,11 +142,11 @@ Page({
     const pageState1 = pageState.default(that)
     pageState1.loading() // 切换为loading状态
     var geturl
-    // if (catid == 8) {
+    if (catid == 8) {
       geturl = app.IPurl1 + '?m=content&c=index&a=nianfen'
-    // } else {
-    //   geturl = app.IPurl1 + '?m=content&c=index&a=lists&catid=' + catid + '&page=' + page
-    // }
+    } else {
+      geturl = app.IPurl1 + '?m=content&c=index&a=lists&catid=' + catid + '&page=' + page
+    }
     wx.request({
       //http://sf.zgylbx.com/index.php?m=content&c=index&a=nianfen
       url: geturl,
@@ -194,16 +160,147 @@ Page({
       method: 'POST',
       success(res) {
 
-        that.data.list0 = res.data
+        console.log(res.data)
+        that.data.page[type] = that.data.page[type] - 1 + 2
         that.setData({
-          list0: that.data.list0
+          page: that.data.page
         })
-      
-        
+        if (type == 0) {
+
+          // if(that.data.list0.length==0){
+          that.data.list0 = res.data
+          // var aaa=[{"year":"2008","mouth":[{"id":1,"name":"1"},{"id":2,"name":"1"},{"id":3,"name":"1"},{"id":4,"name":"1"}]},{"year":"2009","mouth":[{"id":1,"name":"1"},{"id":2,"name":"1"},{"id":3,"name":"1"},{"id":4,"name":"1"}]}]
+          that.setData({
+            // list0:that.data.list0
+            list0: that.data.list0
+          })
+          // console.log(that.data.list0)
+          // }
+
+        } else if (type == 1) {
+          if (that.data.list1.length == 0) {
+            that.setData({
+              list1: res.data
+            })
+          } else {
+            that.data.list1 = that.data.list1.concat(res.data)
+            that.setData({
+              list1: that.data.list1
+            })
+          }
+        } else if (type == 2) {
+          if (that.data.list2.length == 0) {
+            that.setData({
+              list2: res.data
+            })
+          } else {
+            that.data.list2 = that.data.list2.concat(res.data)
+            that.setData({
+              list2: that.data.list2
+            })
+          }
+        } else if (type == 3) {
+          // if(that.data.list3.length==0){
+          // 	that.setData({
+          // 		list3:res.data
+          // 	})
+          // }
+        }
         pageState1.finish() // 切换为finish状态
       },
       fail() {
         pageState1.error() // 切换为error状态
+      }
+    })
+  },
+  getlistxl(catid, page, type) {
+    let that = this
+    // const pageState1 = pageState.default(this)
+    // pageState1.loading()    // 切换为loading状态
+    var geturl
+    if (catid == 8) {
+      geturl = app.IPurl1 + '?m=content&c=index&a=nianfen'
+    } else {
+      geturl = app.IPurl1 + '?m=content&c=index&a=lists&catid=' + catid + '&page=' + page
+    }
+    wx.request({
+      //http://sf.zgylbx.com/index.php?m=content&c=index&a=nianfen
+      url: geturl,
+      data: {
+
+      },
+      header: {
+        'content-type': 'application/x-www-form-urlencoded'
+      },
+      dataType: 'json',
+      method: 'POST',
+      success(res) {
+        if (res.data.length == 0) {
+          wx.showToast({
+            title: '没有更多数据了',
+            duration: 1000,
+            icon: 'none'
+          })
+          return
+        }
+        console.log(res.data)
+        // var newdata=JSON.parse(res.data)
+        // console.log(newdata[0].year)
+        console.log(type)
+        console.log(typeof(res.data))
+        // if(!res.data[0].id&&!res.data[0].year){
+        // 	pageState1.finish()    // 切换为finish状态
+        // 	return
+        // }
+        that.data.page[type] = that.data.page[type] - 1 + 2
+        that.setData({
+          page: that.data.page
+        })
+        if (type == 0) {
+
+          // if(that.data.list0.length==0){
+          that.data.list0 = res.data
+          // var aaa=[{"year":"2008","mouth":[{"id":1,"name":"1"},{"id":2,"name":"1"},{"id":3,"name":"1"},{"id":4,"name":"1"}]},{"year":"2009","mouth":[{"id":1,"name":"1"},{"id":2,"name":"1"},{"id":3,"name":"1"},{"id":4,"name":"1"}]}]
+          that.setData({
+            // list0:that.data.list0
+            list0: that.data.list0
+          })
+          console.log(that.data.list0)
+          // }
+
+        } else if (type == 1) {
+          if (that.data.list1.length == 0) {
+            that.setData({
+              list1: res.data
+            })
+          } else {
+            that.data.list1 = that.data.list1.concat(res.data)
+            that.setData({
+              list1: that.data.list1
+            })
+          }
+        } else if (type == 2) {
+          if (that.data.list2.length == 0) {
+            that.setData({
+              list2: res.data
+            })
+          } else {
+            that.data.list2 = that.data.list2.concat(res.data)
+            that.setData({
+              list2: that.data.list2
+            })
+          }
+        } else if (type == 3) {
+          // if(that.data.list3.length==0){
+          // 	that.setData({
+          // 		list3:res.data
+          // 	})
+          // }
+        }
+        // pageState1.finish()    // 切换为finish状态
+      },
+      fail() {
+        // pageState1.error()    // 切换为error状态
       }
     })
   },
@@ -216,13 +313,12 @@ Page({
       return
     }
     if (type == 3) {
+      that.setData({
+        num: type
+      })
       this.getvideo()
-    } else if (type == 2) {
-      this.getyinpin()
-    } else if (type == 1) {
-      this.getyuanchuang()
-    }else{
-      that.getlist(that.data.catidz[type], that.data.page[type], type)
+      this.getvideo1()
+      return
     }
     that.setData({
       num: type
@@ -232,7 +328,7 @@ Page({
     })
     console.log(type)
 
-    // 
+    that.getlist(that.data.catidz[type], that.data.page[type], type)
   },
   //滑屏切换
   /*aa(e){
@@ -268,25 +364,17 @@ Page({
     } else if (type == 2) {
       url1 = '/pages/audio/audio?id=' + id + '&catid=' + catid
     } else if (type == 3) {
-      url1 = '/pages/magazineDatails/magazineDatails?id=' + id + '&catid=' + catid
+      url1 = '/pages/magazineDatails/magazineDatails?id=' + id
     }
     wx.navigateTo({
       url: url1
     })
   },
   jumpmore(e) {
-    let catid = e.currentTarget.dataset.catid
-    let mk = e.currentTarget.dataset.mk
-    if(catid==16){
-      wx.navigateTo({
-        url: '/pages/splist/splist?catid=' + catid +'&bankuan='+mk
-      })
-    }else{
-      wx.navigateTo({
-        url: '/pages/splist/splist?catid=' + catid + '&bankuan=' + mk
-      })
-    }
-    
+    let type = e.currentTarget.dataset.type
+    wx.navigateTo({
+      url: '/pages/splist/splist?type=' + type
+    })
   },
   govideo(e) {
     console.log(e.currentTarget.dataset.id)

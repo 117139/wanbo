@@ -3,7 +3,7 @@
 	<form  bindsubmit="formSubmit">
 	  <view class='sousuo'>
 			<view class="ipt">
-				<input name="sr" value="{{inr}}"></input>
+				<input name="sr" value="{{inr}}" placeholder='作者、关键字'></input>
 			</view>
 			<view class='ss_btn'>
 				<button  form-type="submit"></button>
@@ -87,6 +87,29 @@
 			data-catid="{{item0.catid}}">
 				<view class="xxIcon" >
 					<image hidden="{{num!= 2}}" src="/static/images/btn2_2.jpg"></image>
+				</view>
+				<view class="inner">
+				  <view class='newsinr'>{{item0.title}}</view>
+				  <view class='newsnum'>
+						<view>2019年第1期 20:30</view>
+						<view class="zfMax"></view>
+				    <!-- 转发最多 -->
+					</view>
+				</view>
+			</view>
+		</scroll-view>
+		<scroll-view hidden="{{num!= 3}}" scroll-y class="inrBox"  bindscrolltolower="jiazai">
+			<view wx:if="{{list3.length==0}}" class="zanwu">暂无数据</view>
+			<view class="yearsBox" wx:for="{{list3}}"
+			wx:for-index="idx0"
+			wx:for-item="item0"
+			wx:key="idx0"
+			bindtap="jump" 
+			data-id="{{item0.id}}"
+			data-type="3"
+			data-catid="{{item0.catid}}">
+				<view class="xxIcon" >
+					<image hidden="{{num!= 3}}" src="/static/images/btn2_4.jpg"></image>
 				</view>
 				<view class="inner">
 				  <view class='newsinr'>{{item0.title}}</view>

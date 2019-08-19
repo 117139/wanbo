@@ -9,11 +9,11 @@
 		"postcss": true,
 		"minified": true,
 		"newFeature": true,
-		"autoAudits": false,
+		"autoAudits": true,
 		"checkInvalidKey": true
 	},
 	"compileType": "miniprogram",
-	"libVersion": "2.0.8",
+	"libVersion": "2.8.0",
 	"appid": "wxd1034622dbcffc48",
 	"projectname": "wechat",
 	"simulatorType": "wechat",

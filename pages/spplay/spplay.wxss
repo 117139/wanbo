@@ -1,0 +1,183 @@
+/* pages/spplay/spplay.wxss */
+.container{
+	padding-top: 22rpx;
+}
+.playbox{
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	background-color: #fff;
+	padding: 6rpx 30rpx 60rpx;
+	box-sizing: border-box;
+}
+.palyimg{
+	width: 210rpx;
+	height: 210rpx;
+	border-radius: 50%;
+	overflow: hidden;
+	margin-bottom: 50rpx;
+}
+.palytit{
+	width: 660rpx;
+	text-overflow:ellipsis;
+	white-space:nowrap; 
+	overflow:hidden;
+	margin-bottom: 15rpx;
+	font-size: 32rpx;
+	color: #333;
+	display: flex;
+	justify-content: center;
+}
+.palyaud{
+	margin-bottom: 115rpx;
+	font-size: 24rpx;
+	color: #888888;
+}
+.palyslider{
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	width: 100%;
+}
+.palybtn{
+	width: 350rpx;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-bottom: 88rpx;
+}
+.playtime{
+	font-size: 26rpx;
+	color: #777777;
+}
+.slider{
+	flex: 1;
+}
+.prebtn,.nextbtn{
+	width: 30rpx;
+	height: 30rpx;
+}
+.playAudio{
+	width: 125rpx;
+	height: 125rpx;
+}
+
+.buyBox{
+  margin-top: 20rpx;
+	width: 580rpx;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	font-size: 32rpx;
+	color: #fff;
+}
+.btn1{
+	width: 270rpx;
+	height: 60rpx;
+	border-radius: 30rpx;
+	background-color: #fe6c5f;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.btn2{
+	width: 270rpx;
+	height: 60rpx;
+	border-radius: 30rpx;
+	background-color: #00a0e9;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.shareBox{
+	width: 100%;
+	padding: 30rpx 0 0;
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	font-size: 26rpx;
+	color: #333;
+}
+.shareFx{
+	display: flex;
+	align-items: center;
+  position: relative;
+}
+.shareBtn{
+	opacity:0;
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 9;
+}
+.fxicon{
+	width: 60rpx;
+	height: 60rpx;
+	margin-right: 5rpx;
+}
+
+
+.playtext{
+	margin-top: 20rpx;
+	background-color: #fff;
+	width: 100%;
+	padding: 0 30rpx;
+	box-sizing: border-box;
+}
+.texttit{
+	width: 100%;
+	font-size: 42rpx;
+	color: #333;
+	font-weight: bold;
+	height: 130rpx;
+	display: flex;
+	align-items: center;
+}
+.textinr{
+	font-size: 32rpx;
+	color: #333;
+	position: relative;
+}
+.tinr1{
+	height: 500rpx;
+	overflow: hidden;
+}
+.morec{
+	width: 100%;
+	height: 350rpx;
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	z-index: 9;
+	display: flex;
+	flex-direction: column;
+}
+.textmore{
+	width: 100%;
+	height: 180rpx;
+	background: linear-gradient(rgba(255,255,255,.5),rgba(255,255,255,1));
+	
+}
+.morebottom{
+	flex: 1;
+	background-color: #fff;
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	padding-top: 40rpx;
+}
+.moreicon{
+	width: 40rpx;
+	height: 40rpx;
+}
+video{
+  width: 100%;
+}
+.sptit{
+  margin-top: 20rpx;
+  font-size: 30rpx;
+}

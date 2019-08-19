@@ -1,0 +1,2 @@
+<!--pages/buy/buy.wxml-->
+<image class='buy' src='/static/images/buy.png'></image>

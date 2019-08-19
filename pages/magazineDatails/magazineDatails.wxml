@@ -1,6 +1,7 @@
 <!--logs.wxml-->
 <import src="../../vendor/wxParse/wxParse.wxml" />
 
+<wxs src="../../utils/filter.wxs" module="filter" />
 <import src="/utils/pageState/index.wxml" />
 <template is="pageState" data="{{...pageState}}" />
 <view class="container">
@@ -8,23 +9,27 @@
 		<view class="topTit">
 			<view class="p1">{{details.title}}</view>
 			<view class="p2">{{details.ftitle}}</view>
-			<view class="p2">作者：{{details.zuozhe}}      {{details.nian}}年{{details.yue}}月</view>
+			<view class="p2"><text wx:if="{{details.zuozhe}}" style='margin-right:20rpx'>作者：{{details.zuozhe}}</text>      <text wx:if="{{details.nian}}">{{details.nian}}年{{details.yue}}月</text></view>
 		</view>
-		<view class="wxfwb">
+		<view class="wxfwb" wx:if="{{details.readpoint==0||details.zt==1}}">
 			<template is="wxParse" data="{{wxParseData:article.nodes}}" />
 		</view>
-		<view class="buyBox" wx:if="{{details.readpoint}}">
-			<view class="btn1">购买本章 {{details.readpoint}}积分</view>
-			<view class="btn2">购买阅读卡</view>
+		<view class="wxfwb" wx:else>
+			本文章需要购买
+		</view>
+		<view class="buyBox">
+			<view class="btn1" wx:if="{{details.readpoint!=0&&details.zt!=1}}" bindtap="buy">购买本章 {{details.readpoint}}积分</view>
+			<!-- <view class="btn2" data-url="/pages/buy/buy" bindtap='jump'>购买阅读卡</view> -->
+			<view class="btn2" bindtap='jumpout'>购买阅读卡</view>
 		</view>
 		<view class="shareBox">
-			<view class="shareFx" bindtap="share" >
-      <button class="shareBtn" open-type='share' data-supid="1" data-type="1"></button>
+			<!-- <view class="shareFx" bindtap="share" >
+        <button class="shareBtn" open-type='share' data-supid="1" data-type="1"></button>
 				<view class="fxicon">
 					<image src="/static/images/share_03.png"></image>
 				</view>
 				<text>分享挣取积分</text>
-			</view>
+			</view> -->
 			<view class="shareFx" bindtap="share">
       <button class="shareBtn" open-type='share' data-supid="1" data-type="2"></button>
 				<view class="fxicon">
@@ -34,14 +39,15 @@
 			</view>
 			<view class="shareFx" bindtap="share" data-type="3">
 				<view class="fxicon">
-					<image src="/static/images/share_07.png"></image>
+					<image wx:if="{{dzstatus!=1}}" src="/static/images/share_07.png"></image>
+					<image wx:if="{{dzstatus==1}}" src="/static/images/share_071.png"></image>
 				</view>
-				<text>点赞</text>
+				<text>{{dianzan?dianzan:0}}</text>
 			</view>
 		</view>
 	</view>
 	<view class="dszl">
-		<view class="dstitle">
+		<view class="dstitle" >
 			相关推荐
 		</view>
 		<view class='newslist'>
@@ -52,7 +58,8 @@
 						wx:for-item="item"
 						wx:key="idx"
             bindtap="jumpdt" 
-            data-id="2">
+            data-id="{{item.id}}" 
+            data-catid="{{item.catid}}">
 		    <view class="xxIcon" >
 					<image hidden="{{item.catid!= 8}}" src="/static/images/btn2_1.jpg"></image>
 					<image hidden="{{item.catid!= 10}}" src="/static/images/btn2_3.jpg"></image>
@@ -61,10 +68,10 @@
 				</view>
 		    <view class="inner">
 		      <view class='newsinr'>{{item.title}}</view>
-		      <view class='newsnum'>
+		      <!-- <view class='newsnum'>
 		      	<view>音频   20:30</view>
 		      	<view class="zfMax"></view>
-		      </view>
+		      </view> -->
 		    </view>
 		  </view>
 		</view>
@@ -78,26 +85,19 @@
 						wx:for="{{books}}" 
 						wx:for-index="idx" 
 						wx:for-item="item"
-						wx:key="idx">
-				<view class="bookOne">
+						wx:key="idx"  >
+            <!-- data-url="/pages/buy/buy" bindtap='jump' -->
+				<view class="bookOne" bindtap="jumpdt" 
+            data-id="{{item.id}}" 
+            data-catid="{{item.catid}}">
 					<image src="{{'http://sf.zgylbx.com'+item.thumb}}"></image>
 				</view>
-				<view class="bookname">{{item.title}}</view>
-				<!-- <view class="bookmsg">
-					<view>￥111</view>
-					<view class="bookbtn" bindtap="rob" data-id="0">马上抢</view>
-				</view> -->
-			</view>
-			<!-- <view>
-				<view class="bookOne">
-					<image src="../../static/images/bg.jpg"></image>
-				</view>
-				<view class="bookname">《向航空业学管理向航空业学管理》</view>
+				<!-- <view class="bookname">{{item.title}}</view> -->
 				<view class="bookmsg">
-					<view>￥111</view>
-					<view class="bookbtn" bindtap="rob" data-id="1">马上抢</view>
+					<view><!-- ￥ -->{{item.title}}</view>
+					<view class="bookbtn" bindtap='jumpout' data-outurl="{{item.url}}" data-id="{{item.id}}">立即购买</view>
 				</view>
-			</view> -->
+			</view>
 		</view>
 	</view>
 	

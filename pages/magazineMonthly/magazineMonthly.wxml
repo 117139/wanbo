@@ -19,7 +19,7 @@
 	<view class="dszl" wx:for="{{dataz}}"
 		wx:for-index="idx"
 		wx:for-item="item"
-		wx:key="idx">
+		wx:key="idx"  wx:if="{{item.lists.length!=0}}">
 		<view class="dstitle">
 			{{item.bankuan}}
 		</view>

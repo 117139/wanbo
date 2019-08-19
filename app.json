@@ -1,15 +1,19 @@
 {
   "pages": [
     "pages/index/index",
-    "pages/jfjl/jfjl",
+    "pages/splist/splist",
+    "pages/buy/buy",
+    "pages/spplay/spplay",
     "pages/magazine/magazine",
+    "pages/jfjl/jfjl",
     "pages/audio/audio",
     "pages/login/login",
     "pages/sousuo/sousuo",
     "pages/magazineDatails/magazineDatails",
     "pages/magazineMonthly/magazineMonthly",
     "pages/my/my",
-    "pages/logs/logs"
+    "pages/logs/logs",
+    "pages/out/out"
   ],
   "window": {
     "backgroundTextStyle": "light",

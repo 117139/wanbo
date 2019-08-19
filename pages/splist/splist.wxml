@@ -1,0 +1,61 @@
+<!--pages/splist/splist.wxml-->
+<!-- <import src="/utils/pageState/index.wxml" />
+<template is="pageState" data="{{...pageState}}" /> -->
+<view class='container'>
+  <view class='newslist'>
+    <view class='spbox' wx:if="{{wsp.length>0}}">
+      <view class='spone' data-id='{{item.id}}' data-catid='{{item.catid}}' bindtap='govideo' wx:for="{{wsp}}" 
+        wx:for-index="idx" 
+        wx:for-item="item" wx:key="idx">
+        <image lazy-load='true' class='spimg' src='{{item.img}}'></image>
+        <text>{{item.title}}</text>
+      </view>
+    </view>
+  </view>
+  <view class='newslist'>
+    <view class='spbox' wx:if="{{wyp.length>0}}">
+      <view class="newsOne" bindtap="jumpdt" 
+        data-type="2"
+        data-id="{{item.id}}"
+        data-catid="{{item.catid}}"
+        wx:for="{{wyp}}" 
+        wx:for-index="idx" 
+        wx:for-item="item"
+        wx:key="idx">
+        <view class="xxIcon" >
+          <image src="/static/images/btn2_2.jpg"></image>
+        </view>
+        <view class="inner">
+          <view class='newsinr'>{{item.title}}</view>
+          <view class='newsnum'>
+            <view>音频 {{item.shijian}}</view>
+            <view class="zfMax"></view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class='newslist'>
+    <view class='spbox' wx:if="{{wyc.length>0}}">
+      <view class="newsOne" bindtap="jumpdt" 
+        data-type="2"
+        data-id="{{item.id}}"
+        data-catid="{{item.catid}}"
+        wx:for="{{wyc}}" 
+        wx:for-index="idx" 
+        wx:for-item="item"
+        wx:key="idx">
+        <view class="xxIcon" >
+          <image src="/static/images/btn2_2.jpg"></image>
+        </view>
+        <view class="inner">
+          <view class='newsinr'>{{item.title}}</view>
+          <view class='newsnum'>
+            <view>音频 {{item.shijian}}</view>
+            <view class="zfMax"></view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
