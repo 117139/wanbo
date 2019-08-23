@@ -4,12 +4,12 @@
 <view class="container">
 <form  bindsubmit="formSubmit">
   <view class='sousuo'>
-		<view class="ipt">
-			<input name="sr" placeholder='作者、关键字'></input>
-		</view>
 		<view class='ss_btn'>
 			<button  form-type="submit"></button>
 			<image src="/static/images/sousuo.png"></image>
+		</view>
+		<view class="ipt">
+			<input name="sr" placeholder='作者、关键字'></input>
 		</view>
 		
 	</view>

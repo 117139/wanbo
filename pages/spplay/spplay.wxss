@@ -1,5 +1,6 @@
 /* pages/spplay/spplay.wxss */
 .container{
+  min-height: 100vh;
 	padding-top: 22rpx;
 }
 .playbox{
@@ -10,6 +11,7 @@
 	background-color: #fff;
 	padding: 6rpx 30rpx 60rpx;
 	box-sizing: border-box;
+  margin-bottom: 20rpx;
 }
 .palyimg{
 	width: 210rpx;

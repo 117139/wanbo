@@ -5,6 +5,7 @@ const util = require('../../utils/util.js')
 const app = getApp()
 Page({
   data: {
+    banner:[],
     num: 0,
     wsp: [], //微视频
     wyp:[], //微音频
@@ -43,6 +44,7 @@ Page({
   },
   onLoad: function(option) {
     console.log(option.type)
+    this.getbanner()
     this.setData({
       num: option.type
     })
@@ -103,7 +105,56 @@ Page({
       }
     })
   },
-
+  getbanner(){
+    var that =this
+    wx.request({
+      url: app.IPurl2 + '/index.php?m=content&c=index&a=listbanner',
+      data: {},
+      header: {
+        'content-type': 'application/x-www-form-urlencoded'
+      },
+      dataType: 'json',
+      method: 'POST',
+      success(res) {
+        
+        console.log(res.data)
+        if (res.data[0].bankuan) {
+          var arr=[]
+          var imgs = res.data
+          for (var i in imgs) {
+            if (imgs[i].bankuan == '微杂志') {
+              arr[0] = app.IPurl2 + imgs[i].lists[0].banner
+            }
+            if (imgs[i].bankuan == '微原创') {
+              arr[1] = app.IPurl2 + imgs[i].lists[0].banner
+            }
+            if (imgs[i].bankuan == '微音频') {
+              arr[2] = app.IPurl2 + imgs[i].lists[0].banner
+            }
+            if (imgs[i].bankuan == '微视频') {
+              arr[3] = app.IPurl2 + imgs[i].lists[0].banner
+            }
+          }
+          that.setData({
+            banner: arr
+          })
+        }else{
+          wx.showToast({
+            title: '获取失败',
+            duration: 1000,
+            icon: 'none'
+          })
+        }
+      },
+      fail() {
+        wx.showToast({
+          title: '网络异常',
+          duration: 1000,
+          icon: 'none'
+        })
+      }
+    })
+  },
   getyinpin() {
     const pageState1 = pageState.default(this)
     pageState1.loading() // 切换为loading状态

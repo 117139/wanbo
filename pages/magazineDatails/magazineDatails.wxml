@@ -46,6 +46,35 @@
 			</view>
 		</view>
 	</view>
+  <view class="w100">
+		<view class="guige" bindtap="" wx:if="{{pllist.length>0}}">
+			<view class="guige_l">
+				<view class="fz32 mr10">用户评价</view>
+				<!-- <view class="guige_l_name">({{1}}条)</view> -->
+			</view>
+			<view class="fz26 c9" bindtap="gomore">
+				查看全部
+			</view>
+		</view>
+		<view class="contbox  dis_flex"  wx:if="{{pllist.length>0}}">
+			<image class="plhaedimg" catchtap="previewImage" data-src="{{pllist[0].thumb}}"
+			 src="{{pllist[0].thumb}}"></image>
+			<view class="flex_1">
+				<view class="fz26 c3 mb10 dis_flex ju_b">
+					<text>{{pllist[0].nicheng}}</text>
+					<text class="fz24 c9">{{filter.getDateTime(pllist[0].inputtime)}}</text>
+				</view>
+				<view class="fz26 oh3 c9">{{pllist[0].title}}</view>
+			</view>
+		</view>
+    <form  bindsubmit="formSubmit" class='w100 plform'>
+      <textarea class='pl_srbox' name='sr' placeholder='请输入您的评论' value='{{form_info}}'></textarea>
+      <view class='pl_btn'>
+        提交
+				<button  form-type="submit"></button>
+			</view>
+    </form>
+	</view>
 	<view class="dszl">
 		<view class="dstitle" >
 			相关推荐
@@ -94,8 +123,11 @@
 				</view>
 				<!-- <view class="bookname">{{item.title}}</view> -->
 				<view class="bookmsg">
-					<view><!-- ￥ -->{{item.title}}</view>
-					<view class="bookbtn" bindtap='jumpout' data-outurl="{{item.url}}" data-id="{{item.id}}">立即购买</view>
+					<view class='oh1'>￥{{item.jiage}}</view>
+					<view class="bookbtn" bindtap='jumpout' 
+           bindtap="jumpdt" 
+            data-id="{{item.id}}" 
+            data-catid="{{item.catid}}">立即购买</view><!-- data-outurl="{{item.url}}" data-id="{{item.id}}" -->
 				</view>
 			</view>
 		</view>

@@ -98,7 +98,7 @@ App({
 							    that.globalData.userInfo = rest.userInfo
 									uinfo=rest.userInfo
 									wx.setStorageSync('userInfo', rest.userInfo)
-                  that.getuser(res.data.openid, uinfo.nickName)
+                  that.getuser(res.data.openid, uinfo.nickName, uinfo.avatarUrl)
 							  }
 							})
 							
@@ -111,9 +111,9 @@ App({
       }
     })
 	},
-	getuser(openid,nickname){
+	getuser(openid,nickname,tx){
 		let that =this
-		var geturl1=that.IPurl1+'?m=content&c=index&a=wechat&openid='+openid+'&nickname='+nickname
+    var geturl1 = that.IPurl1 + '?m=content&c=index&a=wechat&openid=' + openid + '&nickname=' + nickname + '&touxiang=' + tx
 			wx.request({
 				//http://sf.zgylbx.com/index.php?m=content&c=index&a=lists&catid=12
 				url: geturl1,
@@ -128,7 +128,7 @@ App({
           // console.log('openid126' + JSON.stringify(res))
 					// console.log(res.data)
 					wx.setStorageSync('usermsg', res.data)
-          console.log(131 + JSON.stringify(wx.getStorageSync('usermsg')))
+          // console.log(131 + JSON.stringify(wx.getStorageSync('usermsg')))
 					// that.setData({
 					// 	imgUrls:res.data
 					// })
@@ -143,5 +143,56 @@ App({
 				}
 			})
 		
-	}
+	},
+  gotel(){
+    var that = this
+    //http://sf.zgylbx.com/index.php?m=content&c=index&a=shizhi&uid=4
+    wx.request({
+      url: that.IPurl2 + '/index.php?m=content&c=index&a=shizhi&uid=' + wx.getStorageSync('usermsg').userid,
+      data: {},
+      header: {
+        'content-type': 'application/x-www-form-urlencoded'
+      },
+      dataType: 'json',
+      method: 'get',
+      success(res) {
+        console.log(res.data)
+        if (res.data.zt == 0) {
+            wx.navigateTo({
+              url: '/pages/bdtel/bdtel',
+            })
+        } else if(res.data.zt == 1) {
+          wx.navigateTo({
+            url: '/pages/hqewm/hqewm?url='+res.data.zhifu,
+          })
+        } else {
+          if (res.data.msg) {
+            wx.showToast({
+              icon: 'none',
+              title: '获取失败'
+            })
+          } else {
+            wx.showToast({
+              icon: 'none',
+              title: '获取失败'
+            })
+          }
+        }
+
+      },
+      fail(err) {
+        wx.showToast({
+          icon: 'none',
+          title: '操作失败'
+        })
+        console.log(err)
+      }
+    })
+  },
+  gomore(e,catid,id) {
+    console.log(e)
+    wx.navigateTo({
+      url: "/pages/pinglun/pinglun?catid=" + catid+"&id="+id
+    })
+  },
 })

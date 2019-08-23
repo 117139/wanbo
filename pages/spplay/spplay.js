@@ -7,6 +7,8 @@ Page({
    * 页面的初始数据
    */
   data: {
+    form_info: '',
+    pllist: [],
     dianzan: 0,     //点赞数
     dzstatus: 0, //1表示我点过赞了，0表示我没点过赞
     num:0,
@@ -77,9 +79,98 @@ Page({
 
   },
   jumpout() {
-    wx.navigateTo({
-      url: '/pages/out/out'
+    app.gotel()
+    // wx.navigateTo({
+    //   url: '/pages/out/out'
+    // })
+  },
+
+  gomore(e) {
+    var that = this
+    app.gomore(e, that.data.catid, that.data.id)
+  },
+
+  formSubmit(e) {
+    var that = this
+    console.log('form发生了submit事件，携带数据为：', e.detail.value)
+    if (e.detail.value.sr == '') {
+      wx.showToast({
+        title: '请输入评论',
+        icon: 'none'
+      })
+      return
+    }
+    wx.request({
+      url: app.IPurl2 + '/index.php?m=content&c=index&a=pinglun_add&catid=' + that.data.catid + '&id=' + that.data.id + '&uid=' + wx.getStorageSync('usermsg').userid + '&nicheng=' + wx.getStorageSync('usermsg').nickname + '&content=' + e.detail.value.sr,
+      data: {},
+      header: {
+        'content-type': 'application/x-www-form-urlencoded'
+      },
+      dataType: 'json',
+      method: 'get',
+      success(res) {
+        console.log(res.data)
+        if (res.data.zt == 1) {
+          wx.showToast({
+            title: '评论成功',
+            icon: 'none'
+          })
+          that.setData({
+            form_info: ''
+          })
+          that.getpinlun()
+        } else {
+          wx.showToast({
+            title: '评论失败',
+            icon: 'none'
+          })
+        }
+
+      },
+      fail() {
+        wx.showToast({
+          title: '评论失败',
+          icon: 'none'
+        })
+        console.log('失败')
+      }
     })
+    // that.getpinlun()
+  },
+  getpinlun() {
+    var that = this
+    //http://sf.zgylbx.com/index.php?m=content&c=index&a=pinglun_list&uid=3&catid=8&id=68&page=1
+    wx.request({
+      url: app.IPurl2 + '/index.php?m=content&c=index&a=pinglun_list&uid=' + wx.getStorageSync('usermsg').userid + '&catid=' + that.data.catid + '&id=' + that.data.id + '&page=1',
+      data: {},
+      header: {
+        'content-type': 'application/x-www-form-urlencoded'
+      },
+      dataType: 'json',
+      method: 'get',
+      success(res) {
+        console.log(res.data)
+        if (res.data.zt == 1) {
+          that.setData({
+            pllist: res.data.pinglun
+          })
+        } else {
+          wx.showToast({
+            icon: 'none',
+            title: '获取失败'
+          })
+        }
+
+      },
+      fail() {
+        wx.showToast({
+          icon: 'none',
+          title: '获取失败'
+        })
+        console.log('失败')
+      }
+    })
+
   },
   buy() {
     let that = this

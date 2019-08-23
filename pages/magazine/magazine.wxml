@@ -3,17 +3,35 @@
 <import src="/component/listHeader/listHeader.wxml" />
 <template is="pageState" data="{{...pageState}}" />
 <view class="container log-list">
-	<template is="listHeader" data="{{num}}" />
+	<!-- <template is="listHeader" data="{{num}}" /> -->
+  <view class="banner" hidden="{{num!=0}}">
+		<image src="{{banner[0]}}"></image>
+	</view>
+	<view class="banner" hidden="{{num != 1}}">
+		<image src="{{banner[1]}}"></image>
+	</view>
+	<view class="banner" hidden="{{num != 2}}">
+		<image src="{{banner[2]}}"></image>
+	</view>
+	<view class="banner" hidden="{{num != 3}}">
+		<image src="{{banner[3]}}"></image>
+		<view class="palyVideo">
+			<view class="play">
+				<image src="../../static/images/index/play.png"></image>
+			</view>
+			<view>20:30</view>
+		</view>
+	</view>
 	<form  bindsubmit="formSubmit">
 	  <view class='sousuo'>
 			
-			
-			<view class="ipt">
-				<input name="sr" placeholder='作者、关键字'></input>
-			</view>
 			<view class='ss_btn'>
 				<button  form-type="submit"></button>
 				<image src="/static/images/sousuo.png"></image>
+			</view>
+			
+			<view class="ipt">
+				<input name="sr" placeholder='作者、关键字'></input>
 			</view>
 		</view>
 	  

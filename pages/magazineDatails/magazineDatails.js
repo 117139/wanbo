@@ -9,7 +9,9 @@ Page({
     dzstatus: 0, //1表示我点过赞了，0表示我没点过赞
 		catid:'',
 		id:'',
+    form_info:'',
     iszan:false,
+    pllist:[],
 		setInter:'',//计时器
 		num:0,//阅读时间
 		details:'',
@@ -25,6 +27,7 @@ Page({
   },
   onLoad: function (option) {
 		 var that=this;
+    
 		 console.log(option)
 		 if(option.id){
        this.setData({
@@ -34,15 +37,13 @@ Page({
 			 this.getdetails(option.catid,option.id)
 		 }
 		 
-		 this.getXg()
-		 this.getbooks()
-     this.getzan()
-			 
+    that.getXg()
+    that.getbooks()
+    that.getzan()
+    that.getpinlun() 
   },
 	onReady: function () {
-		// var that=this;
-		// var article = '<div><span>撒大声地所大所多</span><p>的发生大事<i>的发生大事</i></p></div>'
-		// WxParse.wxParse('article', 'html', article, that, 5);
+	
 	},
 	getdetails(catid,id){
 		let that =this
@@ -60,7 +61,7 @@ Page({
 					dataType:'json',
 					method:'POST',
 					success(res) {
-						console.log(res.data)
+						// console.log(res.data)
 					let ruls=res.data
 						that.setData({
 							details:ruls,
@@ -87,7 +88,93 @@ Page({
 					}
 				})
 	},
-	
+  gomore(e){
+    var that=this
+    app.gomore(e, that.data.catid,that.data.id)
+  },
+
+  formSubmit(e) {
+    var that = this
+    console.log('form发生了submit事件，携带数据为：', e.detail.value)
+    if (e.detail.value.sr == '') {
+      wx.showToast({
+        title: '请输入评论',
+        icon:'none'
+      })
+      return
+    }
+    wx.request({
+      url: app.IPurl2 + '/index.php?m=content&c=index&a=pinglun_add&catid=' + that.data.catid + '&id=' + that.data.id + '&uid=' + wx.getStorageSync('usermsg').userid + '&nicheng=' + wx.getStorageSync('usermsg').nickname + '&content=' + e.detail.value.sr,
+      data: {},
+      header: {
+        'content-type': 'application/x-www-form-urlencoded'
+      },
+      dataType: 'json',
+      method: 'get',
+      success(res) {
+        console.log(res.data)
+        if (res.data.zt == 1) {
+          wx.showToast({
+            title: '评论成功',
+            icon: 'none'
+          })
+          that.setData({
+            form_info: ''
+          })
+          that.getpinlun()
+        } else {
+          wx.showToast({
+            title: '评论失败',
+            icon: 'none'
+          })
+        }
+
+      },
+      fail() {
+        wx.showToast({
+          title: '评论失败',
+          icon: 'none'
+        })
+        console.log('失败')
+      }
+    })
+    // that.getpinlun()
+  },
+  getpinlun() {
+    var that = this
+    //http://sf.zgylbx.com/index.php?m=content&c=index&a=pinglun_list&uid=3&catid=8&id=68&page=1
+    wx.request({
+      url: app.IPurl2 + '/index.php?m=content&c=index&a=pinglun_list&uid='+wx.getStorageSync('usermsg').userid+'&catid='+that.data.catid+'&id='+that.data.id+'&page=1',
+      data: {},
+      header: {
+        'content-type': 'application/x-www-form-urlencoded'
+      },
+      dataType: 'json',
+      method: 'get',
+      success(res) {
+        console.log(res.data)
+        if (res.data.zt == 1) {
+          that.setData({
+            pllist: res.data.pinglun
+          })
+        } else {
+          wx.showToast({
+            icon: 'none',
+            title: '获取失败'
+          })
+        }
+
+      },
+      fail() {
+        wx.showToast({
+          icon: 'none',
+          title: '获取失败'
+        })
+        console.log('失败')
+      }
+    })
+
+  },
 	buy(){
 		let that =this
 		//http://sf.zgylbx.com/index.php?m=content&c=index&a=guomai&catid=8&id=68&uid=3&add=ok
@@ -190,11 +277,12 @@ Page({
 				})
 	},
   jumpout(e){
-    console.log(e)
-    let outurl = e.currentTarget.dataset.outurl
-    wx.navigateTo({
-      url: '/pages/out/out?ourl=' + outurl
-    })
+    app.gotel()
+    // console.log(e)
+    // let outurl = e.currentTarget.dataset.outurl
+    // wx.navigateTo({
+    //   url: '/pages/out/out?ourl=' + outurl
+    // })
   },
   getbooks() {
     let that = this
