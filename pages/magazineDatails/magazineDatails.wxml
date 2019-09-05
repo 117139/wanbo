@@ -31,7 +31,7 @@
 				<text>分享挣取积分</text>
 			</view> -->
 			<view class="shareFx" bindtap="share">
-      <button class="shareBtn" open-type='share' data-supid="1" data-type="2"></button>
+      <button class="shareBtn" open-type='share' data-supid="{{usermsg.userid}}" data-type="2"></button>
 				<view class="fxicon">
 					<image src="/static/images/share_05.png"></image>
 				</view>
@@ -68,7 +68,7 @@
 			</view>
 		</view>
     <form  bindsubmit="formSubmit" class='w100 plform'>
-      <textarea class='pl_srbox' name='sr' placeholder='请输入您的评论' value='{{form_info}}'></textarea>
+      <textarea class='pl_srbox' name='sr' placeholder='' value='{{form_info}}'></textarea>
       <view class='pl_btn'>
         提交
 				<button  form-type="submit"></button>
@@ -119,7 +119,7 @@
 				<view class="bookOne" bindtap="jumpdt" 
             data-id="{{item.id}}" 
             data-catid="{{item.catid}}">
-					<image src="{{'http://sf.zgylbx.com'+item.thumb}}"></image>
+					<image src="{{item.thumb}}"></image>
 				</view>
 				<!-- <view class="bookname">{{item.title}}</view> -->
 				<view class="bookmsg">

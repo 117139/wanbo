@@ -10,7 +10,8 @@
 		</view>
 		<view class="buyBox">
 			<view class="btn1" wx:if="{{details.readpoint!=0&&details.zt!=1}}" bindtap="buy">购买本章{{details.readpoint}}积分</view>
-			<view class="btn2" data-url="/pages/buy/buy" bindtap='jump'>购买阅读卡</view>
+			<!-- <view class="btn2" data-url="/pages/buy/buy" bindtap='jump'>购买阅读卡</view> -->
+			<view class="btn2" bindtap='jumpout'>购买阅读卡</view>
 		</view>
 		<view class="shareBox">
 			<!-- <view class="shareFx" bindtap="share" >
@@ -21,7 +22,7 @@
 				<text>分享挣取积分</text>
 			</view> -->
 			<view class="shareFx" bindtap="share">
-		  <button class="shareBtn" open-type='share' data-supid="1" data-type="2"></button>
+		  <button class="shareBtn" open-type='share' data-supid="{{usermsg.userid}}" data-type="2"></button>
 				<view class="fxicon">
 					<image src="/static/images/share_05.png"></image>
 				</view>
@@ -58,7 +59,7 @@
 			</view>
 		</view>
     <form  bindsubmit="formSubmit" class='w100 plform'>
-      <textarea class='pl_srbox' name='sr' placeholder='请输入您的评论' value='{{form_info}}'></textarea>
+      <textarea class='pl_srbox' name='sr' placeholder='' value='{{form_info}}'></textarea>
       <view class='pl_btn'>
         提交
 				<button  form-type="submit"></button>

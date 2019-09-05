@@ -8,7 +8,7 @@ Page({
     wuxian:0
   },
   onLoad: function () {
-		
+		console.log('onload')
     this.setData({
       usermsg: wx.getStorageSync('usermsg'),
       userwxmsg: wx.getStorageSync('userInfo')
@@ -43,9 +43,10 @@ Page({
 
   },
   jumpout() {
-    wx.navigateTo({
-      url: '/pages/out/out'
-    })
+    app.gotel()
+    // wx.navigateTo({
+    //   url: '/pages/out/out'
+    // })
   },
   duihuan(e){
     let that = this
@@ -74,8 +75,30 @@ Page({
                   icon: 'none',
                   title: '您的时长太短了',
                 })
+              } else if (res.data == 3){
+                wx.showToast({
+                  icon: 'none',
+                  title: '兑换成功',
+                })
+                
+              }else{
+                wx.showToast({
+                  icon: 'none',
+                  title: '操作失败',
+                })
               }
+             
               app.dlogin()
+              // setTimeout(function () {
+              //   that.data.usermsg = wx.getStorageSync('usermsg')
+              //   that.data.userwxmsg = wx.getStorageSync('userInfo')
+              //   that.setData({
+              //     usermsg: that.data.usermsg,
+              //     userwxmsg: that.data.userwxmsg
+              //   })
+              //   console.log('my')
+               
+              // }, 0)
               // console.log(res)
             },
             fail() {
@@ -96,7 +119,7 @@ Page({
   wuxianka(){
     //http://sf.zgylbx.com/index.php?m=content&c=index&a=get_wuxianka&userid=3
     let that = this
-    var geturl1 = app.IPurl2 + '/index.php?m=content&c=index&a=get_wuxianka&userid=' + wx.getStorageSync('usermsg').userid
+    var geturl1 = app.IPurl2 + '/index.php?m=content&c=index&a=wuxianka&uid=' + wx.getStorageSync('usermsg').userid
     wx.request({
 
       url: geturl1,
@@ -107,20 +130,22 @@ Page({
       dataType: 'json',
       method: 'POST',
       success(res) {
-        if(res.data.test==0){
+        if (res.data.syts){
             that.setData({
-              wuxian: res.data.test
+              wuxian: res.data.syts
             })
-        }
-        if (res == 1) {
-         
+        }else{
+          wx.showToast({
+            icon: 'none',
+            title: '获取失败',
+          })
         }
         // console.log(res)
       },
       fail() {
         wx.showToast({
           icon: 'none',
-          title: '操作失败',
+          title: '获取失败',
         })
       }
     })

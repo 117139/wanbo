@@ -43,14 +43,17 @@ Page({
     page: [1, 1, 1, 1]
   },
   onLoad: function(option) {
-    console.log(option.type)
+    // console.log(option.type)
     this.getbanner()
-    this.setData({
-      num: option.type
-    })
-    wx.setNavigationBarTitle({
-      title: this.data.title[option.type],
-    })
+    if (option.type){
+     this.setData({
+       num: option.type
+     })
+      wx.setNavigationBarTitle({
+        title: this.data.title[option.type],
+      })
+   }
+   
     // wx.createSelectorQuery().selectAll('.tabSwiper').boundingClientRect(function (rect) {
     // 		console.log(rect[0].height)
     // 		console.log(rect[0].width)
@@ -123,16 +126,16 @@ Page({
           var imgs = res.data
           for (var i in imgs) {
             if (imgs[i].bankuan == '微杂志') {
-              arr[0] = app.IPurl2 + imgs[i].lists[0].banner
+              arr[0] = imgs[i].lists[0].banner
             }
             if (imgs[i].bankuan == '微原创') {
-              arr[1] = app.IPurl2 + imgs[i].lists[0].banner
+              arr[1] = imgs[i].lists[0].banner
             }
             if (imgs[i].bankuan == '微音频') {
-              arr[2] = app.IPurl2 + imgs[i].lists[0].banner
+              arr[2] = imgs[i].lists[0].banner
             }
             if (imgs[i].bankuan == '微视频') {
-              arr[3] = app.IPurl2 + imgs[i].lists[0].banner
+              arr[3] = imgs[i].lists[0].banner
             }
           }
           that.setData({

@@ -7,6 +7,8 @@ Page({
    * 页面的初始数据
    */
   data: {
+    usermsg: '',
+    userwxmsg: '',
     form_info: '',
     pllist: [],
     dianzan: 0,     //点赞数
@@ -24,7 +26,9 @@ Page({
   onLoad: function(options) {
     this.setData({
       catid:options.catid,
-      id: options.id
+      id: options.id,
+      usermsg: wx.getStorageSync('usermsg'),
+      userwxmsg: wx.getStorageSync('userInfo')
     })
     this.getvideo(options.catid,options.id)
     this.getzan()
@@ -75,8 +79,16 @@ Page({
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function() {
-
+  onShareAppMessage(res) {
+    if (res.from === 'button') {
+      // 来自页面内转发按钮
+      console.log(res.target)
+      console.log("my19-supid:" + res.target.dataset.supid)
+    }
+    return {
+      title: '医保学院',
+      path: '/pages/index/index?supid=' + res.target.dataset.supid
+    }
   },
   jumpout() {
     app.gotel()

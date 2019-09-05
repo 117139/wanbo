@@ -5,6 +5,8 @@ const app = getApp()
 
 Page({
   data: {
+    usermsg: '',
+    userwxmsg: '',
     dianzan:0,     //点赞数
     dzstatus: 0, //1表示我点过赞了，0表示我没点过赞
 		catid:'',
@@ -36,7 +38,10 @@ Page({
        })
 			 this.getdetails(option.catid,option.id)
 		 }
-		 
+    that.setData({
+      usermsg: wx.getStorageSync('usermsg'),
+      userwxmsg: wx.getStorageSync('userInfo')
+    })
     that.getXg()
     that.getbooks()
     that.getzan()
@@ -45,6 +50,17 @@ Page({
 	onReady: function () {
 	
 	},
+  onShareAppMessage(res) {
+    if (res.from === 'button') {
+      // 来自页面内转发按钮
+      console.log(res.target)
+      console.log("my19-supid:" + res.target.dataset.supid)
+    }
+    return {
+      title: '医保学院',
+      path: '/pages/index/index?supid=' + res.target.dataset.supid
+    }
+  },
 	getdetails(catid,id){
 		let that =this
 				const pageState1 = pageState.default(this)

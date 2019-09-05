@@ -21,7 +21,7 @@
 			<swiper-item>
 				<image bindtap="jump" 
 					data-id="{{item.id}}"
-					data-catid="{{item.catid}}" src="{{'http://sf.zgylbx.com'+item.banner}}" class="slide-image" width="355" height="150" />
+					data-catid="{{item.catid}}" src="{{item.banner}}" class="slide-image" width="355" height="150" />
 			</swiper-item>
 		</block>
 	</swiper>

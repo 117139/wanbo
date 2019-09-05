@@ -63,12 +63,12 @@
 				<text>无限卡</text>
 			</view>
 			<view class="op_r">
-				剩余{{wuxian}}天,节省5元
+				剩余{{wuxian}}天
 			</view>
 		</view>
 	</view>
 	<view class="share">
-		<button class="shareBtn" open-type='share' data-supid="1"></button>
+		<button class="shareBtn" open-type='share' data-supid="{{usermsg.userid}}"></button>
 		<image src="/static/images/my/share.png"></image>
 	</view>
 </view>

@@ -1,5 +1,6 @@
 <!--pages/bdtel/bdtel.wxml-->
 <view class="container">
+  <image class='bg_img' wx:if="{{url}}" src="{{url}}"  mode="widthFix"></image>
 	<form class="topform" bindsubmit="formSubmit">
 		<view class="dis_flex aic pb100">
 			<view class="mr20">手机号</view>

@@ -6,14 +6,18 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    url:''
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    if(options.url){
+      this.setData({
+        url:options.url
+      })
+    }
   },
 
   /**
@@ -93,14 +97,40 @@ Page({
       success(res) {
         console.log(res.data)
         if (res.data){
-          wx.showToast({
-            title: '绑定成功',
-            duration: 1000,
-            icon: 'none'
-          })
-          setTimeout(function(){
-            wx.navigateBack()
-          },1000)
+          if (res.data.zt == 1 || res.data.zt == 2){
+           wx.showToast({
+             title: res.data.msg,
+             duration: 1000,
+             icon: 'none'
+           })
+           setTimeout(function () {
+             // wx.navigateBack()
+             wx.navigateTo({
+               url: '/pages/hqewm/hqewm?url=' + res.data.zhifu,
+             })
+           }, 1000)
+         }else if(res.data.zt==3){
+            wx.showToast({
+              // title: '该手机号已被绑定',
+              title: res.data.msg,
+              duration: 1000,
+              icon: 'none'
+            })
+         }else{
+            if(res.data.msg){
+              wx.showToast({
+                title: res.data.msg,
+                duration: 1000,
+                icon: 'none'
+              })
+            }else{
+              wx.showToast({
+                title: '绑定失败',
+                duration: 1000,
+                icon: 'none'
+              })
+            }
+         }
         }else{
           wx.showToast({
             title: '网络异常',

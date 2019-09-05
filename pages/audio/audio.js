@@ -5,6 +5,8 @@ var pageState = require('../../utils/pageState/index.js')
 let bgMusic;
 Page({
   data: {
+    usermsg: '',
+    userwxmsg: '',
     form_info:'',
     pllist:[],
     dianzan: 0,     //点赞数
@@ -25,12 +27,27 @@ Page({
   },
 	onLoad(option){
     this.setData({
+      usermsg: wx.getStorageSync('usermsg'),
+      userwxmsg: wx.getStorageSync('userInfo')
+    })
+    this.setData({
       catid: option.catid,
       id: option.id
     })
 		this.getaudio(option.catid,option.id)
 		// console.log(option.readpoint)
 	},
+  onShareAppMessage(res) {
+    if (res.from === 'button') {
+      // 来自页面内转发按钮
+      console.log(res.target)
+      console.log("my19-supid:" + res.target.dataset.supid)
+    }
+    return {
+      title: '医保学院',
+      path: '/pages/index/index?supid=' + res.target.dataset.supid
+    }
+  },
   jumpout() {
     app.gotel()
     // wx.navigateTo({
@@ -155,7 +172,8 @@ Page({
                 })
                 that.data.details.zt = 1
                 that.setData({
-                  details: that.data.details
+                  details: that.data.details,
+                  resdkg:1
                 })
                 that.startSetInter()
               } else if (res.data.zt = 4) {

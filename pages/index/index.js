@@ -21,9 +21,11 @@ Page({
   },
   onLoad: function (option) {
 
-		if(option.supid){
-			console.log("index31-option:"+option.supid)
+    if (option&&option.supid){
+      console.log("supid:"+option.supid)
+      app.dlogin(option.supid)
 		}
+    
 		this.getbanner()
 		this.resetinr()
   },

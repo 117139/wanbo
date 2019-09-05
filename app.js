@@ -1,7 +1,7 @@
 //app.js
 App({
-	IPurl1: 'http://sf.zgylbx.com/index.php',
-	IPurl2: 'http://sf.zgylbx.com',
+	IPurl1: 'https://sf.zgylbx.com/index.php',
+	IPurl2: 'https://sf.zgylbx.com',
   onLaunch: function () {
 		 this.dlogin()
     // 获取用户信息
@@ -33,7 +33,7 @@ App({
   globalData: {
     userInfo: null
   },
-	dlogin(){
+  dlogin(supid){
 		var that =this
 		var uinfo
 		wx.getSetting({
@@ -98,11 +98,10 @@ App({
 							    that.globalData.userInfo = rest.userInfo
 									uinfo=rest.userInfo
 									wx.setStorageSync('userInfo', rest.userInfo)
-                  that.getuser(res.data.openid, uinfo.nickName, uinfo.avatarUrl)
+                  that.getuser(res.data.openid, uinfo.nickName, uinfo.avatarUrl, supid)
 							  }
 							})
 							
-              
             }
           });
         } else {
@@ -111,9 +110,17 @@ App({
       }
     })
 	},
-	getuser(openid,nickname,tx){
+  getuser(openid, nickname, tx, supid){
 		let that =this
-    var geturl1 = that.IPurl1 + '?m=content&c=index&a=wechat&openid=' + openid + '&nickname=' + nickname + '&touxiang=' + tx
+    var geturl1
+    if (supid){
+      console.log('supid:'+supid)
+      geturl1 = that.IPurl1 + '?m=content&c=index&a=wechat&openid=' + openid + '&nickname=' + nickname + '&touxiang=' + tx +'&pid='+supid
+    }else{
+    geturl1 = that.IPurl1 + '?m=content&c=index&a=wechat&openid=' + openid + '&nickname=' + nickname + '&touxiang=' + tx
+
+    }
+    console.log(geturl1)
 			wx.request({
 				//http://sf.zgylbx.com/index.php?m=content&c=index&a=lists&catid=12
 				url: geturl1,
@@ -128,6 +135,14 @@ App({
           // console.log('openid126' + JSON.stringify(res))
 					// console.log(res.data)
 					wx.setStorageSync('usermsg', res.data)
+          console.log('login')
+          // that.onload()
+
+          setTimeout(function () {
+            if (getCurrentPages().length != 0) {
+              getCurrentPages()[getCurrentPages().length - 1].onLoad()
+            }
+          }, 0)
           // console.log(131 + JSON.stringify(wx.getStorageSync('usermsg')))
 					// that.setData({
 					// 	imgUrls:res.data
@@ -159,7 +174,7 @@ App({
         console.log(res.data)
         if (res.data.zt == 0) {
             wx.navigateTo({
-              url: '/pages/bdtel/bdtel',
+              url: '/pages/bdtel/bdtel?url='+res.data.img,
             })
         } else if(res.data.zt == 1) {
           wx.navigateTo({

@@ -30,10 +30,11 @@ var formatNumber = function (n) {
 
 var regYear = getRegExp("(y+)", "i");
 
-var dateFormat = function (timestamp, format) {
+var dateFormat1 = function (timestamp, format) {
   if (!format) {
     format = "yyyy-MM-dd hh:mm:ss";
   }
+  timestamp = timestamp*1000
   timestamp = parseInt(timestamp);
   var realDate = getDate(timestamp);
   function timeFormat(num) {
@@ -94,7 +95,7 @@ module.exports = {
     moneyFormat: moneyFormat,
 	getgimg:getgimg,
   getTime:getTime,
-  dateFormat: dateFormat,
+  dateFormat1: dateFormat1,
   getDateTime:getDateTime
 
 }

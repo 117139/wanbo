@@ -170,7 +170,7 @@ image{
   width: 200rpx;
   height: 80rpx;
   color: #fff;
-  background: #ff0000;
+  background: #00a0e9;
   display: flex;
   justify-content: center;
   align-items: center;

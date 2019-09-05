@@ -10,7 +10,7 @@
     wx:for-item="item" 
     wx:key="idx">
     <view class='flex_1 c9 fz12'>
-      <view>{{filter.dateFormat(item.creat_at)}}</view>
+      <view>{{filter.dateFormat1(item.creat_at)}}</view>
       <view>{{item.msg}}</view>
     </view>
       <view>{{item.value}}积分</view>

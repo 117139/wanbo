@@ -2,6 +2,11 @@
 .container{
   background: #fff;
 }
+.bg_img{
+  width: 100%;
+  display: block;
+  margin-bottom: 18rpx;
+}
 .intbox{
 	height: 80rpx;
 	padding: 0 20rpx;
@@ -11,7 +16,7 @@
 }
 .thbtn{
 	width: 350rpx;
-	background-color: #E22829;
+	background-color: #00a0e9;
 	height: 80rpx;
 	line-height: 80rpx;
 	color: #fff;
