@@ -31,7 +31,20 @@ Page({
   },
 	onReady:function (){
 	},
-
+  
+  // 点击键盘上的搜索
+  bindconfirm: function (e) {
+    var that = this;
+    // var discountName = e.detail.value['search - input'] ? e.detail.value['search - input'] : e.detail.value
+    console.log('e.detail.value', e.detail.value)
+    if (e.detail.value == '') {
+      return
+    }
+    wx.navigateTo({
+      url: '/pages/sousuo/sousuo?sousuo=sousuo&sr=' + e.detail.value
+    })
+  },
+  
 	 formSubmit(e) {
     console.log('form发生了submit事件，携带数据为：', e.detail.value)
 		if(e.detail.value.sr==''){

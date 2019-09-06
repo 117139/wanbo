@@ -31,7 +31,7 @@
 			</view>
 			
 			<view class="ipt">
-				<input name="sr" placeholder='作者、关键字'></input>
+				<input name="sr" placeholder='作者、关键字' bindconfirm="bindconfirm" confirm-type="search"></input>
 			</view>
 		</view>
 	  
@@ -145,7 +145,7 @@
 		<view class="inrBox">
 			<view class='newslist'>
       <view wx:if="{{wsp.length==0}}">暂无数据</view>
-				<view class="w100"
+				<view class="w100 mb30"
           wx:if="{{wsp.length>0}}"
           wx:for="{{wsp}}" 
           wx:for-index="idx" 

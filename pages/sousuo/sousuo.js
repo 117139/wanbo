@@ -55,6 +55,20 @@ Page({
 	onShow(){
 		// wx.showTabBar();
 	},
+  // 点击键盘上的搜索
+  bindconfirm: function (e) {
+    var that = this;
+    // var discountName = e.detail.value['search - input'] ? e.detail.value['search - input'] : e.detail.value
+    console.log('e.detail.value', e.detail.value)
+    if (e.detail.value == '') {
+      return
+    }
+    that.setData({
+      inr: e.detail.value,
+      page: [1, 1, 1, 1]
+    })
+    that.getsousuo()
+  },
 	formSubmit(e){
 		var that=this
 		console.log('form发生了submit事件，携带数据为：', e.detail.value)

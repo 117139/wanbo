@@ -7,7 +7,7 @@
 				<image src="/static/images/sousuo.png"></image>
 			</view>
 			<view class="ipt">
-				<input name="sr" value="{{inr}}" placeholder='作者、关键字'></input>
+				<input name="sr" value="{{inr}}" placeholder='作者、关键字' bindconfirm="bindconfirm" confirm-type="search"></input>
 			</view>
 			
 		</view>
