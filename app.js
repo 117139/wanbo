@@ -120,7 +120,7 @@ App({
     geturl1 = that.IPurl1 + '?m=content&c=index&a=wechat&openid=' + openid + '&nickname=' + nickname + '&touxiang=' + tx
 
     }
-    console.log(geturl1)
+    // console.log(geturl1)
 			wx.request({
 				//http://sf.zgylbx.com/index.php?m=content&c=index&a=lists&catid=12
 				url: geturl1,

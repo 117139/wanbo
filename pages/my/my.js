@@ -130,7 +130,10 @@ Page({
       dataType: 'json',
       method: 'POST',
       success(res) {
-        if (res.data.syts){
+        console.log(res)
+        console.log(res.data)
+        console.log(typeof(res.data))
+        if (res.data.syts>=0){
             that.setData({
               wuxian: res.data.syts
             })

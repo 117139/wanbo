@@ -5,7 +5,7 @@
 .bg_img{
   width: 100%;
   display: block;
-  margin-bottom: 18rpx;
+  margin-bottom: 28rpx;
 }
 .intbox{
 	height: 80rpx;
@@ -22,5 +22,5 @@
 	color: #fff;
 	border-radius: 80rpx;
 	font-size: 36rpx;
-  margin-top: 200rpx;
+  margin-top: 28rpx;
 }
