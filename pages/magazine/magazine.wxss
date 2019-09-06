@@ -283,3 +283,7 @@
 	color: #00a0e9;
 	font-size: 24rpx;
 }
+.sp_box_new{
+  padding-bottom: 10rpx;
+  border-bottom: 1px solid #eee;
+}
