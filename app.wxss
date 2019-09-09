@@ -78,6 +78,9 @@ image{
 .mb30{
   margin-bottom: 30rpx;
 }
+.mb50{
+  margin-bottom: 50rpx;
+}
 .boxsiz{
   box-sizing: border-box;
 }

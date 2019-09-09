@@ -145,7 +145,7 @@
 		<view class="inrBox">
 			<view class='newslist'>
       <view wx:if="{{wsp.length==0}}">暂无数据</view>
-				<view class="w100 mb30 sp_box_new"
+				<view class="w100 mb50 sp_box_new"
           wx:if="{{wsp.length>0}}"
           wx:for="{{wsp}}" 
           wx:for-index="idx" 
