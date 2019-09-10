@@ -40,75 +40,59 @@ App({
 		  success: res => {
 		    // console.log(res)
 		    if (res.authSetting['scope.userInfo']==true) {
-		      // 已经授权，可以直接调用 getUserInfo 获取头像昵称，不会弹框
-		      // console.log(1)
-		      // wx.reLaunch({
-		      //   url: '/pages/index/index',
-					// 	fail(err) {
-					// 		console.log("失败: " + JSON.stringify(err));
-					// 	}
-		      // })
 		      wx.getUserInfo({
 		        success: res => {
 		          that.globalData.userInfo = res.userInfo
 							uinfo=res.userInfo
 							wx.setStorageSync('userInfo', res.userInfo)
-		          // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
-		          // 所以此处加入 callback 以防止这种情况
-		          // if (this.userInfoReadyCallback) {
-		          //   this.userInfoReadyCallback(res)
-		          // }
+		         
+              wx.login({
+                success: function (res) {
+                  if (res.code) {
+                    var appid = "wxd1034622dbcffc48"        //appid
+                    var secret = "16410179a711eb886766c86694b4699d"    //密钥
+                    var openid = ""
+                    var l = 'https://api.weixin.qq.com/sns/jscode2session?appid=' + appid + '&secret=' + secret + '&js_code=' + res.code + '&grant_type=authorization_code';
+                    wx.request({
+                      url: l,
+                      data: {},
+                      method: 'GET',
+                      success: function (res) {
+                        var obj = {};
+                        // console.log(res)
+                        obj.openid = res.data.openid;
+                        // console.log("取得的openid==" + res.data.openid);
+                        wx.setStorageSync('openid', res.data.openid)
+                        wx.getUserInfo({
+                          success: rest => {
+                            that.globalData.userInfo = rest.userInfo
+                            uinfo = rest.userInfo
+                            wx.setStorageSync('userInfo', rest.userInfo)
+                            that.getuser(res.data.openid, uinfo.nickName, uinfo.avatarUrl, supid)
+                          }
+                        })
+
+                      }
+                    });
+                  } else {
+                    console.log('获取用户登录态失败！' + res.errMsg)
+                  }
+                }
+              })
 		        }
 		      })
 		    }else{
 		      console.log(2)
-		      wx.reLaunch({
-		        url: '/pages/login/login',//这是授权页面
-		        fail: (err) => {
-		          console.log("失败: " + JSON.stringify(err));
-		        }
-					})
+		      // wx.reLaunch({
+		      //   url: '/pages/login/login',//这是授权页面
+		      //   fail: (err) => {
+		      //     console.log("失败: " + JSON.stringify(err));
+		      //   }
+					// })
 		    }
 		  }
 		})
-		wx.login({
-      success: function (res) {
-        if (res.code) {
-          // wx.getUserInfo({
-          //   success: function (res) {
-          //     console.log("存在code")
-          //   }
-          // });
-          var appid = "wxd1034622dbcffc48"        //这里是我的appid，需要改成你自己的
-          var secret = "16410179a711eb886766c86694b4699d"    //密钥也要改成你自己的
-          var openid = ""
-          var l = 'https://api.weixin.qq.com/sns/jscode2session?appid=' + appid + '&secret=' + secret + '&js_code=' + res.code + '&grant_type=authorization_code';
-          wx.request({
-            url: l,
-            data: {},
-            method: 'GET', 
-            success: function (res) {
-              var obj = {};
-							// console.log(res)
-              obj.openid = res.data.openid;
-              // console.log("取得的openid==" + res.data.openid);
-							wx.setStorageSync('openid', res.data.openid)
-							wx.getUserInfo({
-							  success: rest => {
-							    that.globalData.userInfo = rest.userInfo
-									uinfo=rest.userInfo
-									wx.setStorageSync('userInfo', rest.userInfo)
-                  that.getuser(res.data.openid, uinfo.nickName, uinfo.avatarUrl, supid)
-							  }
-							})
-							
-            }
-          });
-        } else {
-          console.log('获取用户登录态失败！' + res.errMsg)
-        }
-      }
-    })
+		
 	},
   getuser(openid, nickname, tx, supid){
 		let that =this

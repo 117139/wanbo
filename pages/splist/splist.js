@@ -83,22 +83,28 @@ Page({
 
   },
   govideo(e){
+    if (!wx.getStorageSync('userInfo')) {
+      wx.navigateTo({
+        url: '/pages/login/login',
+      })
+      return
+    } 
     console.log(e.currentTarget.dataset.id)
     
     let id = e.currentTarget.dataset.id
     let catid = e.currentTarget.dataset.catid
-
+    var url
     if (catid == 16) {
       wx.navigateTo({
         url: '/pages/spplay/spplay?catid=' + catid + '&id=' + id,
       })
     } else if (catid == 9) {
-      url1 = '/pages/audio/audio?id=' + id + '&catid=' + catid
-    } else if (type == 21) {
-      url1 = '/pages/magazineDatails/magazineDatails?id=' + id + '&catid=' + catid
+      url = '/pages/audio/audio?id=' + id + '&catid=' + catid
+    } else if (catid == 21) {
+      url = '/pages/magazineDatails/magazineDatails?id=' + id + '&catid=' + catid
     }
     wx.navigateTo({
-      url: url1
+      url: url
     })
   },
   

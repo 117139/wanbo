@@ -14,7 +14,7 @@
   </view>
   <view class='newslist'>
     <view class='spbox' wx:if="{{wyp.length>0}}">
-      <view class="newsOne" bindtap="jumpdt" 
+      <view class="newsOne" bindtap="govideo" 
         data-type="2"
         data-id="{{item.id}}"
         data-catid="{{item.catid}}"
@@ -37,7 +37,7 @@
   </view>
   <view class='newslist'>
     <view class='spbox' wx:if="{{wyc.length>0}}">
-      <view class="newsOne" bindtap="jumpdt" 
+      <view class="newsOne" bindtap="govideo" 
         data-type="2"
         data-id="{{item.id}}"
         data-catid="{{item.catid}}"
@@ -46,12 +46,12 @@
         wx:for-item="item"
         wx:key="idx">
         <view class="xxIcon" >
-          <image src="/static/images/btn2_2.jpg"></image>
+          <image src="/static/images/btn2_3.jpg"></image>
         </view>
         <view class="inner">
           <view class='newsinr'>{{item.title}}</view>
           <view class='newsnum'>
-            <view>音频 {{item.shijian}}</view>
+            <view>时间 {{item.shijian}}</view>
             <view class="zfMax"></view>
           </view>
         </view>

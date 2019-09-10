@@ -7,17 +7,21 @@
 	<view class="mymsg">
 		<view class="myInfo">
 			<view class="HeadImg">
-				<image src="{{userwxmsg.avatarUrl}}"></image>
+				<image wx:if="{{userwxmsg.nickName}}" src="{{userwxmsg.avatarUrl}}"></image>
+				<image wx:if="{{!userwxmsg.nickName}}"
+        
+         src="/static/images/tx.jpg"></image>
 			</view>
-			<text>{{userwxmsg.nickName}}</text>
+			<text wx:if="{{userwxmsg.nickName}}">{{userwxmsg.nickName}}</text>
+			<text wx:if="{{!userwxmsg.nickName}}" data-url="/pages/login/login" bindtap='jump'>点击登录</text>
 		</view>
 		<view class="readerMsg">
 			<view class="jifen">
-				<text class="jfnum">{{usermsg.point}}积分</text>
+				<text class="jfnum">{{usermsg.point?usermsg.point:0}}积分</text>
 				<text class="mk_tit">我的积分</text>
 			</view>
 			<view class="jifen">
-				<text class="time">{{usermsg.shijian}}分钟</text>
+				<text class="time">{{usermsg.shijian?usermsg.shijian:0}}分钟</text>
 				<text class="mk_tit">阅读时长</text>
 			</view>
 		</view>
@@ -31,7 +35,7 @@
 				<text>时长兑积分</text>
 			</view>
 			<view class="op_r">
-				阅读时长{{usermsg.shijian}}分钟
+				阅读时长{{usermsg.shijian?usermsg.shijian:0}}分钟
 			</view>
 		</view>
 		<!-- <view class="exchange">
@@ -44,7 +48,7 @@
 			<view class="op_r">
 			</view>
 		</view> -->
-		<navigator class="exchange" url='/pages/jfjl/jfjl'>
+		<view class="exchange" url='/pages/jfjl/jfjl' bindtap='jumpout'>
 			<view class="op_l">
 				<view class="myBtnIcon">
 					<image src="/static/images/my/my_09.png"></image>
@@ -52,9 +56,9 @@
 				<text>积分记录</text>
 			</view>
 			<view class="op_r">
-				剩余{{usermsg.point}}积分
+				剩余{{usermsg.point?usermsg.point:0}}积分
 			</view>
-		</navigator>
+		</view>
 		<view class="exchange"  data-url="/pages/buy/buy" bindtap='jumpout'>
 			<view class="op_l">
 				<view class="myBtnIcon">
@@ -63,7 +67,7 @@
 				<text>无限卡</text>
 			</view>
 			<view class="op_r">
-				剩余{{wuxian}}天
+				剩余{{wuxian?wuxian:0}}天
 			</view>
 		</view>
 	</view>

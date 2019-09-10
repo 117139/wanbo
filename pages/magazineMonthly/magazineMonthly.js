@@ -84,6 +84,12 @@ Page({
 		})
 	},
 	jump(e){
+    if (!wx.getStorageSync('userInfo')) {
+      wx.navigateTo({
+        url: '/pages/login/login',
+      })
+      return
+    } 
 		let id =e.currentTarget.dataset.id
 		let catid =e.currentTarget.dataset.catid
 		wx.navigateTo({

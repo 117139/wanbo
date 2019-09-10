@@ -42,7 +42,7 @@
   			<view class="inner">
   			  <view class='newsinr'>{{item0.title}}</view>
   			  <view class='newsnum'>
-  					<view>2019年第1期 20:30</view>
+  					<view>{{item0.nian}}年第{{item0.yue}}期</view>
   					<view class="zfMax"></view>
   			    <!-- 转发最多 -->
   				</view>

@@ -30,45 +30,54 @@ Page({
       //用户按了允许授权按钮后需要处理的逻辑方法体
       console.log(e.detail.userInfo)
       app.globalData.userInfo = e.detail.userInfo
-      /*wx.login({
+      wx.setStorageSync('userInfo', e.detail.userInfo)
+      var uinfo
+      var supid = wx.getStorageSync('supid')
+      wx.login({
         success: function (res) {
           if (res.code) {
+            var appid = "wxd1034622dbcffc48"        //appid
+            var secret = "16410179a711eb886766c86694b4699d"    //密钥
+            var openid = ""
+            var l = 'https://api.weixin.qq.com/sns/jscode2session?appid=' + appid + '&secret=' + secret + '&js_code=' + res.code + '&grant_type=authorization_code';
             wx.request({
-              url: app.IPurl1+'',
-              data: {
-                code: res.code,
-                nickName: e.detail.userInfo.nickName,
-                city: e.detail.userInfo.city,
-                province: e.detail.userInfo.province,
-                avatarUrl: e.detail.userInfo.avatarUrl
-              },
-              header: {
-                'content-type': 'application/json' // 默认值
-              },
+              url: l,
+              data: {},
+              method: 'GET',
               success: function (res) {
-                var userinfo = {};
-                userinfo['id'] = res.data.id;
-                userinfo['nickName'] = info.detail.userInfo.nickName;
-                userinfo['avatarUrl'] = info.detail.userInfo.avatarUrl;
-                wx.setStorageSync('userinfo', userinfo)
+                var obj = {};
+                // console.log(res)
+                obj.openid = res.data.openid;
+                // console.log("取得的openid==" + res.data.openid);
+                wx.setStorageSync('openid', res.data.openid)
+                wx.getUserInfo({
+                  success: rest => {
+                    app.globalData.userInfo = rest.userInfo
+                    uinfo = rest.userInfo
+                    wx.setStorageSync('userInfo', rest.userInfo)
+                    app.getuser(res.data.openid, uinfo.nickName, uinfo.avatarUrl, supid)
+                    wx.reLaunch({
+                      url: '/pages/index/index',
+                      fail(err) {
+                        console.log("失败: " + JSON.stringify(err));
+                      }
+                    })
+                  }
+                })
+
               }
-            })
+            });
           } else {
-            console.log("授权失败");
+            console.log('获取用户登录态失败！' + res.errMsg)
           }
-        },
-      })*/
-			wx.reLaunch({
-				url: '/pages/index/index',
-				fail(err) {
-					console.log("失败: " + JSON.stringify(err));
-				}
-			})
+        }
+      })
+			
     } else {
       //用户按了拒绝按钮
       wx.showModal({
         title: '警告',
-        content: '您点击了拒绝授权，将无法进入小程序，请授权之后再进入!!!',
+        content: '您点击了拒绝授权，将无法登录小程序，请返回授权!!!',
         showCancel: false,
         confirmText: '返回授权',
         success: function(res) {

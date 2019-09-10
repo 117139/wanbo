@@ -23,6 +23,7 @@ Page({
 
     if (option&&option.supid){
       console.log("supid:"+option.supid)
+      wx.setStorageSync("supid", option.supid)
       app.dlogin(option.supid)
 		}
     
@@ -58,6 +59,12 @@ Page({
     let id = e.currentTarget.dataset.id
     let catid = e.currentTarget.dataset.catid
 		console.log(e.currentTarget.dataset)
+    if (!wx.getStorageSync('userInfo')) {
+      wx.navigateTo({
+        url: '/pages/login/login',
+      })
+      return
+    } 
     if(catid==9){
       wx.navigateTo({
         url: '/pages/audio/audio?id=' + id + '&catid=' + catid

@@ -34,6 +34,12 @@ Page({
     }
   },
   jump(e) {
+    if (!wx.getStorageSync('userInfo')) {
+      wx.navigateTo({
+        url: '/pages/login/login',
+      })
+      return
+    } 
     if (e.currentTarget.dataset.url) {
       wx.navigateTo({
         url: e.currentTarget.dataset.url
@@ -43,12 +49,24 @@ Page({
 
   },
   jumpout() {
+    if (!wx.getStorageSync('userInfo')) {
+      wx.navigateTo({
+        url: '/pages/login/login',
+      })
+      return
+    } 
     app.gotel()
     // wx.navigateTo({
     //   url: '/pages/out/out'
     // })
   },
   duihuan(e){
+    if (!wx.getStorageSync('userInfo')) {
+      wx.navigateTo({
+        url: '/pages/login/login',
+      })
+      return
+    } 
     let that = this
     var sj = e.currentTarget.dataset.sj
     console.log(e)
