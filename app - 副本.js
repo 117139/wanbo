@@ -4,8 +4,6 @@ App({
 	IPurl2: 'https://sf.zgylbx.com',
   platforms:'',
   onLaunch: function () {
-    wx.removeStorageSync('userInfo')
-    wx.removeStorageSync('token')
 		 this.dlogin()
     // 获取用户信息
     this.platforms = wx.getSystemInfoSync()
@@ -24,7 +22,12 @@ App({
         // session_key 已经失效，需要重新执行登录流程
         console.log("session_key 已经失效")
         that.dlogin() // 重新登录
-       
+        // wx.reLaunch({// 重新获取授权
+        //   url: '/pages/login/login',
+        //   fail: (err) => {
+        //     console.log("失败: " + JSON.stringify(err));
+        //   }
+        // })
 
         
       }
@@ -43,17 +46,42 @@ App({
 		      wx.getUserInfo({
 		        success: res => {
 		          that.globalData.userInfo = res.userInfo
-              uinfo = res.userInfo
-              wx.setStorageSync('userInfo', res.userInfo)
+							uinfo=res.userInfo
+							
               wx.login({
                 success: function (res) {
                   if (res.code) {
+                    wx.setStorageSync('userInfo', res.userInfo)
                     that.getuser(res.code, uinfo.nickName, uinfo.avatarUrl, supid)
                    
                     return
                     var appid = "wxd1034622dbcffc48"        //appid
                     var secret = "16410179a711eb886766c86694b4699d"    //密钥
-                    
+                    console.log(res.code)
+                    return
+                    var openid = ""
+                    var l = 'https://api.weixin.qq.com/sns/jscode2session?appid=' + appid + '&secret=' + secret + '&js_code=' + res.code + '&grant_type=authorization_code';
+                    wx.request({
+                      url: l,
+                      data: {},
+                      method: 'GET',
+                      success: function (res) {
+                        var obj = {};
+                        // console.log(res)
+                        obj.openid = res.data.openid;
+                        // console.log("取得的openid==" + res.data.openid);
+                        wx.setStorageSync('openid', res.data.openid)
+                        wx.getUserInfo({
+                          success: rest => {
+                            that.globalData.userInfo = rest.userInfo
+                            uinfo = rest.userInfo
+                            wx.setStorageSync('userInfo', rest.userInfo)
+                            that.getuser(res.data.openid, uinfo.nickName, uinfo.avatarUrl, supid)
+                          }
+                        })
+
+                      }
+                    });
                   } else {
                     console.log('获取用户登录态失败！' + res.errMsg)
                   }
@@ -62,19 +90,26 @@ App({
 		        }
 		      })
 		    }else{
+		      console.log(2)
+		      // wx.reLaunch({
+		      //   url: '/pages/login/login',//这是授权页面
+		      //   fail: (err) => {
+		      //     console.log("失败: " + JSON.stringify(err));
+		      //   }
+					// })
 		    }
 		  }
 		})
 		
 	},
-  getuser(code, nickname, tx, supid,type){
+  getuser(openid, nickname, tx, supid){
 		let that =this
     var geturl1
     if (supid){
       console.log('supid:'+supid)
-      geturl1 = that.IPurl1 + '?m=content&c=index&a=wechat&code=' + code + '&nickname=' + nickname + '&touxiang=' + tx +'&pid='+supid
+      geturl1 = that.IPurl1 + '?m=content&c=index&a=wechat&openid=' + openid + '&nickname=' + nickname + '&touxiang=' + tx +'&pid='+supid
     }else{
-      geturl1 = that.IPurl1 + '?m=content&c=index&a=wechat&code=' + code + '&nickname=' + nickname + '&touxiang=' + tx
+    geturl1 = that.IPurl1 + '?m=content&c=index&a=wechat&openid=' + openid + '&nickname=' + nickname + '&touxiang=' + tx
 
     }
     // console.log(geturl1)
@@ -94,14 +129,11 @@ App({
 					wx.setStorageSync('usermsg', res.data)
           console.log('login')
           // that.onload()
-          if (type =='shouquan'){
-            wx.navigateBack()
-          }
+
           setTimeout(function () {
             if (getCurrentPages().length != 0) {
               getCurrentPages()[getCurrentPages().length - 1].onLoad()
             }
-            
           }, 0)
           // console.log(131 + JSON.stringify(wx.getStorageSync('usermsg')))
 					// that.setData({

@@ -5,6 +5,7 @@ var pageState = require('../../utils/pageState/index.js')
 let bgMusic;
 Page({
   data: {
+    inrkkk:'',
     usermsg: '',
     userwxmsg: '',
     form_info:'',
@@ -23,7 +24,8 @@ Page({
     isOpen: false,//播放开关
     starttime: '00:00', //正在播放时长
     duration: '00:00',   //总时长
-    src:"http://ws.stream.qqmusic.qq.com/M500001VfvsJ21xFqb.mp3?guid=ffffffff82def4af4b12b3cd9337d5e7&uin=346897220&vkey=6292F51E1E384E061FF02C31F716658E5C81F5594D561F2E88B854E81CAAB7806D5E4F103E55D33C16F3FAC506D1AB172DE8600B37E43FAD&fromtag=46"
+    src: "http://ws.stream.qqmusic.qq.com/M500001VfvsJ21xFqb.mp3?guid=ffffffff82def4af4b12b3cd9337d5e7&uin=346897220&vkey=6292F51E1E384E061FF02C31F716658E5C81F5594D561F2E88B854E81CAAB7806D5E4F103E55D33C16F3FAC506D1AB172DE8600B37E43FAD&fromtag=46",
+    platforms: app.platforms
   },
 	onLoad(option){
     this.setData({
@@ -330,6 +332,29 @@ Page({
           dianzan: res.data[0].dianzan,
           dzstatus: res.data[0].dzzt 
 				})
+        if (that.data.platforms.platform == 'ios') {
+          var aaa = {
+            kg: res.data[0].iospay,
+            kgl: res.data[0].iosleft,
+            inr0: res.data[0].iospaymsg,
+            inr1: res.data[0].iospayleftsubmsg,
+            inr2: res.data[0].iospayrightsubmsg
+          }
+          that.setData({
+            inrkkk: aaa
+          })
+        } else {
+          var aaa = {
+            kg: res.data[0].Androidpay,
+            kgl: res.data[0].Androidleft,
+            inr0: res.data[0].Androidpaymsg,
+            inr1: res.data[0].Androidleftsubmsg,
+            inr2: res.data[0].Androidrightsubmsg
+          }
+          that.setData({
+            inrkkk: aaa
+          })
+        }
         if (res.data[0].readpoint == 0 || res.data[0].zt == 1) {
           that.setData({
             resdkg:1

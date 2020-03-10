@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>æä»¶âD:\WWW\WEB\smwx\wwwroot\shopimages\1546446374.jpgâæ­£ç±å¦ä¸è¿ç¨ä½¿ç¨ï¼å æ­¤è¯¥è¿ç¨æ æ³è®¿é®æ­¤æä»¶ã</title>
+        <meta name="viewport" content="width=device-width" />
+        <style>
+         body {font-family:"Verdana";font-weight:normal;font-size: .7em;color:black;} 
+         p {font-family:"Verdana";font-weight:normal;color:black;margin-top: -5px}
+         b {font-family:"Verdana";font-weight:bold;color:black;margin-top: -5px}
+         H1 { font-family:"Verdana";font-weight:normal;font-size:18pt;color:red }
+         H2 { font-family:"Verdana";font-weight:normal;font-size:14pt;color:maroon }
+         pre {font-family:"Consolas","Lucida Console",Monospace;font-size:11pt;margin:0;padding:0.5em;line-height:14pt}
+         .marker {font-weight: bold; color: black;text-decoration: none;}
+         .version {color: gray;}
+         .error {margin-bottom: 10px;}
+         .expandable { text-decoration:underline; font-weight:bold; color:navy; cursor:hand; }
+         @media screen and (max-width: 639px) {
+          pre { width: 440px; overflow: auto; white-space: pre-wrap; word-wrap: break-word; }
+         }
+         @media screen and (max-width: 479px) {
+          pre { width: 280px; }
+         }
+        </style>
+    </head>
+
+    <body bgcolor="white">
+
+            <span><H1>â/âåºç¨ç¨åºä¸­çæå¡å¨éè¯¯ã<hr width=100% size=1 color=silver></H1>
+
+            <h2> <i>æä»¶âD:\WWW\WEB\smwx\wwwroot\shopimages\1546446374.jpgâæ­£ç±å¦ä¸è¿ç¨ä½¿ç¨ï¼å æ­¤è¯¥è¿ç¨æ æ³è®¿é®æ­¤æä»¶ã</i> </h2></span>
+
+            <font face="Arial, Helvetica, Geneva, SunSans-Regular, sans-serif ">
+
+            <b> è¯´æ: </b>æ§è¡å½å Web è¯·æ±æé´ï¼åºç°æªç»å¤ççå¼å¸¸ãè¯·æ£æ¥å æ è·è¸ªä¿¡æ¯ï¼ä»¥äºè§£æå³è¯¥éè¯¯ä»¥åä»£ç ä¸­å¯¼è´éè¯¯çåºå¤çè¯¦ç»ä¿¡æ¯ã
+
+            <br><br>
+
+            <b> å¼å¸¸è¯¦ç»ä¿¡æ¯: </b>System.IO.IOException: æä»¶âD:\WWW\WEB\smwx\wwwroot\shopimages\1546446374.jpgâæ­£ç±å¦ä¸è¿ç¨ä½¿ç¨ï¼å æ­¤è¯¥è¿ç¨æ æ³è®¿é®æ­¤æä»¶ã<br><br>
+
+            <b>æºéè¯¯:</b> <br><br>
+
+            <table width=100% bgcolor="#ffffcc">
+               <tr>
+                  <td>
+                      <code><pre>
+
+è¡ 334:        string imgfileExp = getreq.FileName.Substring(getreq.FileName.LastIndexOf(&quot;.&quot;) + 1);
+è¡ 335:        string filename = DateTime.Now.ToString(&quot;HHmmss&quot;) + TenpayUtil.BuildRandomStr(4);
+<font color=red>è¡ 336:        getreq.SaveAs(Server.MapPath(&quot;/shopimages&quot;) + &quot;\\&quot; + filename + &quot;.&quot; + imgfileExp);
+</font>è¡ 337:        hash[&quot;error&quot;] = 0;
+è¡ 338:        hash[&quot;url&quot;] = &quot;/shopimages&quot; + &quot;/&quot; + filename + &quot;.&quot; + imgfileExp;</pre></code>
+
+                  </td>
+               </tr>
+            </table>
+
+            <br>
+
+            <b> æºæä»¶: </b> d:\WWW\WEB\smwx\wwwroot\api.aspx.cs<b> &nbsp;&nbsp; è¡: </b> 336
+            <br><br>
+
+            <b>å æ è·è¸ª:</b> <br><br>
+
+            <table width=100% bgcolor="#ffffcc">
+               <tr>
+                  <td>
+                      <code><pre>
+
+[IOException: æä»¶âD:\WWW\WEB\smwx\wwwroot\shopimages\1546446374.jpgâæ­£ç±å¦ä¸è¿ç¨ä½¿ç¨ï¼å æ­¤è¯¥è¿ç¨æ æ³è®¿é®æ­¤æä»¶ã]
+   System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath) +10768217
+   System.IO.FileStream.Init(String path, FileMode mode, FileAccess access, Int32 rights, Boolean useRights, FileShare share, Int32 bufferSize, FileOptions options, SECURITY_ATTRIBUTES secAttrs, String msgPath, Boolean bFromProxy, Boolean useLongPath, Boolean checkHost) +1305
+   System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, FileOptions options, String msgPath, Boolean bFromProxy) +60
+   System.IO.FileStream..ctor(String path, FileMode mode) +55
+   System.Web.HttpPostedFile.SaveAs(String filename) +94
+   api.uppic() in d:\WWW\WEB\smwx\wwwroot\api.aspx.cs:336
+   api.Page_Load(Object sender, EventArgs e) in d:\WWW\WEB\smwx\wwwroot\api.aspx.cs:57
+   System.Web.Util.CalliEventHandlerDelegateProxy.Callback(Object sender, EventArgs e) +51
+   System.Web.UI.Control.OnLoad(EventArgs e) +92
+   System.Web.UI.Control.LoadRecursive() +54
+   System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint) +772
+</pre></code>
+
+                  </td>
+               </tr>
+            </table>
+
+            <br>
+
+            <hr width=100% size=1 color=silver>
+
+            <b>çæ¬ä¿¡æ¯:</b>&nbsp;Microsoft .NET Framework çæ¬:4.0.30319; ASP.NET çæ¬:4.0.30319.36480
+
+            </font>
+
+    </body>
+</html>
+<!-- 
+[IOException]: æä»¶âD:\WWW\WEB\smwx\wwwroot\shopimages\1546446374.jpgâæ­£ç±å¦ä¸è¿ç¨ä½¿ç¨ï¼å æ­¤è¯¥è¿ç¨æ æ³è®¿é®æ­¤æä»¶ã
+   å¨ System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   å¨ System.IO.FileStream.Init(String path, FileMode mode, FileAccess access, Int32 rights, Boolean useRights, FileShare share, Int32 bufferSize, FileOptions options, SECURITY_ATTRIBUTES secAttrs, String msgPath, Boolean bFromProxy, Boolean useLongPath, Boolean checkHost)
+   å¨ System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, FileOptions options, String msgPath, Boolean bFromProxy)
+   å¨ System.IO.FileStream..ctor(String path, FileMode mode)
+   å¨ System.Web.HttpPostedFile.SaveAs(String filename)
+   å¨ api.uppic() ä½ç½® d:\WWW\WEB\smwx\wwwroot\api.aspx.cs:è¡å· 336
+   å¨ api.Page_Load(Object sender, EventArgs e) ä½ç½® d:\WWW\WEB\smwx\wwwroot\api.aspx.cs:è¡å· 57
+   å¨ System.Web.Util.CalliEventHandlerDelegateProxy.Callback(Object sender, EventArgs e)
+   å¨ System.Web.UI.Control.OnLoad(EventArgs e)
+   å¨ System.Web.UI.Control.LoadRecursive()
+   å¨ System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+[HttpUnhandledException]: å¼åç±»åä¸ºâSystem.Web.HttpUnhandledExceptionâçå¼å¸¸ã
+   å¨ System.Web.UI.Page.HandleError(Exception e)
+   å¨ System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   å¨ System.Web.UI.Page.ProcessRequest(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   å¨ System.Web.UI.Page.ProcessRequest()
+   å¨ System.Web.UI.Page.ProcessRequestWithNoAssert(HttpContext context)
+   å¨ System.Web.UI.Page.ProcessRequest(HttpContext context)
+   å¨ ASP.api_aspx.ProcessRequest(HttpContext context) ä½ç½® c:\Windows\Microsoft.NET\Framework\v4.0.30319\Temporary ASP.NET Files\root\1c463938\2a69b6db\App_Web_5wa2mdtt.0.cs:è¡å· 0
+   å¨ System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   å¨ System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+--><!-- 
+æ­¤éè¯¯é¡µå¯è½åå«ææä¿¡æ¯ï¼å ä¸º ASP.NET éè¿ &lt;customErrors mode="Off"/&gt; è¢«éç½®ä¸ºæ¾ç¤ºè¯¦ç»éè¯¯æ¶æ¯ãè¯·èèå¨çäº§ç¯å¢ä¸­ä½¿ç¨ &lt;customErrors mode="On"/&gt; æ &lt;customErrors mode="RemoteOnly"/&gt;ã-->

@@ -19,6 +19,7 @@ Page({
 		details:'',
 		xiangguan:[], //相关推荐
 		books:[], //图书
+    inrkkk:{},
     arr2:[
     	1,
     	2,
@@ -26,6 +27,7 @@ Page({
     	4,
     	5,
     ],
+    platforms: app.platforms
   },
   onLoad: function (option) {
 		 var that=this;
@@ -84,6 +86,29 @@ Page({
               dianzan: ruls.dianzan,
               dzstatus: ruls.dzzt 
 						})
+            if (that.data.platforms.platform=='ios'){
+                var aaa={
+                  kg: ruls.iospay,
+                  kgl: ruls.iosleft,
+                  inr0: ruls.iospaymsg,
+                  inr1: ruls.iospayleftsubmsg,
+                  inr2: ruls.iospayrightsubmsg
+                }
+                that.setData({
+                  inrkkk:aaa
+                })
+            }else{
+              var aaa = {
+                kg: ruls.Androidpay,
+                kgl: ruls.Androidleft,
+                inr0: ruls.Androidpaymsg,
+                inr1: ruls.Androidleftsubmsg,
+                inr2: ruls.Androidrightsubmsg
+              }
+              that.setData({
+                inrkkk: aaa
+              })
+            }
 						console.log(res.data)
 						var article = ruls.content
             // var subStr = new RegExp('<div>&nbsp;</div>', 'ig');
@@ -130,6 +155,7 @@ Page({
       success(res) {
         console.log(res.data)
         if (res.data.zt == 1) {
+
           wx.showToast({
             title: '评论成功',
             icon: 'none'
@@ -138,6 +164,18 @@ Page({
             form_info: ''
           })
           that.getpinlun()
+        } else if (res.data.zt == 2) {
+          if (res.data.msg){
+            wx.showToast({
+              title: res.data.msg,
+              icon: 'none'
+            })
+          }else{
+            wx.showToast({
+              title: '评论内容包含违规信息，请重新输入',
+              icon: 'none'
+            })
+          }
         } else {
           wx.showToast({
             title: '评论失败',

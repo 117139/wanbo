@@ -7,6 +7,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    inrkkk: '',
     usermsg: '',
     userwxmsg: '',
     form_info: '',
@@ -17,7 +18,8 @@ Page({
     details:'',
     catid: 0,
     id:0,
-    zan:''
+    zan: '',
+    platforms: app.platforms
   },
 
   /**
@@ -356,6 +358,29 @@ Page({
           dianzan: res.data.dianzan,
           dzstatus: res.data.dzzt 
         })
+        if (that.data.platforms.platform == 'ios') {
+          var aaa = {
+            kg: res.data.iospay,
+            kgl: res.data.iosleft,
+            inr0: res.data.iospaymsg,
+            inr1: res.data.iospayleftsubmsg,
+            inr2: res.data.iospayrightsubmsg
+          }
+          that.setData({
+            inrkkk: aaa
+          })
+        } else {
+          var aaa = {
+            kg: res.data.Androidpay,
+            kgl: res.data.Androidleft,
+            inr0: res.data.Androidpaymsg,
+            inr1: res.data.Androidleftsubmsg,
+            inr2: res.data.Androidrightsubmsg
+          }
+          that.setData({
+            inrkkk: aaa
+          })
+        }
         pageState1.finish()    // 切换为finish状态
       },
       fail() {

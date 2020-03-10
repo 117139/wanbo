@@ -15,12 +15,12 @@
 			<template is="wxParse" data="{{wxParseData:article.nodes}}" />
 		</view>
 		<view class="wxfwb" wx:else>
-			本文章需要购买
+			{{inrkkk.inr0}}
 		</view>
 		<view class="buyBox">
-			<view class="btn1" wx:if="{{details.readpoint!=0&&details.zt!=1}}" bindtap="buy">购买本章 {{details.readpoint}}积分</view>
+			<view class="btn1" wx:if="{{details.readpoint!=0&&details.zt!=1&&inrkkk.kgl==1}}" bindtap="buy">{{inrkkk.inr1}}</view>
 			<!-- <view class="btn2" data-url="/pages/buy/buy" bindtap='jump'>购买阅读卡</view> -->
-			<view class="btn2" bindtap='jumpout'>购买阅读卡</view>
+			<view class="btn2"  wx:if="{{inrkkk.kg==1}}" bindtap='jumpout'>{{inrkkk.inr2}}</view>
 		</view>
 		<view class="shareBox">
 			<!-- <view class="shareFx" bindtap="share" >
@@ -121,14 +121,14 @@
             data-catid="{{item.catid}}">
 					<image src="{{item.thumb}}"></image>
 				</view>
-				<!-- <view class="bookname">{{item.title}}</view> -->
-				<view class="bookmsg">
+				<view class="bookname">{{item.title}}</view>
+				<!-- <view class="bookmsg">
 					<view class='oh1'>￥{{item.jiage}}</view>
 					<view class="bookbtn" bindtap='jumpout' 
            bindtap="jumpdt" 
             data-id="{{item.id}}" 
-            data-catid="{{item.catid}}">立即购买</view><!-- data-outurl="{{item.url}}" data-id="{{item.id}}" -->
-				</view>
+            data-catid="{{item.catid}}">立即购买</view>data-outurl="{{item.url}}" data-id="{{item.id}}"
+				</view> -->
 			</view>
 		</view>
 	</view>

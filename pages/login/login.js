@@ -31,42 +31,22 @@ Page({
       console.log(e.detail.userInfo)
       app.globalData.userInfo = e.detail.userInfo
       wx.setStorageSync('userInfo', e.detail.userInfo)
-      var uinfo
+      var uinfo = e.detail.userInfo
       var supid = wx.getStorageSync('supid')
       wx.login({
         success: function (res) {
           if (res.code) {
-            var appid = "wxd1034622dbcffc48"        //appid
-            var secret = "16410179a711eb886766c86694b4699d"    //密钥
-            var openid = ""
-            var l = 'https://api.weixin.qq.com/sns/jscode2session?appid=' + appid + '&secret=' + secret + '&js_code=' + res.code + '&grant_type=authorization_code';
-            wx.request({
-              url: l,
-              data: {},
-              method: 'GET',
+            wx.login({
               success: function (res) {
-                var obj = {};
-                // console.log(res)
-                obj.openid = res.data.openid;
-                // console.log("取得的openid==" + res.data.openid);
-                wx.setStorageSync('openid', res.data.openid)
-                wx.getUserInfo({
-                  success: rest => {
-                    app.globalData.userInfo = rest.userInfo
-                    uinfo = rest.userInfo
-                    wx.setStorageSync('userInfo', rest.userInfo)
-                    app.getuser(res.data.openid, uinfo.nickName, uinfo.avatarUrl, supid)
-                    wx.reLaunch({
-                      url: '/pages/index/index',
-                      fail(err) {
-                        console.log("失败: " + JSON.stringify(err));
-                      }
-                    })
-                  }
-                })
+                if (res.code) {
+                  app.getuser(res.code, uinfo.nickName, uinfo.avatarUrl, supid,'shouquan')
 
+                
+                } else {
+                  console.log('获取用户登录态失败！' + res.errMsg)
+                }
               }
-            });
+            })
           } else {
             console.log('获取用户登录态失败！' + res.errMsg)
           }
@@ -88,6 +68,8 @@ Page({
       })
     }
   },
-
+  goback() {
+    wx.navigateBack()
+  }
 })
 

@@ -6,6 +6,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    page:1,
     datalist:[]
   },
 
@@ -55,7 +56,7 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-
+    this.getbanner()
   },
 
   /**
@@ -67,11 +68,13 @@ Page({
   getbanner() {
     let that = this
     
-    var geturl = app.IPurl1 + '?m=content&c=index&a=spend_lists&userid=' + wx.getStorageSync('usermsg').userid
+    var geturl = app.IPurl1 + '?m=content&c=index&a=spend_lists&userid=' + wx.getStorageSync('usermsg').userid+'&page='+that.data.page
     wx.request({
       //http://sf.zgylbx.com/index.php?m=content&c=index&a=lists&catid=12
       url: geturl,
-      data: {},
+      data: {
+        
+      },
       header: {
         'content-type': 'application/x-www-form-urlencoded'
       },
@@ -79,12 +82,21 @@ Page({
       method: 'POST',
       success(res) {
 
-
+        if (res.data.length>0){
+          that.data.datalist = that.data.datalist.concat(res.data)
+          that.data.page++
+          that.setData({
+            page: that.data.page,
+            datalist: that.data.datalist
+          })
+        }else{
+          wx.showToast({
+            icon:'none',
+            title: '暂无更多数据',
+          })
+        }
         console.log(res.data)
-
-        that.setData({
-          datalist: res.data
-        })
+        
 
         // pageState1.finish()    // 切换为finish状态
       },

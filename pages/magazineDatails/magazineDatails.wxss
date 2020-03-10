@@ -33,6 +33,7 @@
 	width: 100%;
 	padding: 40rpx 0 80rpx;
 	font-size: 32rpx;
+  text-align: center;
 }
 .buyBox{
 	display: flex;

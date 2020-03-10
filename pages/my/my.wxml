@@ -48,7 +48,7 @@
 			<view class="op_r">
 			</view>
 		</view> -->
-		<view class="exchange" url='/pages/jfjl/jfjl' bindtap='jumpout'>
+		<view class="exchange" data-url='/pages/jfjl/jfjl' bindtap='jump'>
 			<view class="op_l">
 				<view class="myBtnIcon">
 					<image src="/static/images/my/my_09.png"></image>

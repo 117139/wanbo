@@ -203,17 +203,17 @@ Page({
           if (that.data.catid == 16) {
             that.data.wsp = that.data.wsp.concat(res.data)
             that.setData({
-              wsp: res.data
+              wsp: that.data.wsp
             })
           } else if (that.data.catid == 9) {
             that.data.wyp = that.data.wyp.concat(res.data)
             that.setData({
-              wyp: res.data
+              wyp: that.data.wyp
             })
           } else if (that.data.catid == 21) {
             that.data.wyc = that.data.wyc.concat(res.data)
             that.setData({
-              wyc: res.data
+              wyc: that.data.wyc
             })
           }
 
