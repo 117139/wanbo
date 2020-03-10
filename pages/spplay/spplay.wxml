@@ -3,7 +3,15 @@
 <template is="pageState" data="{{...pageState}}" />
 <view class="container">
   <view class="playbox">
-		<video  wx:if="{{details.readpoint==0||details.zt==1}}" src="{{details.shipin}}" controls></video>
+		<!-- <video  wx:if="{{details.readpoint==0||details.zt==1}}" src="{{details.shipin}}" controls></video> -->
+    <txv-video 
+      wx:if="{{details.readpoint==0||details.zt==1}}"
+      vid="{{details.vid}}" 
+      playerid="txv1" 
+      width="690rpx"   
+      height="auto"
+      isHiddenStop > 
+    </txv-video>
     <view class='sptit'>{{details.title}}</view>
     <view class="wxfwb" wx:if="{{details.readpoint!=0&&details.zt!=1}}">
 			{{inrkkk.inr0}}
